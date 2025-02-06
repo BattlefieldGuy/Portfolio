@@ -43,6 +43,44 @@
             border-radius: 25px 25px 25px 25px;
             margin-top: 50px;
         }
+
+        .dropdown-item {
+            position: relative;
+        }
+
+        .dropdown-item img {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-right: 10px;
+        }
+
+        .dropdown-item:hover {
+            background-color: #f0f0f0;
+        }
+
+        .dropdown-item .project-info {
+            display: flex;
+            align-items: center;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .dropdown-item:hover .project-info {
+            transform: translateX(10px);
+        }
+
+        .dropdown-item:hover {
+            color: #959595;
+        }
+
+        .custom-color {
+            color: #008b09ba;
+        }
+
+        .custom-color:hover {
+            color: rgba(226, 2, 2, 0.451);
+        }
     </style>
 </head>
 
@@ -50,12 +88,71 @@
 
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light rounded-pill mt-3 shadow">
-        <div class="container">
-            <a class="navbar-brand" href="../index.html">Temp(make drop down)</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav center">
+                <li class="nav-item">
+                </li>
+            <a href="../index.html" class="btn btn-primary">Back to Portfolio</a>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Other projects
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li>
+                            <a class="dropdown-item">
+                                <div class="project-info">
+                                    <img src="../imgs/Floors.png">
+                                    <span class="custom-color">currently on</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="WhisSis.html">
+                                <div class="project-info">
+                                    <img src="../imgs/game_poster_edit.png">
+                                    <span>WhisSis</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="LittleJumper.html">
+                                <div class="project-info">
+                                    <img src="../imgs/Platformer.png">
+                                    <span>LittleJumper</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="VideoReality.html">
+                                <div class="project-info">
+                                    <img src="../imgs/VideoReality.png">
+                                    <span>VideoReality</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="Kuru-Kuru.html">
+                                <div class="project-info">
+                                    <img src="../imgs/Kuru Kuru.png">
+                                    <span>Kuru Kuru</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="Examen.html">
+                                <div class="project-info">
+                                    <img src="../imgs/UnrealC-feature.png">
+                                    <span>Examen</span>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                </li>
+            </ul>
         </div>
     </nav>
 
@@ -82,20 +179,22 @@
             <h2>Gallery</h2>
             <div class="row g-4">
                 <div class="col-md-4">
-                    <img src="https://via.placeholder.com/350" alt="Screenshot 1" class="img-fluid rounded">
+                    <img src="../imgs/Floors1.png" alt="Screenshot 1" class="img-fluid rounded">
                 </div>
                 <div class="col-md-4">
-                    <img src="https://via.placeholder.com/350" alt="Screenshot 2" class="img-fluid rounded">
+                    <img src="../imgs/Floors2.png" alt="Screenshot 2" class="img-fluid rounded">
                 </div>
                 <div class="col-md-4">
-                    <img src="https://via.placeholder.com/350" alt="Screenshot 3" class="img-fluid rounded">
+                    <img src="../imgs/Floors3.png" alt="Screenshot 3" class="img-fluid rounded">
+                </div>
+                <div class="col-md-4">
+                    <img src="../imgs/Floors4.png" alt="Screenshot 3" class="img-fluid rounded">
                 </div>
             </div>
             <h2>Challenges</h2>
             <p>Highlight any challenges faced during the project and how they were overcome.</p>
             <h2>Conclusion</h2>
             <p>Summarize the project and its impact or outcome.</p>
-            <a href="../index.html" class="btn btn-primary mt-3">Back to Portfolio</a>
         </div>
     </section>
 
@@ -106,5 +205,4 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>
