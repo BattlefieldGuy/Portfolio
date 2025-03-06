@@ -130,6 +130,19 @@
             white-space: nowrap;
             box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.4);
         }
+
+        /* mosonry */
+        .masonry {
+            column-count: 3;
+            column-gap: 1.5rem;
+        }
+
+        .masonry .card {
+            display: inline-block;
+            width: 100%;
+            margin-bottom: 1.5rem;
+            break-inside: avoid;
+        }
     </style>
 </head>
 
@@ -164,107 +177,94 @@
         </div>
     </section>
 
-    <!-- Portfolio Section -->
-    <section class="portfolio" class="py-5 bg-light">
+    <section class="portfolio"  clas="py-5 bg-light">
         <div class="container">
             <h2 class="text-center mb-4">Portfolio</h2>
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <a href="project/Floors.html" class="text-decoration-none">
-                        <div class="card">
-                            <img src="imgs\Floors.png" class="card-img-top">
-                            <div class="card-body text-center">
-                                <div class="tags">
-                                    <span class="tagTitle">Floors</span>
-                                    <span class="tagTime">4 weeks</span>
-                                    <span class="tagEngine">Unity</span>
-                                    <span class="tagPlatform">PC-VR</span>
-                                    <span class="tagPeople">4 Devs</span>
-                                </div>
+            <div class="masonry">
+                <a href="project/Floors.html" class="text-decoration-none">
+                    <div class="card">
+                        <img src="imgs/Floors.png" class="card-img-top">
+                        <div class="card-body text-center">
+                            <div class="tags">
+                                <span class="tagTitle">Floors</span>
+                                <span class="tagTime">4 weeks</span>
+                                <span class="tagEngine">Unity</span>
+                                <span class="tagPlatform">PC-VR</span>
+                                <span class="tagPeople">4 Devs</span>
                             </div>
                         </div>
-                    </a>
-                </div>
-                <div class="col-md-4">
-                    <a href="project/WhisSis.html" class="text-decoration-none">
-                        <div class="card">
-                            <img src="imgs\game_poster_edit.png" class="card-img-top">
-                            <div class="card-body text-center">
-                                <div class="tags">
-                                    <span class="tagTitle">WhisSis</span>
-                                    <span class="tagTime">4 weeks</span>
-                                    <span class="tagEngine">Unity</span>
-                                    <span class="tagPlatform">PC-VR</span>
-                                    <span class="tagPeople">3 Devs</span>
-                                </div>
+                    </div>
+                </a>
+                <a href="project/WhisSis.html" class="text-decoration-none">
+                    <div class="card">
+                        <img src="imgs/game_poster_edit.png" class="card-img-top">
+                        <div class="card-body text-center">
+                            <div class="tags">
+                                <span class="tagTitle">WhisSis</span>
+                                <span class="tagTime">4 weeks</span>
+                                <span class="tagEngine">Unity</span>
+                                <span class="tagPlatform">PC-VR</span>
+                                <span class="tagPeople">3 Devs</span>
                             </div>
                         </div>
-                    </a>
-                </div>
-                <div class="col-md-4">
-                    <a href="project/LittleJumper.html" class="text-decoration-none">
-                        <div class="card">
-                            <img src="imgs\Platformer.png" class="card-img-top">
-                            <div class="card-body text-center">
-                                <div class="tags">
-                                    <span class="tagTitle">LittleJumper</span>
-                                    <span class="tagTime">4 weeks</span>
-                                    <span class="tagEngine">Unity</span>
-                                    <span class="tagPlatform">PC/Console</span>
-                                    <span class="tagPeople">solo</span>
-                                </div>
+                    </div>
+                </a>
+                <a href="project/LittleJumper.html" class="text-decoration-none">
+                    <div class="card">
+                        <img src="imgs/Platformer.png" class="card-img-top">
+                        <div class="card-body text-center">
+                            <div class="tags">
+                                <span class="tagTitle">LittleJumper</span>
+                                <span class="tagTime">4 weeks</span>
+                                <span class="tagEngine">Unity</span>
+                                <span class="tagPlatform">PC/Console</span>
+                                <span class="tagPeople">Solo</span>
                             </div>
                         </div>
-                    </a>
-                </div>
-                <div class="col-md-4">
-                    <a href="project/VideoReality.html" class="text-decoration-none">
-                        <div class="card">
-                            <img src="imgs\VideoReality.png" class="card-img-top">
-                            <div class="card-body text-center">
-                                <div class="tags">
-                                    <span class="tagTitle">VideoReality</span>
-                                    <span class="tagTime">4 weeks</span>
-                                    <span class="tagEngine">Unity</span>
-                                    <span class="tagPlatform">PC-VR</span>
-                                    <span class="tagPeople">2 Devs</span>
-                                </div>
+                    </div>
+                </a>
+                <a href="project/VideoReality.html" class="text-decoration-none">
+                    <div class="card">
+                        <img src="imgs/VideoReality.png" class="card-img-top">
+                        <div class="card-body text-center">
+                            <div class="tags">
+                                <span class="tagTitle">VideoReality</span>
+                                <span class="tagTime">4 weeks</span>
+                                <span class="tagEngine">Unity</span>
+                                <span class="tagPlatform">PC-VR</span>
+                                <span class="tagPeople">2 Devs</span>
                             </div>
                         </div>
-                    </a>
-                </div>
-                <div class="col-md-4">
-                    <a href="project/Kuru-Kuru.html" class="text-decoration-none">
-                        <div class="card">
-                            <img src="imgs\Kuru Kuru.png" class="card-img-top">
-                            <div class="card-body text-center">
-                                <div class="tags">
-                                    <span class="tagTitle">Kuru Kuru</span>
-                                    <span class="tagTime">1 week</span>
-                                    <span class="tagEngine">Unity</span>
-                                    <span class="tagPlatform">PC</span>
-                                    <span class="tagPeople">solo</span>
-                                </div>
+                    </div>
+                </a>
+                <a href="project/Kuru-Kuru.html" class="text-decoration-none">
+                    <div class="card">
+                        <img src="imgs/Kuru Kuru.png" class="card-img-top">
+                        <div class="card-body text-center">
+                            <div class="tags">
+                                <span class="tagTitle">Kuru Kuru</span>
+                                <span class="tagTime">1 week</span>
+                                <span class="tagEngine">Unity</span>
+                                <span class="tagPlatform">PC</span>
+                                <span class="tagPeople">Solo</span>
                             </div>
                         </div>
-                    </a>
-                </div>
-                <div class="col-md-4">
-                    <a href="project/Examen.html" class="text-decoration-none">
-                        <div class="card">
-                            <img src="imgs\UnrealC-feature.png" class="card-img-top">
-                            <div class="card-body text-center">
-                                <div class="tags">
-                                    <span class="tagTitle">N/A</span>
-                                    <span class="tagTime">N/A</span>
-                                    <span class="tagEngine">N/A</span>
-                                    <span class="tagPlatform">N/A</span>
-                                    <span class="tagPeople">N/A</span>
-                                </div>
+                    </div>
+                </a>
+                <a href="project/Examen.html" class="text-decoration-none">
+                    <div class="card">
+                        <img src="imgs/UnrealC-feature.png" class="card-img-top">
+                        <div class="card-body text-center">
+                            <div class="tags">
+                                <span class="tagTitle">N/A</span>
+                                <span class="tagTime">N/A</span>
+                                <span class="tagEngine">N/A</span>
+                                <span class="tagPlatform">N/A</span>
+                                <span class="tagPeople">N/A</span>
                             </div>
                         </div>
-                    </a>
-                </div>
+                    </div>
+                </a>
             </div>
         </div>
     </section>
