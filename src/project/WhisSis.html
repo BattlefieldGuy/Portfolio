@@ -7,12 +7,49 @@
     <title>Project Title</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
+        /* ============================= */
+        /*             Base              */
+        /* ============================= */
         body {
             font-family: 'Arial', sans-serif;
             background: #323232;
             color: #c6c6c6;
         }
 
+        .hero {
+            background: linear-gradient(135deg, #007bff8a, #0057b3a8);
+            color: white;
+            padding: 50px 0;
+            text-align: center;
+            border-radius: 50px 50px 50px 50px;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+        }
+
+        .content-section {
+            margin: 30px 0;
+        }
+
+        .btn-primary {
+            background: #007bff74;
+            border: none;
+            border-radius: 50px;
+            padding: 10px 20px;
+        }
+
+        footer {
+            background: #0080ff7a;
+            padding: 20px 0;
+            text-align: center;
+            border-radius: 25px 25px 25px 25px;
+            margin-top: 50px;
+        }
+
+        /* ============================= */
+        /*       Background Video        */
+        /* ============================= */
         .background-video {
             position: fixed;
             top: 0;
@@ -42,36 +79,10 @@
             z-index: 0;
         }
 
-        .hero {
-            background: linear-gradient(135deg, #007bff, #0056b3);
-            color: white;
-            padding: 50px 0;
-            text-align: center;
-            border-radius: 50px 50px 50px 50px;
-        }
 
-        .hero h1 {
-            font-size: 2.5rem;
-        }
-
-        .content-section {
-            margin: 30px 0;
-        }
-
-        .btn-primary {
-            background: #007bff74;
-            border: none;
-            border-radius: 50px;
-            padding: 10px 20px;
-        }
-
-        footer {
-            background: #0080ff;
-            padding: 20px 0;
-            text-align: center;
-            border-radius: 25px 25px 25px 25px;
-            margin-top: 50px;
-        }
+        /* ============================= */
+        /*             Info              */
+        /* ============================= */
 
         .collapse {
             margin-left: 100px;
@@ -155,7 +166,9 @@
             transform: scale(1.05);
         }
 
-        /* Modal */
+        /* ============================= */
+        /*             Modal             */
+        /* ============================= */
         .modal {
             display: none;
             /* Hidden by default */
@@ -171,8 +184,8 @@
 
         .modal-content {
             margin: auto;
-            display: block;
-            width: 80%;
+            display: flex;
+            width: 100%;
             max-width: 700px;
             border-radius: 10px;
         }
@@ -226,6 +239,9 @@
             width: auto;
         }
 
+        /* ============================= */
+        /*             Tags              */
+        /* ============================= */
         .sliding-tags-container {
             margin: auto;
             width: 300px;
@@ -239,7 +255,7 @@
             overflow: hidden;
             white-space: nowrap;
             position: relative;
-            background: #262f489b;
+            background: #6f4e17a9;
             padding: 10px 0;
             border-radius: 10px;
         }
@@ -247,18 +263,9 @@
         .tags-wrapper {
             display: inline-block;
             animation: slide 10s linear infinite;
+            /* Adjust the duration as needed */
         }
 
-        .tag {
-            display: inline-block;
-            background: #007bff;
-            color: white;
-            padding: 5px 10px;
-            margin: 0 10px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: bold;
-        }
 
         @keyframes slide {
             from {
@@ -273,6 +280,17 @@
 
         .sliding-tags:hover .tags-wrapper {
             animation-play-state: paused;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #007bff;
+            color: white;
+            padding: 5px 10px;
+            margin: 0 10px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
         }
 
         .tagTitle {
@@ -325,20 +343,54 @@
             box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.4);
         }
 
-        /* mosonry */
-        .masonry {
-            column-count: 3;
-            column-gap: 1.5rem;
+        /* ============================= */
+        /*         Descriptions          */
+        /* ============================= */
+        .Technique-Titel {
+            color: green;
         }
 
-        .masonry .card {
-            display: inline-block;
-            width: 100%;
-            margin-bottom: 1.5rem;
-            break-inside: avoid;
+        .Technique-Text-Container {
+            margin: 0px 16px 0px 16px;
+            padding: 1%;
+            background-color: #4848488f;
+
+        }
+
+        .Technique-Text {
+            color: #dfdfdfd2;
+        }
+
+        .MyWork-Titel {
+            Color: rgb(192, 192, 192);
+        }
+
+        .MyWork-Text-Container {
+            margin: 0px 16px 0px 16px;
+            padding: 1%;
+            background-color: #4848488f;
+        }
+
+        .MyWork-Text {
+            color: #dfdfdfd2;
+        }
+
+        .AboutTheGame-Titel {
+            color: rgb(0, 214, 199);
+        }
+
+        .AboutTheGame-Text-Container {
+            margin: 0px 16px 0px 16px;
+            padding: 1%;
+            background-color: #4848488f;
+        }
+
+        .AboutTheGame-Text {
+            color: #dfdfdfd2;
         }
     </style>
 </head>
+<!---->
 
 <body>
     <video autoplay loop muted playsinline class="background-video">
@@ -447,15 +499,58 @@
     <!-- Project Details Section -->
     <section class="content-section">
         <div class="container">
-            <h2>Overview</h2>
-            <p>Provide a detailed description of the project, including its purpose, features, and any relevant
-                information.</p>
-            <h2>Technologies Used</h2>
-            <ul>
-                <li>Technology 1</li>
-                <li>Technology 2</li>
-                <li>Technology 3</li>
-            </ul>
+
+            <!-- Technique -->
+            <h2 class="Technique-Titel">Technique</h2>
+            <div class="Technique-Text-Container">
+                <div class="Technique-Text">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque venenatis feugiat magna. Praesent
+                    placerat, justo non commodo accumsan, erat mi eleifend ipsum, et tincidunt nisl lorem sit amet
+                    lectus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse dictum, ipsum et
+                    mollis placerat, purus turpis volutpat quam, non porttitor tortor tellus et diam. Maecenas euismod
+                    orci ex, vel tincidunt velit malesuada sit amet. Donec augue mauris, fringilla vel fermentum
+                    tincidunt, lobortis sit amet nibh. Maecenas vel ipsum bibendum, pellentesque purus at, tempus ex.
+                    Aliquam sodales scelerisque erat ac imperdiet. Aliquam viverra justo nec pharetra vulputate. Etiam
+                    vitae facilisis orci, lobortis imperdiet elit. Proin a iaculis nibh, sit amet consectetur lectus.
+                    Maecenas sodales dignissim rhoncus. Nullam tempus eu mauris commodo fermentum. Cras tincidunt mattis
+                    leo, sodales auctor est malesuada id.
+                </div>
+            </div>
+
+            <!-- My Work -->
+            <h2 class="MyWork-Titel">My Work</h2>
+            <div class="MyWork-Text-Container">
+                <div class="MyWork-Text">Ut ac mauris bibendum, finibus erat sed, congue neque. Suspendisse a arcu eu
+                    massa
+                    tristique vehicula.
+                    Aliquam dignissim ipsum nec venenatis euismod. Ut a convallis quam. Morbi suscipit convallis dui et
+                    rhoncus. Etiam maximus at nulla quis sagittis. Nullam sapien nisi, fringilla vel venenatis ut,
+                    aliquet
+                    id leo. Aliquam varius nunc id nisi luctus congue. Phasellus non blandit sapien. Proin laoreet
+                    fringilla
+                    luctus. Maecenas sagittis consequat sapien, non malesuada nisl rutrum non. Quisque consectetur
+                    libero
+                    nec nunc aliquam, quis laoreet nisi viverra. Fusce viverra, nibh sit amet egestas lobortis, urna
+                    tellus
+                    volutpat enim, et iaculis ligula nulla at turpis. Phasellus id rutrum elit. Nam hendrerit
+                    sollicitudin
+                    est eget aliquet.
+                </div>
+            </div>
+
+            <!-- About the game -->
+            <h2 class="AboutTheGame-Titel">About the game</h2>
+            <div class="AboutTheGame-Text-Container">
+                <div calss="AboutTheGame-Text">Nunc mattis erat vel feugiat tincidunt. Donec ut erat egestas, eleifend
+                    tortor nec, semper ex. Mauris placerat lectus at risus viverra varius. Ut nisi ante, tempor eget sem
+                    eget, mattis dictum nisi. Curabitur non erat efficitur, consequat mauris finibus, vehicula lorem.
+                    Sed eu ante sed turpis congue consequat id eu magna. Nunc nec congue magna. Phasellus varius
+                    malesuada iaculis. Proin in tortor ut erat consequat condimentum sit amet a odio. Vivamus vitae
+                    sapien at erat semper tempor a quis enim.
+                </div>
+            </div>
+
+            <!-- Gallery -->
             <h2>Gallery</h2>
             <div class="row g-4">
                 <div class="col-md-4">
@@ -480,10 +575,6 @@
                     <img src="../imgs/Whissis6.png" alt="Screenshot 3" class="img-fluid rounded">
                 </div>
             </div>
-            <h2>Challenges</h2>
-            <p>Highlight any challenges faced during the project and how they were overcome.</p>
-            <h2>Conclusion</h2>
-            <p>Summarize the project and its impact or outcome.</p>
         </div>
     </section>
 
