@@ -132,51 +132,8 @@
         }
 
         /* ============================= */
-        /*             Modal             */
+        /*           carousel            */
         /* ============================= */
-        .modal {
-            display: none;
-            /* Hidden by default */
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0, 0, 0, 0.8);
-        }
-
-        .modal-content {
-            margin: auto;
-            display: flex;
-            width: 100%;
-            max-width: 700px;
-            border-radius: 10px;
-        }
-
-        .modalcontent-:hover {
-            transform: scale(1.02);
-            transition: transform 0.3s;
-        }
-
-        .close {
-            position: absolute;
-            top: 20px;
-            right: 35px;
-            color: #fff;
-            font-size: 40px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        #caption {
-            margin: 15px auto;
-            text-align: center;
-            color: white;
-            font-size: 1.2rem;
-        }
-
         .image-slider-container {
             margin-left: 200px;
             margin-right: 200px;
@@ -186,6 +143,7 @@
             border-style: solid;
             border-color: rgba(0, 142, 57, 0.747);
             box-shadow: 0px 2px 15px rgba(174, 174, 174, 0.571);
+            background-color: #2b2b2bd5;
         }
 
         .carousel-item img {
@@ -193,15 +151,6 @@
             width: auto;
             object-fit: contain;
             margin: auto;
-        }
-
-        .modal-dialog.modal-custom {
-            max-width: 90%;
-        }
-
-        .modal-body img {
-            max-height: 80vh;
-            width: auto;
         }
 
         /* ============================= */
@@ -532,62 +481,30 @@
                 <div id="imageCarousel" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="../imgs/Floors1.png" class="d-block w-100" alt="Screenshot 1"
-                                data-bs-toggle="modal" data-bs-target="#imageModal">
+                            <img src="../imgs/Floors1.png" class="d-block w-100" alt="Screenshot 1">
                         </div>
                         <div class="carousel-item">
-                            <img src="../imgs/Floors2.png" class="d-block w-100" alt="Screenshot 2"
-                                data-bs-toggle="modal" data-bs-target="#imageModal">
+                            <img src="../imgs/Floors2.png" class="d-block w-100" alt="Screenshot 2">
                         </div>
                         <div class="carousel-item">
-                            <img src="../imgs/Floors3.png" class="d-block w-100" alt="Screenshot 3"
-                                data-bs-toggle="modal" data-bs-target="#imageModal">
+                            <img src="../imgs/Floors3.png" class="d-block w-100" alt="Screenshot 3">
                         </div>
                         <div class="carousel-item">
-                            <img src="../imgs/Floors4.png" class="d-block w-100" alt="Screenshot 4"
-                                data-bs-toggle="modal" data-bs-target="#imageModal">
+                            <img src="../imgs/Floors4.png" class="d-block w-100" alt="Screenshot 4">
                         </div>
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#imageCarousel"
                         data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
                     </button>
                     <button class="carousel-control-next" type="button" data-bs-target="#imageCarousel"
                         data-bs-slide="next">
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
                     </button>
                 </div>
             </div>
 
 
-        </div>
-    </section>
-
-    <!-- Code Reference Modal -->
-    <section>
-        <div class="modal fade" id="codeReferenceModal" tabindex="-1" aria-labelledby="codeReferenceModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="codeReferenceModalLabel">Code Reference</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body d-flex">
-                        <div class="code-section flex-grow-1 me-3">
-                            <pre><code id="codeContent" class="language-javascript">// Code will be inserted here</code></pre>
-                        </div>
-                        <div class="video-section">
-                            <video id="codeVideo" controls>
-                                <source src="" type="video/mp4">
-                                Your browser does not support the video tag.
-                            </video>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
 
