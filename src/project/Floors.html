@@ -309,37 +309,37 @@
         }
 
         /* ============================= */
-        /*          Code blocks          */
+        /*         Show my work          */
         /* ============================= */
+        .show-my-work {
+            margin-top: 50px;
+        }
 
-        .collapsible-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-in-out;
-            display: flex;
-            gap: 10px;
-            background: #2c2f3a;
-            padding: 10px;
+        .video-container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .work-video {
+            width: 100%;
             border-radius: 10px;
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
         }
 
-        .collapsible-content.show {
-            max-height: 1000px;
+        .work-details {
+            margin-top: 20px;
+            overflow: hidden;
+            max-height: 0;
+            transition: max-height 0.5s ease-in-out;
         }
 
-        .code-section,
-        .example-section {
-            flex: 1;
-            padding: 10px;
-            margin: 1%	;
-            background: #1a1c29;
-            border-radius: 8px;
+        .work-details.show {
+            max-height: 500px;
         }
 
-        .code-section pre {
-            background: #111;
-            color: #0f0;
+        .code-block {
+            background: #f4f4f4;
+            color: #1d1d1d;
             padding: 10px;
             border-radius: 5px;
             overflow-x: auto;
@@ -348,19 +348,17 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            document.querySelectorAll(".toggle-code").forEach(button => {
-                button.addEventListener("click", function () {
-                    let target = document.querySelector(this.getAttribute("data-target"));
-                    let isOpen = target.classList.contains("show");
+            const toggleButton = document.querySelector(".toggle-details");
+            const detailsSection = document.querySelector(".work-details");
 
-                    if (isOpen) {
-                        target.style.maxHeight = "0px";
-                        setTimeout(() => target.classList.remove("show"), 300);
-                    } else {
-                        target.classList.add("show");
-                        target.style.maxHeight = target.scrollHeight + "px";
-                    }
-                });
+            toggleButton.addEventListener("click", function () {
+                if (detailsSection.classList.contains("show")) {
+                    detailsSection.classList.remove("show");
+                    toggleButton.textContent = "Show Details";
+                } else {
+                    detailsSection.classList.add("show");
+                    toggleButton.textContent = "Hide Details";
+                }
             });
         });
     </script>
@@ -498,32 +496,64 @@
             <!-- My Work -->
             <h2 class="MyWork-Titel">My Work</h2>
             <div class="MyWork-Text-Container">
-                <div class="MyWork-Text">Ut ac mauris bibendum, finibus erat sed, congue neque. Suspendisse a arcu eu
-                    massa
-                    tristique vehicula.
-                    Aliquam dignissim ipsum nec venenatis euismod. Ut a convallis quam. Morbi suscipit convallis dui et
-                    rhoncus. Etiam maximus at
-                    <button class="toggle-code btn btn-primary" data-target="#codeBlock1">Show Code</button>
-                    <div id="codeBlock1" class="collapsible-content">
-                        <div class="code-section">
-                            <h5>Code Example</h5>
-                            <pre><code>// Sample code goes here</code></pre>
+                <div class="MyWork-Text"><!-- Video Container -->
+                    <div class="video-container position-relative">
+                        <video class="work-video" src="your-video.mp4" controls></video>
+                        <button class="toggle-details btn btn-primary mt-3">Show Details</button>
+                    </div>
+
+                    <!-- Hidden Details Section -->
+                    <div class="work-details collapse">
+                        <div class="row">
+                            <!-- Code Section -->
+                            <div class="col-md-6 p-3">
+                                <h4>Code</h4>
+                                <pre class="code-block"><code>
+public class BulletSpawner : MonoBehaviour
+{
+    private MuzzleFlash muzzleFlash;
+    private DamageCall damageCall;
+
+    private void Start()
+    {
+        muzzleFlash = GetComponentInChildren<MuzzleFlash>();
+        damageCall = this.GetComponent<DamageCall>();
+        Debug.Log(damageCall);
+    }
+
+    public IEnumerator CallData(float _damage, int _lvl, string _element)
+    {
+        yield return new WaitForEndOfFrame();
+        damageCall.CallVariables(_damage, _lvl, _element);
+    }
+    public void Shoot(string name)
+    {
+        CallMuzzleFlash(name);
+        FireRay();
+    }
+
+    private void FireRay()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(this.transform.position, transform.TransformDirection(Vector2.up), 50);
+        //Debug.DrawRay(this.transform.position, transform.TransformDirection(Vector2.up), Color.blue, 50);
+
+        if (hit)
+            damageCall.CallDamage(hit);
+    }
+
+    private void CallMuzzleFlash(string name) => muzzleFlash.MuzzleFlashID(name);
+}
+                                </code></pre>
+
+                            </div>
+
+                            <!-- Description Section -->
+                            <div class="col-md-6 p-3">
+                                <h4>Description</h4>
+                                <p>Your project description goes here...</p>
+                            </div>
                         </div>
-                        <div class="example-section">
-                            <h5>Example</h5>
-                            <img src="../imgs/Gifs/giphy.gif" alt="Example GIF" width="100%">
-                        </div>
-                    </div>nulla quis sagittis. Nullam sapien nisi, fringilla vel venenatis ut,
-                    aliquet
-                    id leo. Aliquam varius nunc id nisi luctus congue. Phasellus non blandit sapien. Proin laoreet
-                    fringilla
-                    luctus. Maecenas sagittis consequat sapien, non malesuada nisl rutrum non. Quisque consectetur
-                    libero
-                    nec nunc aliquam, quis laoreet nisi viverra. Fusce viverra, nibh sit amet egestas lobortis, urna
-                    tellus
-                    volutpat enim, et iaculis ligula nulla at turpis. Phasellus id rutrum elit. Nam hendrerit
-                    sollicitudin
-                    est eget aliquet.
+                    </div>
                 </div>
             </div>
 
