@@ -383,16 +383,6 @@
         }
     </style>
 
-    <script>
-        function toggleDetails(id) {
-            let details = document.getElementById(id);
-            if (details.style.display === "none" || details.style.display === "") {
-                details.style.display = "block";
-            } else {
-                details.style.display = "none";
-            }
-        }
-    </script>
 </head>
 
 <body>
@@ -478,7 +468,7 @@
     <section class="hero">
         <div class="container">
             <h1>Floors</h1>
-            <p>Strange hardware project</p>
+            <p id="Project-Tag">Strange hardware project</p>
         </div>
     </section>
 
@@ -624,6 +614,44 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        function toggleDetails(id) {
+            let details = document.getElementById(id);
+            if (details.style.display === "none" || details.style.display === "") {
+                details.style.display = "block";
+            } else {
+                details.style.display = "none";
+            }
+        }
+
+        const translations = {
+            en: {
+                "Project-Tag": "Strange hardware project",
+            },
+            nl: {
+                "Project-Tag": "Vreemde hardware project",
+            }
+        };
+
+        // Function to update all text elements
+        function setLanguage(lang) {
+            if (!translations[lang]) return; // If language doesn't exist, exit function
+
+            for (const id in translations[lang]) {
+                document.getElementById(id).innerText = translations[lang][id];
+            }
+
+            // Store language preference in localStorage so it persists after refresh
+            localStorage.setItem("language", lang);
+        }
+
+        // Auto-load the preferred language on page load
+        document.addEventListener("DOMContentLoaded", () => {
+            const savedLanguage = localStorage.getItem("language") || "en"; // Default to English
+            setLanguage(savedLanguage);
+        });
+    </script>
 </body>
 
 </html>
