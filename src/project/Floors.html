@@ -468,7 +468,7 @@
     <section class="hero">
         <div class="container">
             <h1>Floors</h1>
-            <p id="Project-Tag">Strange hardware project</p>
+            <p class="translatable-text" data-key="Project-Tag">Strange hardware project</p>
         </div>
     </section>
 
@@ -504,7 +504,8 @@
                     <div class="video-container" onclick="toggleDetails('details1')">
                         <video src="example.mp4" autoplay loop muted></video>
                     </div>
-                    <button class="details-btn" onclick="toggleDetails('details1')">Show Details</button>
+                    <button class="details-btn translatable-text" data-key="ShowDetails-btn"
+                        onclick="toggleDetails('details1')">Show Details</button>
                     <div class="details-section" id="details1">
                         <div class="details-content">
                             <div class="code-example">
@@ -515,7 +516,7 @@
                                     </code></pre>
                             </div>
                             <div class="description">
-                                <h3>Project Details</h3>
+                                <h3>Details</h3>
                                 <p>This is a brief explanation of the work.</p>
                             </div>
                         </div>
@@ -526,7 +527,8 @@
                     <div class="video-container" onclick="toggleDetails('details2')">
                         <video src="example2.mp4" autoplay loop muted></video>
                     </div>
-                    <button class="details-btn" onclick="toggleDetails('details2')">Show Details</button>
+                    <button class="details-btn translatable-text" data-key="ShowDetails-btn"
+                        onclick="toggleDetails('details2')">Show Details</button>
                     <div class="details-section" id="details2">
                         <div class="details-content">
                             <div class="code-example">
@@ -537,8 +539,8 @@
                                     </code></pre>
                             </div>
                             <div class="description">
-                                <h3>Project Details</h3>
-                                <p>This is another brief explanation of the work.</p>
+                                <h3>Details</h3>
+                                <p>This is a brief explanation of the work.</p>
                             </div>
                         </div>
                     </div>
@@ -628,24 +630,34 @@
         const translations = {
             en: {
                 "Project-Tag": "Strange hardware project",
+                "ShowDetails-btn": "Show Details",
             },
             nl: {
                 "Project-Tag": "Vreemde hardware project",
+                "ShowDetails-btn": "Details weergeven",
             }
         };
 
-        // Function to update all text elements
         function setLanguage(lang) {
-            if (!translations[lang]) return; // If language doesn't exist, exit function
+            const langData = translations[lang];
+            if (!langData) return;
 
-            for (const id in translations[lang]) {
-                document.getElementById(id).innerText = translations[lang][id];
+            // Translate unique IDs
+            for (const id in langData) {
+                const el = document.getElementById(id);
+                if (el) el.innerText = langData[id];
             }
 
-            // Store language preference in localStorage so it persists after refresh
+            // Translate tags with classes and data-key
+            document.querySelectorAll(".translatable-text").forEach(el => {
+                const key = el.getAttribute("data-key");
+                if (langData[key]) {
+                    el.innerText = langData[key];
+                }
+            });
+
             localStorage.setItem("language", lang);
         }
-
         // Auto-load the preferred language on page load
         document.addEventListener("DOMContentLoaded", () => {
             const savedLanguage = localStorage.getItem("language") || "en"; // Default to English

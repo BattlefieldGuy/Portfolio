@@ -256,7 +256,7 @@
                         <div class="card-body text-center">
                             <div class="tags">
                                 <span class="tagTitle">Floors</span>
-                                <span class="tagTime" id="Time-Tag-4">4 weeks</span>
+                                <span class="tagTime translatable-text" data-key="Time-Tag-4">4 weeks</span>
                                 <span> <img src="imgs/Icons/Unity.png" alt="Engine Icon"
                                         class="tagEngine tagEngineIMG"></span>
                                 <span><img src="imgs/Icons/VR.png" alt="Platform Icon" class="tagPlatform"
@@ -272,7 +272,7 @@
                         <div class="card-body text-center">
                             <div class="tags">
                                 <span class="tagTitle">VideoReality</span>
-                                <span class="tagTime" id="Time-Tag-4">4 weeks</span>
+                                <span class="tagTime translatable-text" data-key="Time-Tag-4">4 weeks</span>
                                 <span><img src="imgs/Icons/Unity.png" alt="Engine Icon"
                                         class="tagEngine tagEngineIMG"></span>
                                 <span><img src="imgs/Icons/VR.png" alt="Platform Icon" class="tagPlatform"
@@ -288,7 +288,7 @@
                         <div class="card-body text-center">
                             <div class="tags">
                                 <span class="tagTitle">Kuru Kuru</span>
-                                <span class="tagTime" id="Time-Tag-Own">Own time</span>
+                                <span class="tagTime translatable-text" data-key="Time-Tag-Own">Own time</span>
                                 <span><img src="imgs/Icons/Unity.png" alt="Engine Icon"
                                         class="tagEngine tagEngineIMG"></span>
                                 <span><img src="imgs/Icons/PC.png" alt="Platform Icon" class="tagPlatform"
@@ -304,7 +304,7 @@
                         <div class="card-body text-center">
                             <div class="tags">
                                 <span class="tagTitle">LittleJumper</span>
-                                <span class="tagTime" id="Time-Tag-4">4 weeks</span>
+                                <span class="tagTime translatable-text" data-key="Time-Tag-4">4 weeks</span>
                                 <span><img src="imgs/Icons/Unity.png" alt="Engine Icon"
                                         class="tagEngine tagEngineIMG"></span>
                                 <span><img src="imgs/Icons/PC.png" class="tagPlatform tagPlatformIMG"> <img
@@ -334,7 +334,7 @@
                         <div class="card-body text-center">
                             <div class="tags">
                                 <span class="tagTitle">WhisSis</span>
-                                <span class="tagTime" id="Time-Tag-4">4 weeks</span>
+                                <span class="tagTime translatable-text" data-key="Time-Tag-4">4 weeks</span>
                                 <span><img src="imgs/Icons/Unity.png" alt="Engine Icon"
                                         class="tagEngine tagEngineIMG"></span>
                                 <span><img src="imgs/Icons/VR.png" class="tagPlatform tagPlatformIMG"></span>
@@ -349,7 +349,7 @@
                         <div class="card-body text-center">
                             <div class="tags">
                                 <span class="tagTitle">DungeonShooter</span>
-                                <span class="tagTime" id="Time-Tag-Own">Own time</span>
+                                <span class="tagTime translatable-text" data-key="Time-Tag-Own">Own time</span>
                                 <span><img src="imgs/Icons/Unity.png" alt="Engine Icon"
                                         class="tagEngine tagEngineIMG"></span>
                                 <span><img src="imgs/Icons/PC.png" class="tagPlatform tagPlatformIMG"> <img
@@ -435,29 +435,37 @@
                 "Welcome": "Welcome to Matthew's Portfolio",
                 "Welcome-Extra": "XR developer and code enthusiast",
                 "Time-Tag-4": "4 weeks",
-                "Time-Tag-Own": "Own Time",
+                "Time-Tag-Own": "Own project",
 
             },
             nl: {
                 "Welcome": "Welkom op Matthew's Portfolio",
                 "Welcome-Extra": "XR ontwikkelaar en codeliefhebber",
                 "Time-Tag-4": "4 weken",
-                "Time-Tag-Own": "Eigen tijd",
+                "Time-Tag-Own": "Eigen project",
             }
         };
 
-        // Function to update all text elements
         function setLanguage(lang) {
-            if (!translations[lang]) return; // If language doesn't exist, exit function
+            const langData = translations[lang];
+            if (!langData) return;
 
-            for (const id in translations[lang]) {
-                document.getElementById(id).innerText = translations[lang][id];
+            // Translate unique IDs
+            for (const id in langData) {
+                const el = document.getElementById(id);
+                if (el) el.innerText = langData[id];
             }
 
-            // Store language preference in localStorage so it persists after refresh
+            // Translate tags with classes and data-key
+            document.querySelectorAll(".translatable-text").forEach(el => {
+                const key = el.getAttribute("data-key");
+                if (langData[key]) {
+                    el.innerText = langData[key];
+                }
+            });
+
             localStorage.setItem("language", lang);
         }
-
         // Auto-load the preferred language on page load
         document.addEventListener("DOMContentLoaded", () => {
             const savedLanguage = localStorage.getItem("language") || "en"; // Default to English
