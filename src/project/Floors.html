@@ -331,21 +331,30 @@
         }
 
         .details-section {
-            display: none;
+            max-height: 0;
+            opacity: 0;
             overflow: hidden;
+            transition: max-height 0.5s ease, opacity 0.5s ease, padding 0.3s ease;
             max-width: 1300px;
             margin: 20px auto;
             background: #f8f9fa;
-            padding: 20px;
+            padding: 0 20px;
+            /* Start with minimal padding */
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            transition: max-height 0.5s ease-in-out;
         }
 
         .details-content {
             display: flex;
             flex-direction: row;
             gap: 20px;
+        }
+
+        .details-section.open {
+            max-height: 1000px;
+            /* large enough for content */
+            opacity: 1;
+            padding: 20px;
         }
 
         .code-example {
@@ -498,11 +507,15 @@
         <div class="container">
 
             <!-- My Work -->
-            <h2 class="MyWork-Titel">My Work</h2>
+            <h2 class="MyWork-Titel translatable-text" data-key="MyWork">My Work</h2>
             <div class="container">
                 <div class="work-section" id="work1">
                     <div class="video-container" onclick="toggleDetails('details1')">
-                        <video src="example.mp4" autoplay loop muted></video>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen>
+                        </iframe>
                     </div>
                     <button class="details-btn translatable-text" data-key="ShowDetails-btn"
                         onclick="toggleDetails('details1')">Show Details</button>
@@ -516,7 +529,8 @@
                                     </code></pre>
                             </div>
                             <div class="description">
-                                <h3>Details</h3>
+                                <h3 class="translatable-text" data-key="Description">oops something whent wrong, reload
+                                    the page</h3>
                                 <p>This is a brief explanation of the work.</p>
                             </div>
                         </div>
@@ -539,7 +553,8 @@
                                     </code></pre>
                             </div>
                             <div class="description">
-                                <h3>Details</h3>
+                                <h3 class="translatable-text" data-key="Description">oops something whent wrong, reload
+                                    the page</h3>
                                 <p>This is a brief explanation of the work.</p>
                             </div>
                         </div>
@@ -548,7 +563,7 @@
             </div>
 
             <!-- About the game -->
-            <h2 class="AboutTheGame-Titel">About the game</h2>
+            <h2 class="AboutTheGame-Titel translatable-text" data-key="AboutTheGame">About the game</h2>
             <div class="AboutTheGame-Text-Container">
                 <div calss="AboutTheGame-Text">Nunc mattis erat vel feugiat tincidunt. Donec ut erat egestas, eleifend
                     tortor nec, semper ex. Mauris placerat lectus at risus viverra varius. Ut nisi ante, tempor eget sem
@@ -560,7 +575,7 @@
             </div>
 
             <!-- Technique -->
-            <h2 class="Technique-Titel">Technique</h2>
+            <h2 class="Technique-Titel translatable-text" data-key="Technique">Technique</h2>
             <div class="Technique-Text-Container">
                 <div class="Technique-Text">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque venenatis feugiat magna. Praesent
@@ -619,22 +634,26 @@
 
     <script>
         function toggleDetails(id) {
-            let details = document.getElementById(id);
-            if (details.style.display === "none" || details.style.display === "") {
-                details.style.display = "block";
-            } else {
-                details.style.display = "none";
-            }
+            const section = document.getElementById(id);
+            section.classList.toggle("open");
         }
 
         const translations = {
             en: {
                 "Project-Tag": "Strange hardware project",
+                "MyWork": "My work",
                 "ShowDetails-btn": "Show Details",
+                "Description": "Description",
+                "AboutTheGame": "About the game",
+                "Technique": "Technique",
             },
             nl: {
                 "Project-Tag": "Vreemde hardware project",
+                "MyWork": "Mijn werk",
                 "ShowDetails-btn": "Details weergeven",
+                "Description": "Beschrijving",
+                "AboutTheGame": "Over het spel",
+                "Technique": "Techniek",
             }
         };
 
