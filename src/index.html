@@ -15,7 +15,7 @@
 
         .hero {
             background: radial-gradient(circle, #0015ff39, #15647e43), url(../imgs/Gifs/Ry6p.gif);
-            color: rgb(147, 68, 68);
+            color: rgb(176, 176, 176);
             padding: 100px 0;
             text-align: center;
             border-radius: 50px 50px 60px 60px;
@@ -206,6 +206,24 @@
             height: 30px;
             cursor: pointer;
         }
+
+        .WelcomeTextContainer {
+            padding: 0px 23% 0px 23%;
+        }
+
+        .WelcomText {
+            border-radius: 50px;
+            background-color: #1d1d1de1;
+        }
+
+        .WelcomeTextContainerExtra {
+            padding: 0px 40% 0px 40%;
+        }
+
+        .WelcomeTextExtra {
+            border-radius: 50px;
+            background-color: #1d1d1de1;
+        }
     </style>
 </head>
 
@@ -241,8 +259,13 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
-            <h1 id="Welcome">Welcome to Matthew's Portfolio</h1>
-            <p id="Welcome-Extra">XR developer and code enthusiast</p>
+            <div class="WelcomeTextContainer">
+                <h1 class="WelcomText translatable-text" data-key="Welcome">Welcome to Matthew's Portfolio</h1>
+            </div>
+            <div class="WelcomeTextContainerExtra">
+                <p class="WelcomeTextExtra translatable-text" data-key="Welcome-Extra">XR developer and code enthusiast
+                </p>
+            </div>
         </div>
     </section>
 

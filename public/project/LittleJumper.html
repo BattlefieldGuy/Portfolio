@@ -302,6 +302,89 @@
         .AboutTheGame-Text {
             color: #dfdfdfd2;
         }
+
+        /* ============================= */
+        /*         Show my work          */
+        /* ============================= */
+        .work-section {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            cursor: pointer;
+        }
+
+        .video-container video {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .details-section {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, opacity 0.5s ease, padding 0.3s ease;
+            max-width: 1300px;
+            margin: 20px auto;
+            background: #f8f9fa;
+            padding: 0 20px;
+            /* Start with minimal padding */
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .details-content {
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
+        }
+
+        .details-section.open {
+            max-height: 1000px;
+            /* large enough for content */
+            opacity: 1;
+            padding: 20px;
+        }
+
+        .code-example {
+            background: #1e1e1e;
+            color: #ffffff;
+            padding: 15px;
+            border-radius: 10px;
+            font-family: monospace;
+            text-align: left;
+            overflow-x: auto;
+            font-size: 1.1rem;
+            max-height: 300px;
+            flex: 1;
+        }
+
+        .description {
+            flex: 1;
+            text-align: left;
+        }
+
+        .details-btn {
+            display: block;
+            margin: 20px auto 0;
+            background: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .details-btn:hover {
+            background: #21b300;
+        }
     </style>
 </head>
 
@@ -418,8 +501,76 @@
     <section class="content-section">
         <div class="container">
 
+            <!-- My Work -->
+            <h2 class="MyWork-Titel translatable-text" data-key="MyWork">My Work</h2>
+            <div class="container">
+                <div class="work-section" id="work1">
+                    <div class="video-container" onclick="toggleDetails('details1')">
+                        <iframe width="100%" height="450" src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <button class="details-btn translatable-text" data-key="ShowDetails-btn"
+                        onclick="toggleDetails('details1')">Show Details</button>
+                    <div class="details-section" id="details1">
+                        <div class="details-content">
+                            <div class="code-example">
+                                <pre><code>// Example code block
+           function example() {
+               console.log("Hello, world!");
+           }
+                                   </code></pre>
+                            </div>
+                            <div class="description">
+                                <h3 class="translatable-text" data-key="Description">oops something whent wrong, reload
+                                    the page</h3>
+                                <p>This is a brief explanation of the work.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="work-section" id="work2">
+                    <div class="video-container" onclick="toggleDetails('details2')">
+                        <video src="example2.mp4" autoplay loop muted></video>
+                    </div>
+                    <button class="details-btn translatable-text" data-key="ShowDetails-btn"
+                        onclick="toggleDetails('details2')">Show Details</button>
+                    <div class="details-section" id="details2">
+                        <div class="details-content">
+                            <div class="code-example">
+                                <pre><code>// Another example code block
+           function exampleTwo() {
+               console.log("Hello again!");
+           }
+                                   </code></pre>
+                            </div>
+                            <div class="description">
+                                <h3 class="translatable-text" data-key="Description">oops something whent wrong, reload
+                                    the page</h3>
+                                <p>This is a brief explanation of the work.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- About the game -->
+            <h2 class="AboutTheGame-Titel translatable-text" data-key="AboutTheGame">About the game</h2>
+            <div class="AboutTheGame-Text-Container">
+                <div calss="AboutTheGame-Text">Nunc mattis erat vel feugiat tincidunt. Donec ut erat egestas, eleifend
+                    tortor nec, semper ex. Mauris placerat lectus at risus viverra varius. Ut nisi ante, tempor eget sem
+                    eget, mattis dictum nisi. Curabitur non erat efficitur, consequat mauris finibus, vehicula lorem.
+                    Sed eu ante sed turpis congue consequat id eu magna. Nunc nec congue magna. Phasellus varius
+                    malesuada iaculis. Proin in tortor ut erat consequat condimentum sit amet a odio. Vivamus vitae
+                    sapien at erat semper tempor a quis enim.
+                </div>
+            </div>
+
             <!-- Technique -->
-            <h2 class="Technique-Titel">Technique</h2>
+            <h2 class="Technique-Titel translatable-text" data-key="Technique">Technique</h2>
             <div class="Technique-Text-Container">
                 <div class="Technique-Text">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque venenatis feugiat magna. Praesent
@@ -435,41 +586,8 @@
                 </div>
             </div>
 
-            <!-- My Work -->
-            <h2 class="MyWork-Titel">My Work</h2>
-            <div class="MyWork-Text-Container">
-                <div class="MyWork-Text">Ut ac mauris bibendum, finibus erat sed, congue neque. Suspendisse a arcu eu
-                    massa
-                    tristique vehicula.
-                    Aliquam dignissim ipsum nec venenatis euismod. Ut a convallis quam. Morbi suscipit convallis dui et
-                    rhoncus. Etiam maximus at nulla quis sagittis. Nullam sapien nisi, fringilla vel venenatis ut,
-                    aliquet
-                    id leo. Aliquam varius nunc id nisi luctus congue. Phasellus non blandit sapien. Proin laoreet
-                    fringilla
-                    luctus. Maecenas sagittis consequat sapien, non malesuada nisl rutrum non. Quisque consectetur
-                    libero
-                    nec nunc aliquam, quis laoreet nisi viverra. Fusce viverra, nibh sit amet egestas lobortis, urna
-                    tellus
-                    volutpat enim, et iaculis ligula nulla at turpis. Phasellus id rutrum elit. Nam hendrerit
-                    sollicitudin
-                    est eget aliquet.
-                </div>
-            </div>
-
-            <!-- About the game -->
-            <h2 class="AboutTheGame-Titel">About the game</h2>
-            <div class="AboutTheGame-Text-Container">
-                <div calss="AboutTheGame-Text">Nunc mattis erat vel feugiat tincidunt. Donec ut erat egestas, eleifend
-                    tortor nec, semper ex. Mauris placerat lectus at risus viverra varius. Ut nisi ante, tempor eget sem
-                    eget, mattis dictum nisi. Curabitur non erat efficitur, consequat mauris finibus, vehicula lorem.
-                    Sed eu ante sed turpis congue consequat id eu magna. Nunc nec congue magna. Phasellus varius
-                    malesuada iaculis. Proin in tortor ut erat consequat condimentum sit amet a odio. Vivamus vitae
-                    sapien at erat semper tempor a quis enim.
-                </div>
-            </div>
-
             <!-- Gallery -->
-            <h2>Gallery</h2>
+            <h2 class="translatable-text" data-key="Gallery">oops something whent wrong, reload the page</h2>
             <div class="row g-4">
                 <div class="col-md-4">
                     <img src="../imgs/LittleJumper1.png" alt="Screenshot 1" class="img-fluid rounded">
@@ -482,6 +600,61 @@
                 </div>
             </div>
         </div>
+        <script>
+            function toggleDetails(id) {
+                const section = document.getElementById(id);
+                section.classList.toggle("open");
+            }
+
+            const translations = {
+                en: {
+                    "Project-Tag": "Strange hardware project",
+                    "Time-Tag-4": "4 weeks",
+                    "MyWork": "My work",
+                    "ShowDetails-btn": "Show Details",
+                    "Description": "Description",
+                    "AboutTheGame": "About the game",
+                    "Technique": "Technique",
+                    "Gallery": "Gallery",
+                },
+                nl: {
+                    "Project-Tag": "Vreemde hardware project",
+                    "Time-Tag-4": "4 weken",
+                    "MyWork": "Mijn werk",
+                    "ShowDetails-btn": "Details weergeven",
+                    "Description": "Beschrijving",
+                    "AboutTheGame": "Over het spel",
+                    "Technique": "Techniek",
+                    "Gallery": "gallerij",
+                }
+            };
+
+            function setLanguage(lang) {
+                const langData = translations[lang];
+                if (!langData) return;
+
+                // Translate unique IDs
+                for (const id in langData) {
+                    const el = document.getElementById(id);
+                    if (el) el.innerText = langData[id];
+                }
+
+                // Translate tags with classes and data-key
+                document.querySelectorAll(".translatable-text").forEach(el => {
+                    const key = el.getAttribute("data-key");
+                    if (langData[key]) {
+                        el.innerText = langData[key];
+                    }
+                });
+
+                localStorage.setItem("language", lang);
+            }
+            // Auto-load the preferred language on page load
+            document.addEventListener("DOMContentLoaded", () => {
+                const savedLanguage = localStorage.getItem("language") || "en"; // Default to English
+                setLanguage(savedLanguage);
+            });
+        </script>
     </section>
 
     <!-- Footer -->
