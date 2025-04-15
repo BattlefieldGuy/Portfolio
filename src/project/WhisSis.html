@@ -270,6 +270,11 @@
             box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.4);
         }
 
+        .tagEngineIMG {
+            min-width: 50px;
+            max-width: 60px;
+        }
+
         .tagPlatform {
             background-color: #1d1d1d;
             color: white;
@@ -280,6 +285,13 @@
             box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.4);
         }
 
+        .tagPlatformIMG {
+            min-width: 45px;
+            max-width: 45px;
+            max-height: 40px;
+            margin: 0px;
+        }
+
         .tagPeople {
             background-color: #b98e00;
             color: white;
@@ -288,6 +300,10 @@
             border-radius: 20px;
             white-space: nowrap;
             box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.4);
+        }
+
+        .tags img {
+            vertical-align: middle;
         }
 
         /* ============================= */
@@ -528,15 +544,15 @@
             <div class="sliding-tags">
                 <div class="tags-wrapper">
                     <span class="tagTitle">WhisSis</span>
-                    <span class="tagTime">4 weeks</span>
-                    <span class="tagEngine">Unity</span>
-                    <span class="tagPlatform">PC-VR</span>
+                    <span class="tagTime translatable-text" data-key="Time-Tag-4">4 weeks</span>
+                    <span><img src="../imgs/Icons/Unity.png" alt="Engine Icon" class="tagEngine tagEngineIMG"></span>
+                    <span><img src="../imgs/Icons/VR.png" class="tagPlatform tagPlatformIMG"></span>
                     <span class="tagPeople">3 Devs</span>
-                    <!-- Duplicates-->
+                    <!-- Duplicates -->
                     <span class="tagTitle">WhisSis</span>
-                    <span class="tagTime">4 weeks</span>
-                    <span class="tagEngine">Unity</span>
-                    <span class="tagPlatform">PC-VR</span>
+                    <span class="tagTime translatable-text" data-key="Time-Tag-4">4 weeks</span>
+                    <span><img src="../imgs/Icons/Unity.png" alt="Engine Icon" class="tagEngine tagEngineIMG"></span>
+                    <span><img src="../imgs/Icons/VR.png" class="tagPlatform tagPlatformIMG"></span>
                     <span class="tagPeople">3 Devs</span>
                 </div>
             </div>

@@ -237,6 +237,11 @@
             box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.4);
         }
 
+        .tagEngineIMG {
+            min-width: 45px;
+            max-width: 30px;
+        }
+
         .tagPlatform {
             background-color: #1d1d1d;
             color: white;
@@ -247,6 +252,13 @@
             box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.4);
         }
 
+        .tagPlatformIMG {
+            min-width: 45px;
+            max-width: 45px;
+            max-height: 40px;
+            margin: 0px;
+        }
+
         .tagPeople {
             background-color: #b98e00;
             color: white;
@@ -255,6 +267,10 @@
             border-radius: 20px;
             white-space: nowrap;
             box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.4);
+        }
+
+        .tags img {
+            vertical-align: middle;
         }
 
         /* ============================= */
@@ -391,6 +407,37 @@
         .details-btn:hover {
             background: #21b300;
         }
+
+        /* ============================= */
+        /*         Image Snippet         */
+        /* ============================= */
+
+        .bp-image-container {
+            position: relative;
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .bp-image-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 10px;
+        }
+
+        .bp-title {
+            position: absolute;
+            top: 10px;
+            left: 15px;
+            background-color: rgba(0, 0, 0, 0.6);
+            color: #fff;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: bold;
+        }
     </style>
 </head>
 
@@ -487,17 +534,17 @@
         <div class="sliding-tags-container">
             <div class="sliding-tags">
                 <div class="tags-wrapper">
-                    <span class="tagTitle">N/A</span>
-                    <span class="tagTime">N/A</span>
-                    <span class="tagEngine">N/A</span>
-                    <span class="tagPlatform">N/A</span>
-                    <span class="tagPeople">N/A</span>
+                    <span class="tagTitle">AltEgo</span>
+                    <span class="tagTime translatable-text" data-key="Time-Tag-4"></span>
+                    <span><img src="../imgs/Icons/Unreal.jpg" alt="Engine Icon" class="tagEngine tagEngineIMG"></span>
+                    <span><img src="../imgs/Icons/VR.png" class="tagPlatform tagPlatformIMG"></span>
+                    <span class="tagPeople">3 Devs</span>
                     <!-- Duplicates-->
-                    <span class="tagTitle">N/A</span>
-                    <span class="tagTime">N/A</span>
-                    <span class="tagEngine">N/A</span>
-                    <span class="tagPlatform">N/A</span>
-                    <span class="tagPeople">N/A</span>
+                    <span class="tagTitle">AltEgo</span>
+                    <span class="tagTime translatable-text" data-key="Time-Tag-4"></span>
+                    <span><img src="../imgs/Icons/Unreal.jpg" alt="Engine Icon" class="tagEngine tagEngineIMG"></span>
+                    <span><img src="../imgs/Icons/VR.png" class="tagPlatform tagPlatformIMG"></span>
+                    <span class="tagPeople">3 Devs</span>
                 </div>
             </div>
         </div>
@@ -522,12 +569,9 @@
                         onclick="toggleDetails('details1')">Show Details</button>
                     <div class="details-section" id="details1">
                         <div class="details-content">
-                            <div class="code-example">
-                                <pre><code>// Example code block
-             function example() {
-                 console.log("Hello, world!");
-             }
-                                     </code></pre>
+                            <div class="bp-image-container">
+                                <img src="../imgs/Snippets/AltEgo/RevolverShootingSystem1.png" alt="Blueprint Example">
+                                <div class="bp-title">Shoot Logic</div>
                             </div>
                             <div class="description">
                                 <h3 class="translatable-text" data-key="Description">oops something whent wrong, reload
@@ -550,13 +594,11 @@
                         onclick="toggleDetails('details2')">Show Details</button>
                     <div class="details-section" id="details2">
                         <div class="details-content">
-                            <div class="code-example">
-                                <pre><code>// Another example code block
-             function exampleTwo() {
-                 console.log("Hello again!");
-             }
-                                     </code></pre>
+                            <div class="bp-image-container">
+                                <img src="../imgs/Snippets/AltEgo/RevolverShootingSystem1.png" alt="Blueprint Example">
+                                <div class="bp-title">Attack Logic</div>
                             </div>
+
                             <div class="description">
                                 <h3 class="translatable-text" data-key="Description">oops something whent wrong, reload
                                     the page</h3>
