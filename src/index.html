@@ -66,11 +66,25 @@
             color: #f3f3f3c1;
         }
 
+        .Aboutme-Container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            margin: 30px 10px 30px 10px;
+
+        }
+
         .AboutMe-Image {
             width: 20%;
         }
 
         .AboutMe-Text {
+            flex: 1;
+            min-width: 250px;
+            max-width: 700px;
+            text-align: left;
             color: #919191d8;
         }
 
@@ -79,9 +93,9 @@
         }
 
         .about-img-wrapper {
-            width: 200px;
-            /* Adjust size */
-            height: 200px;
+            flex-shrink: 0;
+            width: 350px;
+            height: 350px;
             border-radius: 50%;
             overflow: hidden;
             position: relative;
@@ -153,10 +167,16 @@
             max-height: 30px;
         }
 
-        .tagEngineIMG {
+        .tagEngineIMGUnity {
             min-width: 50px;
             max-width: 60px;
         }
+
+        .tagEngineIMGUnreal {
+            min-width: 45px;
+            max-width: 50px;
+        }
+
 
         .tagPlatform {
             background-color: #1d1d1d;
@@ -231,6 +251,39 @@
             border-radius: 50px;
             background-color: #1d1d1de1;
         }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            margin: 10px;
+            transition: transform 0.2s ease;
+        }
+
+        .contact-icon:hover {
+            transform: scale(1.1);
+        }
+
+        /* Discord copy */
+
+        .copy-toast {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #333333bd;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 1rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s ease-in-out;
+            z-index: 9999;
+        }
+
+        .copy-toast.show {
+            opacity: 1;
+        }
     </style>
 </head>
 
@@ -288,7 +341,7 @@
                                 <span class="tagTitle">Floors</span>
                                 <span class="tagTime translatable-text" data-key="Time-Tag-4">4 weeks</span>
                                 <span><img src="imgs/Icons/Unity.png" alt="Engine Icon"
-                                        class="tagEngine tagEngineIMG"></span>
+                                        class="tagEngine tagEngineIMGUnity"></span>
                                 <span><img src="imgs/Icons/VR.png" alt="Platform Icon"
                                         class="tagPlatform tagPlatformIMG"></span>
                                 <span class="tagPeople">4 Devs</span>
@@ -304,7 +357,7 @@
                                 <span class="tagTitle">VideoReality</span>
                                 <span class="tagTime translatable-text" data-key="Time-Tag-4">4 weeks</span>
                                 <span><img src="imgs/Icons/Unity.png" alt="Engine Icon"
-                                        class="tagEngine tagEngineIMG"></span>
+                                        class="tagEngine tagEngineIMGUnity"></span>
                                 <span><img src="imgs/Icons/VR.png" alt="Platform Icon" class="tagPlatform"
                                         class="tagPlatform"></span>
                                 <span class="tagPeople">2 Devs</span>
@@ -320,7 +373,7 @@
                                 <span class="tagTitle">Kuru Kuru</span>
                                 <span class="tagTime translatable-text" data-key="Time-Tag-Own">Own time</span>
                                 <span><img src="imgs/Icons/Unity.png" alt="Engine Icon"
-                                        class="tagEngine tagEngineIMG"></span>
+                                        class="tagEngine tagEngineIMGUnity"></span>
                                 <span><img src="imgs/Icons/PC.png" alt="Platform Icon" class="tagPlatform"
                                         class="tagPlatform"></span>
                                 <span class="tagPeople">Solo</span>
@@ -336,7 +389,7 @@
                                 <span class="tagTitle">LittleJumper</span>
                                 <span class="tagTime translatable-text" data-key="Time-Tag-4">4 weeks</span>
                                 <span><img src="imgs/Icons/Unity.png" alt="Engine Icon"
-                                        class="tagEngine tagEngineIMG"></span>
+                                        class="tagEngine tagEngineIMGUnity"></span>
                                 <span><img src="imgs/Icons/PC.png" class="tagPlatform tagPlatformIMG"> <img
                                         src="imgs/Icons/Console.png" class="tagPlatform tagPlatformIMG"></span>
                                 <span class="tagPeople">Solo</span>
@@ -352,7 +405,7 @@
                                 <span class="tagTitle">AltEgo</span>
                                 <span class="tagTime translatable-text" data-key="Time-Tag-8">8 weeks</span>
                                 <span><img src="imgs/Icons/Unreal.jpg" alt="Engine Icon"
-                                        class="tagEngine tagEngineIMG"></span></span>
+                                        class="tagEngine tagEngineIMGUnreal"></span></span>
                                 <span><img src="imgs/Icons/VR.png" class="tagPlatform tagPlatformIMG"></span>
                                 <span class="tagPeople">3 Devs</span>
                             </div>
@@ -367,7 +420,7 @@
                                 <span class="tagTitle">WhisSis</span>
                                 <span class="tagTime translatable-text" data-key="Time-Tag-4">4 weeks</span>
                                 <span><img src="imgs/Icons/Unity.png" alt="Engine Icon"
-                                        class="tagEngine tagEngineIMG"></span>
+                                        class="tagEngine tagEngineIMGUnity"></span>
                                 <span><img src="imgs/Icons/VR.png" class="tagPlatform tagPlatformIMG"></span>
                                 <span class="tagPeople">3 Devs</span>
                             </div>
@@ -382,7 +435,7 @@
                                 <span class="tagTitle">DungeonShooter</span>
                                 <span class="tagTime translatable-text" data-key="Time-Tag-Own">Own time</span>
                                 <span><img src="imgs/Icons/Unity.png" alt="Engine Icon"
-                                        class="tagEngine tagEngineIMG"></span>
+                                        class="tagEngine tagEngineIMGUnity"></span>
                                 <span><img src="imgs/Icons/PC.png" class="tagPlatform tagPlatformIMG"> <img
                                         src="imgs/Icons/Console.png" class="tagPlatform tagPlatformIMG"></span>
                                 <span class="tagPeople">Solo</span>
@@ -399,24 +452,12 @@
         <div class="container text-center">
             <h2 class="AboutMe-Titel translatable-text" data-key="AboutMe">About Me</h2>
             <div class="Aboutme-Container">
-                <div class="AboutMe-Text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque venenatis
-                    feugiat
-                    magna. Praesent
-                    placerat, justo non commodo accumsan, erat mi eleifend ipsum, et tincidunt nisl lorem sit amet
-                    lectus.
-                    Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse dictum, ipsum et mollis
-                    placerat, purus turpis volutpat quam, non porttitor tortor tellus et diam. Maecenas euismod orci ex,
-                    vel
-                    tincidunt velit malesuada sit amet. Donec augue mauris, fringilla vel fermentum tincidunt, lobortis
-                    sit
-                    amet nibh. Maecenas vel ipsum bibendum, pellentesque purus at, tempus ex. Aliquam sodales
-                    scelerisque
-                    erat ac imperdiet. Aliquam viverra justo nec pharetra vulputate. Etiam vitae facilisis orci,
-                    lobortis
-                    imperdiet elit. Proin a iaculis nibh, sit amet consectetur lectus. Maecenas sodales dignissim
-                    rhoncus.
-                    Nullam tempus eu mauris commodo fermentum. Cras tincidunt mattis leo, sodales auctor est malesuada
-                    id.
+                <div class="AboutMe-Text">So let me tell you something about me. I'm 17 always had a passion for games
+                    and the military has always had my interset, wich is probably noticable in the picture on the right.
+                    My hobby's exist of a martial arts sport, reading, gaming and most of all developing games. As a kid
+                    I always wonderd how fun it would be to make games. There had been some douts but eventualy after I
+                    found the right study, I whent on to become an XR developer. 
+
                 </div>
                 <!-- Image Wrapper -->
                 <div class="position-relative d-inline-block about-img-wrapper">
@@ -425,20 +466,23 @@
                 </div>
             </div>
         </div>
+
+
     </section>
 
     <!-- Footer -->
     <footer>
         <div>
-            <p>
-                &copy; Email: matthewKlijnstra@gmail.com.
-            </p>
-            <p>
-                Discord: mattgames2667
-            </p>
-            <a href="https://www.linkedin.com/in/matthew-klijnstra-113734357/" target="_blank">
-                LinkedIn: matthew klijnstra
+            <a href="mailto:matthewklijnstra@gmail.com">
+                <img src="imgs/Icons/Email.png" alt="Email" class="contact-icon">
             </a>
+            <img src="imgs/Icons/Discord.png" alt="Discord" class="contact-icon"
+                onclick="copyToClipboard('mattgames2667')">
+            <a href="https://www.linkedin.com/in/matthew-klijnstra-113734357/" target="_blank">
+                <img src="imgs/Icons/LinkedIn.png" alt="LinkedIn" class="contact-icon">
+            </a>
+            <!-- copy for discord -->
+            <div id="copy-notification" class="copy-toast">Copied to clipboard!</div>
         </div>
     </footer>
 
@@ -490,6 +534,18 @@
             const savedLanguage = localStorage.getItem("language") || "en"; // Default to English
             setLanguage(savedLanguage);
         });
+
+        //Discord clipboard
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                const notification = document.getElementById('copy-notification');
+                notification.classList.add('show');
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                }, 2000); // Hide after 2 seconds
+            });
+        }
+
     </script>
 </body>
 
