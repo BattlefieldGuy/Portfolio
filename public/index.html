@@ -43,7 +43,15 @@
             border: none;
             border-radius: 20px;
             background: #363c4d;
-            box-shadow: 0 4px 10px rgb(80, 80, 80);
+            /* box-shadow: 0 4px 10px rgb(80, 80, 80); */
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .portfolio .Highlight {
+            border: none;
+            border-radius: 20px;
+            background: #363c4d;
+            box-shadow: 0px 2px 25px rgb(154, 154, 154);
             transition: transform 0.3s, box-shadow 0.3s;
         }
 
@@ -53,7 +61,7 @@
         }
 
         footer {
-            background: #faf8f8;
+            background: #0080ff7a;
             padding: 20px 10px;
             text-align: center;
             border-radius: 50px 50px 50px 50px;
@@ -252,6 +260,7 @@
             background-color: #1d1d1de1;
         }
 
+        /* Contact */
         .contact-icon {
             width: 50px;
             height: 50px;
@@ -305,12 +314,12 @@
                     <img src="imgs/Icons/Dutch-flag.png" alt="Dutch" class="flag-icon" onclick="setLanguage('nl')"> -->
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link" href="#About">About</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#portfolio">Portfolio</a>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
         </div>
@@ -334,7 +343,7 @@
             <h2 class="text-center mb-4">Projects</h2>
             <div class="masonry">
                 <a href="project/Floors.html" class="text-decoration-none">
-                    <div class="card">
+                    <div class="card Highlight">
                         <img src="imgs/Floors.png" class="card-img-top">
                         <div class="card-body text-center">
                             <div class="tags">
@@ -381,7 +390,22 @@
                         </div>
                     </div>
                 </a>
-                <a href="project/LittleJumper.html" class="text-decoration-none">
+
+                <a href="project/AltEgoProject.html" class="text-decoration-none">
+                    <div class="card Highlight">
+                        <img src="imgs/AltEgoMain.png" class="card-img-top">
+                        <div class="card-body text-center">
+                            <div class="tags">
+                                <span class="tagTitle">AltEgo</span>
+                                <span class="tagTime translatable-text" data-key="Time-Tag-8">8 weeks</span>
+                                <span><img src="imgs/Icons/Unreal.jpg" alt="Engine Icon"
+                                        class="tagEngine tagEngineIMGUnreal"></span></span>
+                                <span><img src="imgs/Icons/VR.png" class="tagPlatform tagPlatformIMG"></span>
+                                <span class="tagPeople">3 Devs</span>
+                            </div>
+                        </div>
+                    </div>
+                </a><a href="project/LittleJumper.html" class="text-decoration-none">
                     <div class="card">
                         <img src="imgs/Platformer.png" class="card-img-top">
                         <div class="card-body text-center">
@@ -397,23 +421,8 @@
                         </div>
                     </div>
                 </a>
-                <a href="project/AltEgoProject.html" class="text-decoration-none">
-                    <div class="card">
-                        <img src="imgs/AltEgoMain.png" class="card-img-top">
-                        <div class="card-body text-center">
-                            <div class="tags">
-                                <span class="tagTitle">AltEgo</span>
-                                <span class="tagTime translatable-text" data-key="Time-Tag-8">8 weeks</span>
-                                <span><img src="imgs/Icons/Unreal.jpg" alt="Engine Icon"
-                                        class="tagEngine tagEngineIMGUnreal"></span></span>
-                                <span><img src="imgs/Icons/VR.png" class="tagPlatform tagPlatformIMG"></span>
-                                <span class="tagPeople">3 Devs</span>
-                            </div>
-                        </div>
-                    </div>
-                </a>
                 <a href="project/WhisSis.html" class="text-decoration-none">
-                    <div class="card">
+                    <div class="card Highlight">
                         <img src="imgs/game_poster_edit.png" class="card-img-top">
                         <div class="card-body text-center">
                             <div class="tags">
@@ -491,11 +500,11 @@
                 "Time-Tag-8": "8 weeks",
                 "Time-Tag-Own": "Own project",
                 "AboutMe": "AboutMe",
-                "AboutMeText": `So let me tell you something about me. I'm 17 always had a passion for games and the military has always had my interset, wich is probably noticable in the picture on the right. My hobby's exist of a martial arts sport, reading, gaming and most of all developing games. As a kid I always wonderd how fun it would be to make games. There had been some douts but eventualy after I found the right study, I whent on to become an XR developer.`,
+                "AboutMeText": `So let me tell you something about me. I'm 17, always had a passion for games and the military has always had my interset, wich is probably noticable in the picture on the right. My hobby's exist of a martial arts sport, reading, gaming and most of all developing games. As a kid I always wonderd how fun it would be to make games. There had been some douts but eventualy after I found the right study, I whent on to become an XR developer.`,
                 /* About me text EN
                 
                 So let me tell you something about
-                                    me. I'm 17 always had a passion for games
+                                    me. I'm 17, always had a passion for games
                                     and the military has always had my interset, wich is probably noticable in the picture on the right.
                                     My hobby's exist of a martial arts sport, reading, gaming and most of all developing games. As a kid
                                     I always wonderd how fun it would be to make games. There had been some douts but eventualy after I
@@ -511,7 +520,7 @@
                 "Time-Tag-8": "8 weken",
                 "Time-Tag-Own": "Eigen project",
                 "AboutMe": "Over Mij",
-                "AboutMeText": `Laat me iets over mezelf vertellen. Ik ben 17 en heb altijd een passie gehad voor games,
+                "AboutMeText": `Laat me iets over mezelf vertellen. Ik ben 17, heb altijd een passie gehad voor games
 en het leger heeft me ook altijd geïnteresseerd, wat waarschijnlijk te zien is op de foto rechts.
 Mijn hobby’s bestaan uit een vechtsport, lezen, gamen en vooral het ontwikkelen van games.
 Als kind vroeg ik me altijd af hoe leuk het zou zijn om zelf games te maken.

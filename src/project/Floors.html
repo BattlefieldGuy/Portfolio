@@ -410,6 +410,41 @@
         .details-btn:hover {
             background: #21b300;
         }
+
+        /* contacts */
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            margin: 10px;
+            transition: transform 0.2s ease;
+        }
+
+        .contact-icon:hover {
+            transform: scale(1.1);
+        }
+
+        /* Discord copy */
+
+        .copy-toast {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #333333bd;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 1rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s ease-in-out;
+            z-index: 9999;
+        }
+
+        .copy-toast.show {
+            opacity: 1;
+        }
     </style>
 
 </head>
@@ -439,18 +474,18 @@
                             </a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="WhisSis.html">
+                            <a class="dropdown-item" href="AltEgoProject.html">
                                 <div class="project-info">
-                                    <img src="../imgs/game_poster_edit.png">
-                                    <span>WhisSis</span>
+                                    <img src="../imgs/AltEgoMain.png">
+                                    <span>AltEgoProject</span>
                                 </div>
                             </a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="LittleJumper.html">
+                            <a class="dropdown-item" href="WhisSis.html">
                                 <div class="project-info">
-                                    <img src="../imgs/Platformer.png">
-                                    <span>LittleJumper</span>
+                                    <img src="../imgs/game_poster_edit.png">
+                                    <span>WhisSis</span>
                                 </div>
                             </a>
                         </li>
@@ -463,18 +498,18 @@
                             </a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="Kuru-Kuru.html">
+                            <a class="dropdown-item" href="LittleJumper.html">
                                 <div class="project-info">
-                                    <img src="../imgs/Kuru Kuru.png">
-                                    <span>Kuru Kuru</span>
+                                    <img src="../imgs/Platformer.png">
+                                    <span>LittleJumper</span>
                                 </div>
                             </a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="AltEgoProject.html">
+                            <a class="dropdown-item" href="Kuru-Kuru.html">
                                 <div class="project-info">
-                                    <img src="../imgs/AltEgoMain.png">
-                                    <span>AltEgoProject</span>
+                                    <img src="../imgs/Kuru Kuru.png">
+                                    <span>Kuru Kuru</span>
                                 </div>
                             </a>
                         </li>
@@ -647,10 +682,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; Email: matthewKlijnstra@gmail.com. Discord: mattgames2667. LinkedIn: ...</p>
-    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -708,7 +739,31 @@
             const savedLanguage = localStorage.getItem("language") || "en"; // Default to English
             setLanguage(savedLanguage);
         });
+
+        //Discord clipboard
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                const notification = document.getElementById('copy-notification');
+                notification.classList.add('show');
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                }, 2000); // Hide after 2 seconds
+            });
+        }
     </script>
+    <!-- Footer -->
+    <footer>
+        <a href="mailto:matthewklijnstra@gmail.com">
+            <img src="../imgs/Icons/Email.png" alt="Email" class="contact-icon">
+        </a>
+        <img src="../imgs/Icons/Discord.png" alt="Discord" class="contact-icon"
+            onclick="copyToClipboard('mattgames2667')">
+        <a href="https://www.linkedin.com/in/matthew-klijnstra-113734357/" target="_blank">
+            <img src="../imgs/Icons/LinkedIn.png" alt="LinkedIn" class="contact-icon">
+        </a>
+        <!-- copy for discord -->
+        <div id="copy-notification" class="copy-toast">Copied to clipboard!</div>
+    </footer>
 </body>
 
 </html>
