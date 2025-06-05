@@ -32,6 +32,13 @@
             font-size: 3rem;
         }
 
+        .ProjectsHeader {
+            margin-top: 1%;
+            color: #6DB1BF;
+            font-size: 2rem;
+            text-decoration: underline;
+        }
+
         .portfolio img {
             width: 100%;
             height: auto;
@@ -58,6 +65,13 @@
         .portfolio .card:hover {
             transform: scale(1.05);
             box-shadow: 0 8px 20px rgba(207, 207, 207, 0.59);
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #bdc7c7;
+            margin-bottom: 10px;
         }
 
         footer {
@@ -143,7 +157,7 @@
         }
 
         .tagTitle {
-            background-color: #007bff;
+            background-color: #ff0000;
             color: rgb(255, 255, 255);
             padding: 5px 10px;
             font-size: 0.9rem;
@@ -154,7 +168,7 @@
         }
 
         .tagTime {
-            background-color: #782000;
+            background-color: #5ba29a;
             color: white;
             padding: 5px 10px;
             font-size: 0.9rem;
@@ -165,7 +179,7 @@
         }
 
         .tagEngine {
-            background-color: #008309;
+            background-color: #5FA8D3;
             color: white;
             padding: 5px 10px;
             font-size: 0.9rem;
@@ -187,7 +201,7 @@
 
 
         .tagPlatform {
-            background-color: #1d1d1d;
+            background-color: #1c2424;
             color: white;
             padding: 0px 5px;
             font-size: 0.9rem;
@@ -205,7 +219,7 @@
         }
 
         .tagPeople {
-            background-color: #b98e00;
+            background-color: #344966;
             color: white;
             padding: 5px 10px;
             font-size: 0.9rem;
@@ -340,14 +354,14 @@
 
     <section class="portfolio">
         <div class="container">
-            <h2 class="text-center mb-4">Projects</h2>
+            <h2 class="text-center mb-4 ProjectsHeader">Projects</h2>
             <div class="masonry">
                 <a href="project/Floors.html" class="text-decoration-none">
                     <div class="card Highlight">
                         <img src="imgs/Floors.png" class="card-img-top">
                         <div class="card-body text-center">
+                            <h3 class="project-title">Floors</h3>
                             <div class="tags">
-                                <span class="tagTitle">Floors</span>
                                 <span class="tagTime translatable-text" data-key="Time-Tag-4">4 weeks</span>
                                 <span><img src="imgs/Icons/Unity.png" alt="Engine Icon"
                                         class="tagEngine tagEngineIMGUnity"></span>
@@ -362,8 +376,8 @@
                     <div class="card">
                         <img src="imgs/VideoReality.png" class="card-img-top">
                         <div class="card-body text-center">
+                            <h3 class="project-title">VideoReality</h3>
                             <div class="tags">
-                                <span class="tagTitle">VideoReality</span>
                                 <span class="tagTime translatable-text" data-key="Time-Tag-4">4 weeks</span>
                                 <span><img src="imgs/Icons/Unity.png" alt="Engine Icon"
                                         class="tagEngine tagEngineIMGUnity"></span>
@@ -378,8 +392,8 @@
                     <div class="card">
                         <img src="imgs/Kuru Kuru.png" class="card-img-top">
                         <div class="card-body text-center">
+                            <h3 class="project-title">Kuru Kuru</h3>
                             <div class="tags">
-                                <span class="tagTitle">Kuru Kuru</span>
                                 <span class="tagTime translatable-text" data-key="Time-Tag-Own">Own time</span>
                                 <span><img src="imgs/Icons/Unity.png" alt="Engine Icon"
                                         class="tagEngine tagEngineIMGUnity"></span>
@@ -395,8 +409,8 @@
                     <div class="card Highlight">
                         <img src="imgs/AltEgoMain.png" class="card-img-top">
                         <div class="card-body text-center">
+                            <h3 class="project-title">AltEgo</h3>
                             <div class="tags">
-                                <span class="tagTitle">AltEgo</span>
                                 <span class="tagTime translatable-text" data-key="Time-Tag-8">8 weeks</span>
                                 <span><img src="imgs/Icons/Unreal.jpg" alt="Engine Icon"
                                         class="tagEngine tagEngineIMGUnreal"></span></span>
@@ -409,8 +423,9 @@
                     <div class="card">
                         <img src="imgs/Platformer.png" class="card-img-top">
                         <div class="card-body text-center">
+                            <h3 class="project-title">LittleJumper</h3>
                             <div class="tags">
-                                <span class="tagTitle">LittleJumper</span>
+
                                 <span class="tagTime translatable-text" data-key="Time-Tag-4">4 weeks</span>
                                 <span><img src="imgs/Icons/Unity.png" alt="Engine Icon"
                                         class="tagEngine tagEngineIMGUnity"></span>
@@ -425,8 +440,8 @@
                     <div class="card Highlight">
                         <img src="imgs/game_poster_edit.png" class="card-img-top">
                         <div class="card-body text-center">
+                            <h3 class="project-title">WhisSis</h3>
                             <div class="tags">
-                                <span class="tagTitle">WhisSis</span>
                                 <span class="tagTime translatable-text" data-key="Time-Tag-4">4 weeks</span>
                                 <span><img src="imgs/Icons/Unity.png" alt="Engine Icon"
                                         class="tagEngine tagEngineIMGUnity"></span>
@@ -440,8 +455,8 @@
                     <div class="card">
                         <img src="imgs/DungeonShooter.png" class="card-img-top">
                         <div class="card-body text-center">
+                            <h3 class="project-title">DungeonShooter</h3>
                             <div class="tags">
-                                <span class="tagTitle">DungeonShooter</span>
                                 <span class="tagTime translatable-text" data-key="Time-Tag-Own">Own time</span>
                                 <span><img src="imgs/Icons/Unity.png" alt="Engine Icon"
                                         class="tagEngine tagEngineIMGUnity"></span>
@@ -500,7 +515,9 @@
                 "Time-Tag-8": "8 weeks",
                 "Time-Tag-Own": "Own project",
                 "AboutMe": "AboutMe",
-                "AboutMeText": `So let me tell you something about me. I'm 17, always had a passion for games and the military has always had my interset, wich is probably noticable in the picture on the right. My hobby's exist of a martial arts sport, reading, gaming and most of all developing games. As a kid I always wonderd how fun it would be to make games. There had been some douts but eventualy after I found the right study, I whent on to become an XR developer.`,
+                "AboutMeText": `So let me tell you something about me. I'm 17, always had a passion for games and the military has always had my interset, wich is probably noticable in the picture on the right. My hobby's exist of a martial arts sport, reading, gaming and most of all developing games. As a kid I always wonderd how fun it would be to make games. There had been some douts but eventualy after I found the right study, I whent on to become an XR developer.
+                 
+                Of course as an XR developer, Unity is well know engine to me. As is C#. I also work in C++. This portfolio is made with HTML, CSS and JavaScript so I gues you could say that I'm also good at that.`,
                 /* About me text EN
                 
                 So let me tell you something about
@@ -508,7 +525,9 @@
                                     and the military has always had my interset, wich is probably noticable in the picture on the right.
                                     My hobby's exist of a martial arts sport, reading, gaming and most of all developing games. As a kid
                                     I always wonderd how fun it would be to make games. There had been some douts but eventualy after I
-                                    found the right study, I whent on to become an XR developer.
+                                    found the right study, I whent on to become an XR developer. Of course as an XR developer, Unity is 
+                                    well know engine to me. As is C#. I also work in C++. This portfolio is made with HTML, CSS and 
+                                    JavaScript so I gues you could say that I'm also good at that.   
                 
                 */
 
@@ -565,7 +584,6 @@ ben ik verder gegaan om XR-ontwikkelaar te worden.`,
                 }, 2000); // Hide after 2 seconds
             });
         }
-
     </script>
 </body>
 

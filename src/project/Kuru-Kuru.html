@@ -141,7 +141,7 @@
             border-radius: 30px;
             border-width: 10px;
             border-style: solid;
-            border-color: rgba(0, 142, 57, 0.747);
+            border-color: #1f8bef;
             box-shadow: 0px 2px 15px rgba(174, 174, 174, 0.571);
             background-color: #2b2b2bd5;
         }
@@ -158,7 +158,7 @@
         /* ============================= */
         .sliding-tags-container {
             margin: auto;
-            width: 300px;
+            width: 230px;
         }
 
         .sliding-container-bar {
@@ -207,66 +207,66 @@
             font-weight: bold;
         }
 
-        .tagTitle {
-            background-color: #007bff;
-            color: rgb(255, 255, 255);
-            padding: 5px 10px;
-            font-size: 0.9rem;
-            border-radius: 20px;
-            white-space: nowrap;
-            box-shadow: 0px 2px 10px rgba(255, 255, 255, 0.691);
-        }
-
         .tagTime {
-            background-color: #782000;
+            background-color: #5ba29a;
             color: white;
             padding: 5px 10px;
             font-size: 0.9rem;
             border-radius: 20px;
             white-space: nowrap;
             box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.4);
+            max-height: 30px;
         }
 
         .tagEngine {
-            background-color: #008309;
+            background-color: #5FA8D3;
             color: white;
             padding: 5px 10px;
             font-size: 0.9rem;
             border-radius: 20px;
             white-space: nowrap;
             box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.4);
+            max-height: 30px;
         }
 
-        .tagEngineIMG {
+        .tagEngineIMGUnity {
             min-width: 50px;
             max-width: 60px;
         }
 
+        .tagEngineIMGUnreal {
+            min-width: 45px;
+            max-width: 50px;
+        }
+
+
         .tagPlatform {
-            background-color: #1d1d1d;
+            background-color: #1c2424;
             color: white;
-            padding: 5px 10px;
+            padding: 0px 5px;
             font-size: 0.9rem;
             border-radius: 20px;
             white-space: nowrap;
             box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.4);
+            max-height: 30px;
         }
 
         .tagPlatformIMG {
-            min-width: 45px;
-            max-width: 45px;
-            max-height: 40px;
+            min-width: 30px;
+            max-width: 40px;
+            max-height: 30px;
             margin: 0px;
         }
 
         .tagPeople {
-            background-color: #b98e00;
+            background-color: #344966;
             color: white;
             padding: 5px 10px;
             font-size: 0.9rem;
             border-radius: 20px;
             white-space: nowrap;
             box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.4);
+            max-height: 30px;
         }
 
         .tags img {
@@ -537,13 +537,11 @@
         <div class="sliding-tags-container">
             <div class="sliding-tags">
                 <div class="tags-wrapper">
-                    <span class="tagTitle">Kuru Kuru</span>
                     <span class="tagTime translatable-text" data-key="Time-Tag-Own"></span>
                     <span><img src="../imgs/Icons/Unity.png" alt="Engine Icon" class="tagEngine tagEngineIMG"></span>
                     <span><img src="../imgs/Icons/PC.png" alt="Platform Icon" class="tagPlatform tagPlatformIMG"></span>
                     <span class="tagPeople">solo</span>
                     <!-- Duplicates-->
-                    <span class="tagTitle">Kuru Kuru</span>
                     <span class="tagTime translatable-text" data-key="Time-Tag-Own"></span>
                     <span><img src="../imgs/Icons/Unity.png" alt="Engine Icon" class="tagEngine tagEngineIMG"></span>
                     <span><img src="../imgs/Icons/PC.png" alt="Platform Icon" class="tagPlatform tagPlatformIMG"></span>
@@ -644,15 +642,29 @@
 
             <!-- Gallery -->
             <h2 class="Gallery translatable-text" data-key="Gallery">oops something whent wrong, reload the page</h2>
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <img src="../imgs/KuruKuru1.png" alt="Screenshot 1" class="img-fluid rounded">
-                </div>
-                <div class="col-md-4">
-                    <img src="../imgs/KuruKuru2.png" alt="Screenshot 2" class="img-fluid rounded">
-                </div>
-                <div class="col-md-4">
-                    <img src="../imgs/KuruKuru3.png" alt="Screenshot 3" class="img-fluid rounded">
+            <!-- Horizontal Image Carousel -->
+            <div class="image-slider-container">
+                <div id="imageCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="../imgs/KuruKuru1.png" class="d-block w-100" alt="Screenshot 1">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="../imgs/KuruKuru2.png" class="d-block w-100" alt="Screenshot 2">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="../imgs/KuruKuru3.png" class="d-block w-100" alt="Screenshot 3">
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#imageCarousel"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#imageCarousel"
+                            data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        </button>
+                    </div>
+
                 </div>
             </div>
         </div>
