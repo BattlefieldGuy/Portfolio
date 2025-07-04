@@ -619,126 +619,111 @@
             <!-- About the game -->
             <h2 class="AboutTheGame-Titel translatable-text" data-key="AboutTheGame">About the game</h2>
             <div class="AboutTheGame-Text-Container">
-                <div calss="AboutTheGame-Text">Nunc mattis erat vel feugiat tincidunt. Donec ut erat egestas, eleifend
-                    tortor nec, semper ex. Mauris placerat lectus at risus viverra varius. Ut nisi ante, tempor eget sem
-                    eget, mattis dictum nisi. Curabitur non erat efficitur, consequat mauris finibus, vehicula lorem.
-                    Sed eu ante sed turpis congue consequat id eu magna. Nunc nec congue magna. Phasellus varius
-                    malesuada iaculis. Proin in tortor ut erat consequat condimentum sit amet a odio. Vivamus vitae
-                    sapien at erat semper tempor a quis enim.
-                </div>
-            </div>
+                <div class="AboutTheGame-Text translatable-text" data-key="AboutTheGameText"> </div>
 
-            <!-- Technique -->
-            <h2 class="Technique-Titel translatable-text" data-key="Technique">Technique</h2>
-            <div class="Technique-Text-Container">
-                <div class="Technique-Text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque venenatis feugiat magna. Praesent
-                    placerat, justo non commodo accumsan, erat mi eleifend ipsum, et tincidunt nisl lorem sit amet
-                    lectus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse dictum, ipsum et
-                    mollis placerat, purus turpis volutpat quam, non porttitor tortor tellus et diam. Maecenas euismod
-                    orci ex, vel tincidunt velit malesuada sit amet. Donec augue mauris, fringilla vel fermentum
-                    tincidunt, lobortis sit amet nibh. Maecenas vel ipsum bibendum, pellentesque purus at, tempus ex.
-                    Aliquam sodales scelerisque erat ac imperdiet. Aliquam viverra justo nec pharetra vulputate. Etiam
-                    vitae facilisis orci, lobortis imperdiet elit. Proin a iaculis nibh, sit amet consectetur lectus.
-                    Maecenas sodales dignissim rhoncus. Nullam tempus eu mauris commodo fermentum. Cras tincidunt mattis
-                    leo, sodales auctor est malesuada id.
+                <!-- Technique -->
+                <h2 class="Technique-Titel translatable-text" data-key="Technique">Technique</h2>
+                <div class="Technique-Text-Container">
+                    <div class="Technique-Text translatable-text" data-key="TecniqueText"> </div>
                 </div>
-            </div>
 
-            <!-- Gallery -->
-            <h2 class="Gallery translatable-text" data-key="Gallery">oops something whent wrong, reload the page</h2>
-            <!-- Horizontal Image Carousel -->
-            <div class="image-slider-container">
-                <div id="imageCarousel" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <img src="../imgs/DungeonShooter1.png" class="d-block w-100" alt="Screenshot 1">
+                <!-- Gallery -->
+                <h2 class="Gallery translatable-text" data-key="Gallery">oops something whent wrong, reload the page
+                </h2>
+                <!-- Horizontal Image Carousel -->
+                <div class="image-slider-container">
+                    <div id="imageCarousel" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="../imgs/DungeonShooter1.png" class="d-block w-100" alt="Screenshot 1">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="../imgs/DungeonShooter2.png" class="d-block w-100" alt="Screenshot 2">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="../imgs/DungeonShooter3.png" class="d-block w-100" alt="Screenshot 3">
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#imageCarousel"
+                                data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#imageCarousel"
+                                data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            </button>
                         </div>
-                        <div class="carousel-item">
-                            <img src="../imgs/DungeonShooter2.png" class="d-block w-100" alt="Screenshot 2">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="../imgs/DungeonShooter3.png" class="d-block w-100" alt="Screenshot 3">
-                        </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#imageCarousel"
-                            data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#imageCarousel"
-                            data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        </button>
+
                     </div>
-
                 </div>
             </div>
-        </div>
-        <script>
-            function toggleDetails(id) {
-                const section = document.getElementById(id);
-                section.classList.toggle("open");
-            }
-
-            const translations = {
-                en: {
-                    "Project-Tag": "Strange hardware project",
-                    "Time-Tag-Own": "Own project",
-                    "MyWork": "My work",
-                    "ShowDetails-btn": "Show Details",
-                    "Description": "Description",
-                    "AboutTheGame": "About the game",
-                    "Technique": "Technique",
-                    "Gallery": "Gallery",
-                },
-                nl: {
-                    "Project-Tag": "Vreemde hardware project",
-                    "Time-Tag-Own": "Eigen project",
-                    "MyWork": "Mijn werk",
-                    "ShowDetails-btn": "Details weergeven",
-                    "Description": "Beschrijving",
-                    "AboutTheGame": "Over het spel",
-                    "Technique": "Techniek",
-                    "Gallery": "Gallerij",
-                }
-            };
-
-            function setLanguage(lang) {
-                const langData = translations[lang];
-                if (!langData) return;
-
-                // Translate unique IDs
-                for (const id in langData) {
-                    const el = document.getElementById(id);
-                    if (el) el.innerText = langData[id];
+            <script>
+                function toggleDetails(id) {
+                    const section = document.getElementById(id);
+                    section.classList.toggle("open");
                 }
 
-                // Translate tags with classes and data-key
-                document.querySelectorAll(".translatable-text").forEach(el => {
-                    const key = el.getAttribute("data-key");
-                    if (langData[key]) {
-                        el.innerText = langData[key];
+                const translations = {
+                    en: {
+                        "Project-Tag": "Strange hardware project",
+                        "Time-Tag-Own": "Own project",
+                        "MyWork": "My work",
+                        "ShowDetails-btn": "Show Details",
+                        "Description": "Description",
+                        "AboutTheGame": "About the game",
+                        "AboutTheGameText": `As a developer I don't have a lot of experience with making art. So I trie to keep it simple here. All of it is 2D and to stil give you that feel of a good zombie shooter, there is a detailed UI about what you are holding(weapon), carying(loot) and much more. This is still all in development so some things are not showable yet.  `,
+                        "Technique": "Technique",
+                        "Technique": `To make it easier I made this in 2D unity. Input system `,
+                        "Gallery": "Gallery",
+                    },
+                    nl: {
+                        "Project-Tag": "Vreemde hardware project",
+                        "Time-Tag-Own": "Eigen project",
+                        "MyWork": "Mijn werk",
+                        "ShowDetails-btn": "Details weergeven",
+                        "Description": "Beschrijving",
+                        "AboutTheGame": "Over het spel",
+                        "Technique": "Techniek",
+                        "Gallery": "Gallerij",
                     }
+                };
+
+                function setLanguage(lang) {
+                    const langData = translations[lang];
+                    if (!langData) return;
+
+                    // Translate unique IDs
+                    for (const id in langData) {
+                        const el = document.getElementById(id);
+                        if (el) el.innerText = langData[id];
+                    }
+
+                    // Translate tags with classes and data-key
+                    document.querySelectorAll(".translatable-text").forEach(el => {
+                        const key = el.getAttribute("data-key");
+                        if (langData[key]) {
+                            el.innerText = langData[key];
+                        }
+                    });
+
+                    localStorage.setItem("language", lang);
+                }
+                // Auto-load the preferred language on page load
+                document.addEventListener("DOMContentLoaded", () => {
+                    const savedLanguage = localStorage.getItem("language") || "en"; // Default to English
+                    setLanguage(savedLanguage);
                 });
 
-                localStorage.setItem("language", lang);
-            }
-            // Auto-load the preferred language on page load
-            document.addEventListener("DOMContentLoaded", () => {
-                const savedLanguage = localStorage.getItem("language") || "en"; // Default to English
-                setLanguage(savedLanguage);
-            });
-
-            //Discord clipboard
-            function copyToClipboard(text) {
-                navigator.clipboard.writeText(text).then(() => {
-                    const notification = document.getElementById('copy-notification');
-                    notification.classList.add('show');
-                    setTimeout(() => {
-                        notification.classList.remove('show');
-                    }, 2000); // Hide after 2 seconds
-                });
-            }
-        </script>
+                //Discord clipboard
+                function copyToClipboard(text) {
+                    navigator.clipboard.writeText(text).then(() => {
+                        const notification = document.getElementById('copy-notification');
+                        notification.classList.add('show');
+                        setTimeout(() => {
+                            notification.classList.remove('show');
+                        }, 2000); // Hide after 2 seconds
+                    });
+                }
+            </script>
     </section>
 
     <!-- Footer -->
