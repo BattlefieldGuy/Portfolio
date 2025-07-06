@@ -558,7 +558,8 @@
             <div class="container">
                 <div class="work-section" id="work1">
                     <div class="video-container" onclick="toggleDetails('details1')">
-                        <iframe width="100%" height="450" src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                        <iframe width="100%" height="450"
+                            src="https://www.youtube.com/embed/fRZ34zppyOQ?si=W0zEaDeB4jAHuM8B"
                             title="YouTube video player" frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                             allowfullscreen>
@@ -569,16 +570,13 @@
                     <div class="details-section" id="details1">
                         <div class="details-content">
                             <div class="code-example">
-                                <pre><code>// Example code block
-           function example() {
-               console.log("Hello, world!");
-           }
+                                <pre><code>luckily cinemachine is so easy, you can use it with out code
                                    </code></pre>
                             </div>
                             <div class="description">
                                 <h3 class="translatable-text" data-key="Description">oops something whent wrong, reload
                                     the page</h3>
-                                <p>This is a brief explanation of the work.</p>
+                                <p class="translatable-text" data-key="DescriptionText1">This is a brief explanation of the work.</p>
                             </div>
                         </div>
                     </div>
@@ -586,23 +584,78 @@
 
                 <div class="work-section" id="work2">
                     <div class="video-container" onclick="toggleDetails('details2')">
-                        <video src="example2.mp4" autoplay loop muted></video>
+                        <iframe width="100%" height="450"
+                            src="https://www.youtube.com/embed/f3FecradViY?si=kWBd-sx-r7N3sq7W"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen>
+                        </iframe>
                     </div>
                     <button class="details-btn translatable-text" data-key="ShowDetails-btn"
                         onclick="toggleDetails('details2')">Show Details</button>
                     <div class="details-section" id="details2">
                         <div class="details-content">
                             <div class="code-example">
-                                <pre><code>// Another example code block
-           function exampleTwo() {
-               console.log("Hello again!");
-           }
+                                <pre><code>public void TakeDamage()
+{
+    PlayerHealt--;//do damage
+    _particelSystemHeart.Play();
+    int i = PlayerHealt;//check for correct heart to remove
+    _material = _hearts[i].GetComponent-Image-().material;
+    StartCoroutine(PopDown());//start heart animation
+    if (CheckHealt())
+        StartCoroutine(Death());
+}
+
+public void TakeHealt()
+{
+    int i = PlayerHealt;
+    PlayerHealt++;
+    _material = _hearts[i].GetComponent-Image-().material;
+    //check for correct heart to revive
+    StartCoroutine(PopUp());//start heart animation
+}
+
+private IEnumerator PopDown()
+{
+    float elapsedTime = 0f;
+    while (elapsedTime < _dissolveTime)//while loop for the animation timer
+    {
+        elapsedTime += Time.deltaTime;
+
+        float lerpedDissolve = Mathf.Lerp(1.1f, 0f, (elapsedTime / _dissolveTime));
+        //lerp trough the dissolve
+        _material.SetFloat(_dissolveAmount, lerpedDissolve);
+
+        StartCoroutine(SetNullTimer());
+        //reset for _material to evade any none intentional animations
+
+        yield return null;
+    }
+}
+
+private IEnumerator PopUp()
+{
+
+    float elapsedTime = 0f;
+    while (elapsedTime < _dissolveTime)
+    {
+        elapsedTime += Time.deltaTime;
+
+        float lerpedDissolve = Mathf.Lerp(0f, 1.1f, (elapsedTime / _dissolveTime));
+        _material.SetFloat(_dissolveAmount, lerpedDissolve);
+
+        StartCoroutine(SetNullTimer());
+
+        yield return null;
+    }
+}
                                    </code></pre>
                             </div>
                             <div class="description">
                                 <h3 class="translatable-text" data-key="Description">oops something whent wrong, reload
                                     the page</h3>
-                                <p>This is a brief explanation of the work.</p>
+                                <p class="translatable-text" data-key="DescriptionText2"></p>
                             </div>
                         </div>
                     </div>
@@ -612,30 +665,13 @@
             <!-- About the game -->
             <h2 class="AboutTheGame-Titel translatable-text" data-key="AboutTheGame">About the game</h2>
             <div class="AboutTheGame-Text-Container">
-                <div class="AboutTheGame-Text">Nunc mattis erat vel feugiat tincidunt. Donec ut erat egestas, eleifend
-                    tortor nec, semper ex. Mauris placerat lectus at risus viverra varius. Ut nisi ante, tempor eget sem
-                    eget, mattis dictum nisi. Curabitur non erat efficitur, consequat mauris finibus, vehicula lorem.
-                    Sed eu ante sed turpis congue consequat id eu magna. Nunc nec congue magna. Phasellus varius
-                    malesuada iaculis. Proin in tortor ut erat consequat condimentum sit amet a odio. Vivamus vitae
-                    sapien at erat semper tempor a quis enim.
-                </div>
+                <div class="AboutTheGame-Text translatable-text" data-key="AboutTheGameText"> </div>
             </div>
 
             <!-- Technique -->
             <h2 class="Technique-Titel translatable-text" data-key="Technique">Technique</h2>
             <div class="Technique-Text-Container">
-                <div class="Technique-Text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque venenatis feugiat magna. Praesent
-                    placerat, justo non commodo accumsan, erat mi eleifend ipsum, et tincidunt nisl lorem sit amet
-                    lectus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse dictum, ipsum et
-                    mollis placerat, purus turpis volutpat quam, non porttitor tortor tellus et diam. Maecenas euismod
-                    orci ex, vel tincidunt velit malesuada sit amet. Donec augue mauris, fringilla vel fermentum
-                    tincidunt, lobortis sit amet nibh. Maecenas vel ipsum bibendum, pellentesque purus at, tempus ex.
-                    Aliquam sodales scelerisque erat ac imperdiet. Aliquam viverra justo nec pharetra vulputate. Etiam
-                    vitae facilisis orci, lobortis imperdiet elit. Proin a iaculis nibh, sit amet consectetur lectus.
-                    Maecenas sodales dignissim rhoncus. Nullam tempus eu mauris commodo fermentum. Cras tincidunt mattis
-                    leo, sodales auctor est malesuada id.
-                </div>
+                <div class="Technique-Text translatable-text" data-key="TechniqueText"> </div>
             </div>
 
             <!-- Gallery -->
@@ -676,8 +712,16 @@
                     "MyWork": "My work",
                     "ShowDetails-btn": "Show Details",
                     "Description": "Description",
+                    "DescriptionText1": `The video above is an example of what the cinemachine lookslike in the game itself, minus a few transition effects. Those where after effects. `,
+                    "DescriptionText2": `This bit of script is controlling the disolve shader effects on the hearts when your health changes. (Effect seen in the top part of the video above)
+                     
+                    The first 2 functions are the ones that add or remove health once called and also make the required checks to activate the shader effect. 
+                    The last 2 are the funtions that make the effects transition by adjusting the disolve variable on a timer.`,
                     "AboutTheGame": "About the game",
+                    "AboutTheGameText": `A nice calming parkour game, focused on the more gamie parts of a game. animations to make it smooth & good looking, sound effects like music to fill up the void and making a complete gameloop to playtrough. `,
                     "Technique": "Technique",
+                    "TechniqueText": `No extra hardware, but extra hardware? This project was an idea to add extra platforms later, and I made mine focus on controller based consoles. 
+                    A webGL build for itch io was just an extra. The game it self is in unity and I used a lot of cinemachine in the game for cutscene's and movement. `,
                     "Gallery": "Gallery",
                 },
                 nl: {
