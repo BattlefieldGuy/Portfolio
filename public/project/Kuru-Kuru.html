@@ -560,7 +560,8 @@
             <div class="container">
                 <div class="work-section" id="work1">
                     <div class="video-container" onclick="toggleDetails('details1')">
-                        <iframe width="100%" height="450" src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                        <iframe width="100%" height="450"
+                            src="https://www.youtube.com/embed/qlfo6UoAu78?si=0FaL0F4LnhRonhU_"
                             title="YouTube video player" frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                             allowfullscreen>
@@ -571,16 +572,63 @@
                     <div class="details-section" id="details1">
                         <div class="details-content">
                             <div class="code-example">
-                                <pre><code>// Example code block
-            function example() {
-                console.log("Hello, world!");
-            }
+                                <pre><code>using UnityEngine;
+
+public class ObstaclePP : MonoBehaviour
+{
+    [SerializeField] private Rigidbody2D player;
+
+    [Header("Push")]
+
+    [SerializeField] private float pushForceL1;
+    [SerializeField] private float pushForceL2;
+    [SerializeField] private float pushForceL3;
+
+    [Header("Pull")]
+    [SerializeField] private float pullForceL1;
+    [SerializeField] private float pullForceL2;
+    [SerializeField] private float pullForceL3;
+
+    void Start()
+    {
+        if (player == null)
+            player = GetComponent<Rigidbody2D>();
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("pushG"))
+        {
+            player.AddForce(other.transform.up * pushForceL1);
+        }
+        else if (other.gameObject.CompareTag("pushB"))
+        {
+            player.AddForce(other.transform.up * pushForceL2);
+        }
+        else if (other.gameObject.CompareTag("pushR"))
+        {
+            player.AddForce(other.transform.up * pushForceL3);
+        }
+        else if (other.gameObject.CompareTag("pullG"))
+        {
+            player.AddForce(-other.transform.up * pullForceL1);
+        }
+        else if (other.gameObject.CompareTag("pullB"))
+        {
+            player.AddForce(-other.transform.up * pullForceL2);
+        }
+        else if (other.gameObject.CompareTag("pullR"))
+        {
+            player.AddForce(-other.transform.up * pullForceL3);
+        }
+    }
+}
                                     </code></pre>
                             </div>
                             <div class="description">
                                 <h3 class="translatable-text" data-key="Description">oops something whent wrong, reload
                                     the page</h3>
-                                <p>This is a brief explanation of the work.</p>
+                                <p class="translatable-text" data-key="DescriptionText1"></p>
                             </div>
                         </div>
                     </div>
@@ -588,23 +636,62 @@
 
                 <div class="work-section" id="work2">
                     <div class="video-container" onclick="toggleDetails('details2')">
-                        <video src="example2.mp4" autoplay loop muted></video>
+                        <iframe width="100%" height="450"
+                            src="https://www.youtube.com/embed/zLvHJy_KD80?si=nNcV6RvZV6MNnrEG"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen>
+                        </iframe>
                     </div>
                     <button class="details-btn translatable-text" data-key="ShowDetails-btn"
                         onclick="toggleDetails('details2')">Show Details</button>
                     <div class="details-section" id="details2">
                         <div class="details-content">
                             <div class="code-example">
-                                <pre><code>// Another example code block
-            function exampleTwo() {
-                console.log("Hello again!");
-            }
+                                <pre><code>private void OnTriggerEnter2D(Collider2D other)
+{
+
+ if (other.gameObject.CompareTag("switch"))
+  {
+    if (isGreen == false)
+    {
+        isGreen = true;
+    }
+    else if (isGreen == true)
+    {
+        isGreen = false;
+    }
+  }
+                                    
+ if (isGreen == false && other.gameObject.CompareTag("Gwall"))
+  {
+     if (spawnState == 6)
+     {
+         transform.position = new Vector2(36.74f, -43.5f);
+     }
+     if (spawnState == 7)
+     {
+         transform.position = new Vector2(65.13f, -95.92f);
+     }
+  }
+ if (isGreen == true && other.gameObject.CompareTag("Pwall"))
+  {
+     if (spawnState == 6)
+     {
+         transform.position = new Vector2(36.74f, -43.5f);
+     }
+     if (spawnState == 7)
+     {
+         transform.position = new Vector2(65.13f, -95.92f);
+     }
+  }
+}
                                     </code></pre>
                             </div>
                             <div class="description">
                                 <h3 class="translatable-text" data-key="Description">oops something whent wrong, reload
                                     the page</h3>
-                                <p>This is a brief explanation of the work.</p>
+                                <p class="translatable-text" data-key="DescriptionText2"></p>
                             </div>
                         </div>
                     </div>
@@ -614,30 +701,13 @@
             <!-- About the game -->
             <h2 class="AboutTheGame-Titel translatable-text" data-key="AboutTheGame">About the game</h2>
             <div class="AboutTheGame-Text-Container">
-                <div class="AboutTheGame-Text">Nunc mattis erat vel feugiat tincidunt. Donec ut erat egestas, eleifend
-                    tortor nec, semper ex. Mauris placerat lectus at risus viverra varius. Ut nisi ante, tempor eget sem
-                    eget, mattis dictum nisi. Curabitur non erat efficitur, consequat mauris finibus, vehicula lorem.
-                    Sed eu ante sed turpis congue consequat id eu magna. Nunc nec congue magna. Phasellus varius
-                    malesuada iaculis. Proin in tortor ut erat consequat condimentum sit amet a odio. Vivamus vitae
-                    sapien at erat semper tempor a quis enim.
-                </div>
+                <div class="AboutTheGame-Text translatable-text" data-key="AboutTheGameText"> </div>
             </div>
 
             <!-- Technique -->
             <h2 class="Technique-Titel translatable-text" data-key="Technique">Technique</h2>
             <div class="Technique-Text-Container">
-                <div class="Technique-Text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque venenatis feugiat magna. Praesent
-                    placerat, justo non commodo accumsan, erat mi eleifend ipsum, et tincidunt nisl lorem sit amet
-                    lectus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse dictum, ipsum et
-                    mollis placerat, purus turpis volutpat quam, non porttitor tortor tellus et diam. Maecenas euismod
-                    orci ex, vel tincidunt velit malesuada sit amet. Donec augue mauris, fringilla vel fermentum
-                    tincidunt, lobortis sit amet nibh. Maecenas vel ipsum bibendum, pellentesque purus at, tempus ex.
-                    Aliquam sodales scelerisque erat ac imperdiet. Aliquam viverra justo nec pharetra vulputate. Etiam
-                    vitae facilisis orci, lobortis imperdiet elit. Proin a iaculis nibh, sit amet consectetur lectus.
-                    Maecenas sodales dignissim rhoncus. Nullam tempus eu mauris commodo fermentum. Cras tincidunt mattis
-                    leo, sodales auctor est malesuada id.
-                </div>
+                <div class="Technique-Text translatable-text" data-key="TechniqueText"> </div>
             </div>
 
             <!-- Gallery -->
@@ -681,8 +751,12 @@
                     "MyWork": "My work",
                     "ShowDetails-btn": "Show Details",
                     "Description": "Description",
+                    "DescriptionText1": `The push and Pull objects. Pretty simple to explain, green arrows pull red arrows push. Green cone hase the lowest force, red the highest and blue is in the middel. `,
+                    "DescriptionText2": `For the coloured walls these few if statements where engough to get them working. If you are green(isGreen = true) you can go trough green walls but not purple. It's the other way around if you are purple(isGreen = false). That simple and offers a great addition to the game.`,
                     "AboutTheGame": "About the game",
+                    "AboutTheGameText": `My first ever game! so the code would be considered as not one of the best. But I am reworking most of it now, because it was pretty succesfull. It's was supposed to be an imatation of the old retro game called Kuru Kuru Kururin. I had a great idea for a wist in this game to make it diffrent from the other ones. I didn't make it rough on the corners and slow to move, no I made the players body have almost no drag and a way more difficult style of map. I also added some obstacle's like coloured walls where you have to switch your colour to pass trough either one of them. Pushers and pullers where also a new addition and a lot of people like those.`,
                     "Technique": "Technique",
+                    "TechniqueText": `The technique has not much to it. It's unity 2D and the input is hardcoded. This was part of the game development test week, before we got to chose our branch of the course. So no hardware for this project. Although it might be fun to try implement the new inputsytem to add controllers to the mix. `,
                     "Gallery": "Gallery",
                 },
                 nl: {
