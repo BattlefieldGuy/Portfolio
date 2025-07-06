@@ -600,7 +600,8 @@
             <div class="container">
                 <div class="work-section" id="work1">
                     <div class="video-container" onclick="toggleDetails('details1')">
-                        <iframe width="100%" height="450" src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                        <iframe width="100%" height="450"
+                            src="https://www.youtube.com/embed/cHQ2ZoPUXuk?si=D3k6Nb5zbuABbtMv"
                             title="YouTube video player" frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                             allowfullscreen>
@@ -611,16 +612,131 @@
                     <div class="details-section" id="details1">
                         <div class="details-content">
                             <div class="code-example">
-                                <pre><code>// Example code block
-            function example() {
-                console.log("Hello, world!");
+                                <pre><code>    public void shoot()//shoot them!!!
+    {
+        if (checkAmmo() && slidePulledBack)
+        {
+            audioSource.PlayOneShot(shotSound);
+            muzzleFlashParticles.Play();
+            spawnEject(casingPrefab);
+            //Debug.Log("Bang");
+            //_pistolRigdigbody.AddTorque(0f, 0f, _knockBack);
+            // add some force to the slide to simulate recoil
+            StartCoroutine(slideBack());
+            Ray ray = new Ray(muzzle.position, muzzle.forward);
+            if (Physics.Raycast(ray, out hit, 100))
+            {
+
+                if (checkTag(enemyTags, hit.transform.tag))//it will always spawn a hit decal
+                {
+                    Vector3 decalPosition = hit.point + hit.normal * decalOffset;
+                    GameObject decal = Instantiate(enemyHitPrefab, decalPosition, Quaternion.LookRotation(hit.normal));
+                    hit.transform.GetComponent-AIManager-().TakeDamage(damage);
+                }
+                else if (hit.transform.CompareTag("StartButton"))
+                {
+                    //Debug.Log("Found Start");
+                    hit.transform.GetComponent-Shootablebuttons-().StartButton();
+                }
+                else if (hit.transform.CompareTag("CreditsButton"))
+                {
+                    //Debug.Log("Found Cred");
+                    hit.transform.GetComponent-Shootablebuttons-().CreditsButton();
+                }
+                else if (hit.transform.CompareTag("QuitButton"))
+                {
+
+                    hit.transform.GetComponent-Shootablebuttons-().QuitButton();
+                }
+                else
+                {
+                    Vector3 decalPosition = hit.point + hit.normal * decalOffset;
+                    GameObject decal = Instantiate(decalPrefab, decalPosition, Quaternion.LookRotation(hit.normal));
+                }//else is for a burnmark // now a place holder
             }
+
+            // debug ray
+            //Debug.DrawRay(muzzle.position, muzzle.forward * 100, Color.red, 2);
+        }
+        else
+        {
+            slidePulledBack = false;
+            audioSource.PlayOneShot(dryFireSound);
+            //Debug.Log("No ammo");//oops no ammo
+        }
+    }
+
+    IEnumerator rotateTrigger()//moves trigger for trigger pull
+    {
+        trigger.transform.Rotate(-5, 0, 0);
+        yield return new WaitForSeconds(triggerTime);
+        trigger.transform.Rotate(5, 0, 0);
+    }
+
+    IEnumerator slideBack()//set slide back values for simulated pushback
+    {
+        slideJoint.targetPosition = new Vector3(0, 0, 0);
+        yield return new WaitForSeconds(slidePullBackSpeed);
+        slideJoint.targetPosition = new Vector3((slidePullBackDistance * 2), 0, 0);
+    }
+
+    public void addMagazine()//add magazine
+    {
+        //Debug.Log("Adding magazine");
+        audioSource.PlayOneShot(addMagazineSound);
+        isMagLoaded = true;
+    }
+
+    public void removeMagazine()//remove magazine
+    {
+        //Debug.Log("Remove magazine");
+        audioSource.PlayOneShot(dropMagazineSound);
+        isMagLoaded = false;
+    }
+
+    private bool checkAmmo()//check ammo
+    {
+        if (Bullets > 0)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    private void setSlideConfig(float offSet)//slide configs
+    {
+        slideJoint.connectedAnchor = new Vector3(0, 0, (offSet * -1));
+        slideJoint.linearLimit = new SoftJointLimit { limit = offSet };
+        slideJoint.targetPosition = new Vector3((offSet * 2), 0, 0);
+    }
+
+    private void spawnEject(GameObject spawn)//spawn eject
+    {
+        Bullets--;
+        GameObject eject = Instantiate(spawn, casingExitPoint.position, casingExitPoint.rotation);
+        Rigidbody rb = eject.GetComponent-Rigidbody-();
+        rb.AddForce(casingExitPoint.forward * 2, ForceMode.Impulse);
+        rb.AddTorque(Random.insideUnitSphere * 2, ForceMode.Impulse);
+    }
+
+    private bool checkTag(string[] tags, string tag)//check tag
+    {
+        for (int i = 0; i < tags.Length; i++)
+        {
+            if (tag == tags[i])
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+    void getRefs() => slideJoint = slide.GetComponent-ConfigurableJoint-();
                                     </code></pre>
                             </div>
                             <div class="description">
                                 <h3 class="translatable-text" data-key="Description">oops something whent wrong, reload
                                     the page</h3>
-                                <p>This is a brief explanation of the work.</p>
+                                <p class="translatable-text" data-key="DescriptionText1"></p>
                             </div>
                         </div>
                     </div>
@@ -628,23 +744,94 @@
 
                 <div class="work-section" id="work2">
                     <div class="video-container" onclick="toggleDetails('details2')">
-                        <video src="example2.mp4" autoplay loop muted></video>
+                        <iframe width="100%" height="450"
+                            src="https://www.youtube.com/embed/cHQ2ZoPUXuk?si=qQBH2VLB9L2fpqCM&amp;start=69"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen>
+                        </iframe>
                     </div>
                     <button class="details-btn translatable-text" data-key="ShowDetails-btn"
                         onclick="toggleDetails('details2')">Show Details</button>
                     <div class="details-section" id="details2">
                         <div class="details-content">
                             <div class="code-example">
-                                <pre><code>// Another example code block
-            function exampleTwo() {
-                console.log("Hello again!");
+                                <pre><code>    private void Update()
+    {
+        if (isPinPulled == true && IsGrabbed == false && _fuzeIgnited == false)//check for the right conditions
+        {
+            coroutine = Fuze(3.6f);
+            StartCoroutine(coroutine);
+            _fuzeIgnited = true;
+        }
+        if (_fuzeIgnited)//trows away the clip upon fuze ignited
+        {
+            _clip.transform.parent = _deParenter.transform.parent;
+            _deParenter.gameObject.GetComponent-DeParenter-().Detatch();
+            _clip.gameObject.GetComponent-MeshCollider-().enabled = true;
+            _clip.GetComponent-Rigidbody-().isKinematic = false;
+            _clip.GetComponent-Rigidbody-().AddForce(0.2f, 0.2f, 10, ForceMode.Impulse);
+        }
+    }
+
+    void SetPressed(InputAction.CallbackContext context)//with custom button fucntion
+    {
+        if (IsGrabbed && isPinPulled)//force fuze ignite when holding
+        {
+            //Debug.Log("A button pressed");
+            if (_fuzeIgnited == false)
+            {
+                coroutine = Fuze(_fuzeTime);
+                StartCoroutine(coroutine);
+                _fuzeIgnited = true;
             }
+        }
+    }
+
+    public void PinPulled()
+    {
+        isPinPulled = true;
+        _granadePinRelease.Play();
+    }
+
+    IEnumerator Fuze(float fuzeTime)//fuze timer //wait x seconds
+    {
+        _granadeClipRelease.Play();
+        float radius = 5;
+        yield return new WaitForSeconds(fuzeTime);
+        Vector3 center = GranadePos.position;
+        Explode(center, radius);
+    }
+
+    void Explode(Vector3 center, float radius)//explode
+    {
+        _granadeExplosion.Play();
+        _explosion.Play();
+        foreach (var gameObject in _GameObject)//foreach loop to disable all mesh off the object
+            gameObject.GetComponent-MeshRenderer-().enabled = false;
+
+        _granadeParent.GetComponent-Rigidbody-().isKinematic = true;
+        _granadeParent.GetComponent-Rigidbody-().useGravity = false;
+        Collider[] hitColliders = Physics.OverlapSphere(center, radius);
+        foreach (var hitCollider in hitColliders)//take damage and or rigidbody
+        {
+            if (hitCollider.GetComponent-Rigidbody-())
+            {
+                if (hitCollider.CompareTag("Enemy"))
+                {
+                    hitCollider.GetComponent-AIManager-().TakeDamage(_granadeDamage);
+                }
+                hitCollider.GetComponent-Rigidbody-().AddExplosionForce(_explosionForce, transform.position, _explosionRadius, _upwardsModifier, ForceMode.Impulse);
+            }
+        }
+        StartCoroutine(Destroy());
+    }
                                     </code></pre>
                             </div>
                             <div class="description">
                                 <h3 class="translatable-text" data-key="Description">oops something whent wrong, reload
                                     the page</h3>
-                                <p>This is a brief explanation of the work.</p>
+                                <p class="translatable-text" data-key="DescriptionText2"></p>
                             </div>
                         </div>
                     </div>
@@ -713,6 +900,16 @@
                     "MyWork": "My work",
                     "ShowDetails-btn": "Show Details",
                     "Description": "Description",
+                    "DescriptionText1": `This script is a lot to unpack, but I'll explain it real quick.
+                    Once you shoot, the script checks if you have enough bullets. If you hit something it checks the tag, if it's an enemy - do damage. If you hit something like "UI" it interacts with that by activating the script on it. This is because we deigned our menu to be interacted with the gun.
+                    
+                    Most of the functions below keep the gun from firing when it can't. There are also some to active other's outside or inside this script for effects.`,
+                    "DescriptionText2": `A lot to unpack again. But this one I realy like.
+                    Update checks if it can ignite. If it can, it will dispose of the clip and set a variable so that it can't start a nother fuze.
+                    SetPressed is a forced pin release. this is when you want to cook the granade.
+                    PinPulled is for audio.
+                    Fuze is the coroutine that counts down the timer to explode.
+                    And finaly Explode, wich is abvious right? It play's effects, makes a shpere cast to push every object or do damage with oplosion. And destroy's it self when done.`,
                     "AboutTheGame": "About the game",
                     "AboutTheGameText": `Feeling like a space shooter, your goal is to collect scrap on an abandent space facility. Unbeknownst to you there was an experiment gone wrong in this facility and creepy mechanical bugs are walking around. Luckily these offer a great source of scrap. With scrap you can upgrade weapons you've found while scavaging and do even more to go deeper in the facility.... `,
                     "Technique": "Technique",
