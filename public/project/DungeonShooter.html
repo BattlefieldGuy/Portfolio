@@ -565,7 +565,8 @@
             <div class="container">
                 <div class="work-section" id="work1">
                     <div class="video-container" onclick="toggleDetails('details1')">
-                        <iframe width="100%" height="450" src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                        <iframe width="100%" height="450"
+                            src="https://www.youtube.com/embed/LFabuGHZwuw?si=-Ztj43AqF1ZIQt7z"
                             title="YouTube video player" frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                             allowfullscreen>
@@ -576,40 +577,53 @@
                     <div class="details-section" id="details1">
                         <div class="details-content">
                             <div class="code-example">
-                                <pre><code>// Example code block
-             function example() {
-                 console.log("Hello, world!");
-             }
-                                     </code></pre>
-                            </div>
-                            <div class="description">
-                                <h3 class="translatable-text" data-key="Description">oops something whent wrong, reload
-                                    the page</h3>
-                                <p>This is a brief explanation of the work.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                                <pre><code> protected override void Shoot(InputAction.CallbackContext context)
+ {
+     if (CheckAmmo() && this.isReloading == false)
+     {
+         bulletSpawner.Shoot(name);
+         this.currentAmmo--;
+         if (soundController != null)
+             soundController.ShotSound();
+     }
+     else
+     {
+         if (soundController != null)
+             soundController.EmptyShotSound();
+     }
+ }
 
-                <div class="work-section" id="work2">
-                    <div class="video-container" onclick="toggleDetails('details2')">
-                        <video src="example2.mp4" autoplay loop muted></video>
-                    </div>
-                    <button class="details-btn translatable-text" data-key="ShowDetails-btn"
-                        onclick="toggleDetails('details2')">Show Details</button>
-                    <div class="details-section" id="details2">
-                        <div class="details-content">
-                            <div class="code-example">
-                                <pre><code>// Another example code block
-             function exampleTwo() {
-                 console.log("Hello again!");
-             }
+ private void ReloadCall(InputAction.CallbackContext context)
+ {
+     if (!this.isReloading)
+     {
+         StartCoroutine(Reload());
+         StartCoroutine(soundController.ReloadSound(reloadSpeed));
+     }
+ }
+
+ protected override IEnumerator Reload()
+ {
+     this.isReloading = true;
+     yield return new WaitForSeconds(reloadSpeed);
+     this.currentAmmo = ammo;
+     this.isReloading = false;
+     Debug.Log("Reloaded");
+ }
+
+
+ protected override bool CheckAmmo()
+ {
+     if (this.currentAmmo > 0)
+         return true;
+     else return false;
+ }
                                      </code></pre>
                             </div>
                             <div class="description">
                                 <h3 class="translatable-text" data-key="Description">oops something whent wrong, reload
                                     the page</h3>
-                                <p>This is a brief explanation of the work.</p>
+                                <p class="translatable-text" data-key="DescriptionText1"></p>
                             </div>
                         </div>
                     </div>
@@ -669,8 +683,9 @@
                         "MyWork": "My work",
                         "ShowDetails-btn": "Show Details",
                         "Description": "Description",
+                        "DescriptionText1": `The weapon logic would be a good code example to show. But there is more that can be show and so much more to be made. To keep it simple for now, the code to the left shows the weapon it self with the shooting logic and a bit more. The weapons themselves also have elements that can adjust the damage. Outside the weapons is an overall elemental manager that controlls what elements exist trough inheritance. There is much more but that's  all for later or down below in the about. `,
                         "AboutTheGame": "About the game",
-                        "AboutTheGameText": `As a developer I don't have a lot of experience with making art. So I trie to keep it simple here. All of it is 2D and to stil give you that feel of a good zombie shooter, there is a detailed UI about what you are holding(weapon), carying(loot) and much more. This is still all in development so some things are not showable yet.  `,
+                        "AboutTheGameText": `As a developer I don't have a lot of experience with making art. So I try to keep it simple here. All of it is 2D and to stil give you that feel of a good zombie shooter, there is a detailed UI about what you are holding(weapon), carying(loot) and much more. I also want to add a fully fletched anouncer pack I found to comment on the rounds and add some extra's in there for secrets. The round starts off with an erie sound and I'dd like to add such audio designs to the zombies to. This is still all in development so some things are not showable yet. But I'll work on it some more when I have time, hopefully it's publisehd in about 2 years or so. `,
                         "Technique": "Technique",
                         "TecniqueText": `To make it easier I made this in 2D unity. With the new input system from unity, I made it compatible for keyboard and mouse and controller. `,
                         "Gallery": "Gallery",
