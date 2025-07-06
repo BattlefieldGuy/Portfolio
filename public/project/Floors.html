@@ -594,23 +594,69 @@
 
                 <div class="work-section" id="work2">
                     <div class="video-container" onclick="toggleDetails('details2')">
-                        <video src="example2.mp4" autoplay loop muted></video>
+                        <iframe width="100%" height="450"
+                            src="https://www.youtube.com/embed/VtJjUGBHK34?si=Nd7Nb8ivp1LGotxi"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen>
+                        </iframe>
                     </div>
                     <button class="details-btn translatable-text" data-key="ShowDetails-btn"
                         onclick="toggleDetails('details2')">Show Details</button>
                     <div class="details-section" id="details2">
                         <div class="details-content">
                             <div class="code-example">
-                                <pre><code>// Another example code block
-            function exampleTwo() {
-                console.log("Hello again!");
-            }
-                                    </code></pre>
+                                <pre><code>using System;
+using UnityEngine;
+
+public class KeyTaskManager : MonoBehaviour
+{
+    /// summary
+    /// this script is responsible for scattering all keys
+    /// 
+    /// array with transforms must have 4 minimum
+    /// summary
+
+    [Header("SpawnPoints")]
+    [SerializeField] private Transform[] transforms;
+
+    #region --- FUNCTIONS ---
+    public void ScatterKeys(GameObject[] keys)
+    {
+        //scatter keys at random positions
+        foreach (GameObject key in keys)
+        {
+            int number = RandomPosition();
+            key.transform.position = transforms[number].position;
+            RemoveAt(ref transforms, number);
+        }
+    }
+    #endregion
+
+    #region --- ARRAY FUNCTIONS ---
+    private int RandomPosition()
+    {
+        return UnityEngine.Random.Range(0, transforms.Length);
+        //return random position for key
+    }
+
+    private void RemoveAt<T>(ref T[] _array, int index)
+    {
+        for (int _a = index; _a < _array.Length - 1; _a++)
+        {
+            // moves ellements downards
+            _array[_a] = _array[_a + 1];
+        }
+        // resize array 
+        Array.Resize(ref _array, _array.Length - 1);
+    }
+    #endregion
+}                                    </code></pre>
                             </div>
                             <div class="description">
                                 <h3 class="translatable-text" data-key="Description">oops something whent wrong, reload
                                     the page</h3>
-                                <p>This is a brief explanation of the work.</p>
+                                <p class="translatable-text" data-key="DescriptionText2"></p>
                             </div>
                         </div>
                     </div>
@@ -680,6 +726,11 @@
                 "MyWork": "My work",
                 "ShowDetails-btn": "Show Details",
                 "Description": "Description",
+                "DescriptionText2": `As seen in the code, this script scatters keys on start of the game if the task is active.
+
+                This happends trough a function that receives an array of keys. This function then proceeds to get a random position for each key and set there position to this random one.
+                
+                Random positions are made by tracking empty objects placed around the map and using there position. After one random position has been used, the array removes that one and resizes to eliminate any keys from spawning at same position.`,
                 "AboutTheGame": "About the game",
                 "AboutTheGameText": `A horror game in VR with a haptic suit that sends shivers trough your body. 
                 If you are a thrill seeker, this game is is for you. You are an employe in a contract company, you just know that they want you to be fast. They some how put a huge Timer on all floors of the building to not make you forget. Tasked to coplete chores in this odly creepy building you start to feel more creeped out the further you go up.
@@ -694,6 +745,7 @@
                 "MyWork": "Mijn werk",
                 "ShowDetails-btn": "Details weergeven",
                 "Description": "Beschrijving",
+                "DescriptionText2": ` `,
                 "AboutTheGame": "Over het spel",
                 "AboutTheGameText": `Een horror game in VR met een haptisch pak dat rillingen door je lichaam stuurt.
 Als je van spanning houdt, is deze game echt iets voor jou.
