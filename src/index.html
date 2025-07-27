@@ -355,9 +355,27 @@
     <section class="portfolio">
         <div class="container">
             <h2 class="text-center mb-4 ProjectsHeader">Projects</h2>
+            <div class="text-center mb-4">
+                <div class="btn-group filter-group" role="group" aria-label="Filter projects">
+                    <button type="button" class="btn btn-outline-light active" data-tag="all"
+                        onclick="toggleFilter(this)">All</button>
+                    <button type="button" class="btn btn-outline-light" data-tag="Unity"
+                        onclick="toggleFilter(this)">Unity C#</button>
+                    <button type="button" class="btn btn-outline-light" data-tag="Unreal"
+                        onclick="toggleFilter(this)">Unreal</button>
+                    <button type="button" class="btn btn-outline-light" data-tag="VR"
+                        onclick="toggleFilter(this)">VR</button>
+                    <button type="button" class="btn btn-outline-light" data-tag="PC"
+                        onclick="toggleFilter(this)">PC</button>
+                    <button type="button" class="btn btn-outline-light" data-tag="Console"
+                        onclick="toggleFilter(this)">Console</button>
+                    <button type="button" class="btn btn-outline-light" data-tag="Passion"
+                        onclick="toggleFilter(this)">Passion Project</button>
+                </div>
+            </div>
             <div class="masonry">
                 <a href="project/Floors.html" class="text-decoration-none">
-                    <div class="card Highlight">
+                    <div class="card Highlight" data-tags="Unity VR">
                         <img src="imgs/Floors.png" class="card-img-top">
                         <div class="card-body text-center">
                             <h3 class="project-title">Floors</h3>
@@ -373,7 +391,7 @@
                     </div>
                 </a>
                 <a href="project/VideoReality.html" class="text-decoration-none">
-                    <div class="card">
+                    <div class="card" data-tags=" Unity VR">
                         <img src="imgs/VideoReality.png" class="card-img-top">
                         <div class="card-body text-center">
                             <h3 class="project-title">VideoReality</h3>
@@ -389,7 +407,7 @@
                     </div>
                 </a>
                 <a href="project/Kuru-Kuru.html" class="text-decoration-none">
-                    <div class="card">
+                    <div class="card" data-tags="Unity PC Passion Project">
                         <img src="imgs/Kuru Kuru.png" class="card-img-top">
                         <div class="card-body text-center">
                             <h3 class="project-title">Kuru Kuru</h3>
@@ -406,7 +424,7 @@
                 </a>
 
                 <a href="project/AltEgoProject.html" class="text-decoration-none">
-                    <div class="card Highlight">
+                    <div class="card Highlight" data-tags="Unreal VR">
                         <img src="imgs/AltEgoMain.png" class="card-img-top">
                         <div class="card-body text-center">
                             <h3 class="project-title">AltEgo</h3>
@@ -420,12 +438,11 @@
                         </div>
                     </div>
                 </a><a href="project/LittleJumper.html" class="text-decoration-none">
-                    <div class="card">
+                    <div class="card" data-tags="Unity PC Console">
                         <img src="imgs/Platformer.png" class="card-img-top">
                         <div class="card-body text-center">
                             <h3 class="project-title">LittleJumper</h3>
                             <div class="tags">
-
                                 <span class="tagTime translatable-text" data-key="Time-Tag-4">4 weeks</span>
                                 <span><img src="imgs/Icons/Unity.png" alt="Engine Icon"
                                         class="tagEngine tagEngineIMGUnity"></span>
@@ -437,7 +454,7 @@
                     </div>
                 </a>
                 <a href="project/WhisSis.html" class="text-decoration-none">
-                    <div class="card Highlight">
+                    <div class="card Highlight" data-tags="Unity VR">
                         <img src="imgs/game_poster_edit.png" class="card-img-top">
                         <div class="card-body text-center">
                             <h3 class="project-title">WhisSis</h3>
@@ -452,7 +469,7 @@
                     </div>
                 </a>
                 <a href="project/DungeonShooter.html" class="text-decoration-none">
-                    <div class="card">
+                    <div class="card" data-tags="Unity PC Console Passion">
                         <img src="imgs/DungeonShooter.png" class="card-img-top">
                         <div class="card-body text-center">
                             <h3 class="project-title">DungeonShooter</h3>
@@ -515,14 +532,14 @@
                 "Time-Tag-8": "8 weeks",
                 "Time-Tag-Own": "Own project",
                 "AboutMe": "About Me",
-                "AboutMeText": `So let me tell you something about me. I'm 17, always had a passion for games and the military has always had my interset, wich is probably noticable in the picture on the right. My hobby's exist of a martial arts sport, reading, gaming and most of all developing games. As a kid I always wonderd how fun it would be to make games. There had been some douts but eventualy after I found the right study, I whent on to become an XR developer.
+                "AboutMeText": `So let me tell you something about me. I'm 17, always had a passion for games and the military has always had my interest, wich is probably noticable in the picture on the right. My hobby's exist of a martial arts sport, reading, gaming and most of all developing games. As a kid I always wonderd how fun it would be to make games. There had been some douts but eventualy after I found the right study, I whent on to become an XR developer.
                  
                 Of course as an XR developer, Unity is well know engine to me. As is C#. I also work in C++ And learing to use it with Unreal. This portfolio is made with HTML, CSS and JavaScript so I gues you could say that I'm also good at that.`,
                 /* About me text EN
                 
                 So let me tell you something about
                                     me. I'm 17, always had a passion for games
-                                    and the military has always had my interset, wich is probably noticable in the picture on the right.
+                                    and the military has always had my interest, wich is probably noticable in the picture on the right.
                                     My hobby's exist of a martial arts sport, reading, gaming and most of all developing games. As a kid
                                     I always wonderd how fun it would be to make games. There had been some douts but eventualy after I
                                     found the right study, I whent on to become an XR developer. Of course as an XR developer, Unity is 
@@ -586,6 +603,52 @@ Deze portfolio is gemaakt met HTML, CSS en JavaScript, dus je zou kunnen zeggen 
                 setTimeout(() => {
                     notification.classList.remove('show');
                 }, 2000); // Hide after 2 seconds
+            });
+        }
+
+        // Filter
+        // Keep track of active filters
+        const activeFilters = new Set();
+
+        function toggleFilter(button) {
+            const tag = button.getAttribute('data-tag');
+            const allButton = document.querySelector('[data-tag="all"]');
+
+            if (tag === 'all') {
+                // Reset all filters
+                activeFilters.clear();
+                document.querySelectorAll('.filter-group .btn').forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+            } else {
+                // Deselect "All" if any other filter clicked
+                allButton.classList.remove('active');
+
+                if (button.classList.contains('active')) {
+                    button.classList.remove('active');
+                    activeFilters.delete(tag);
+                } else {
+                    button.classList.add('active');
+                    activeFilters.add(tag);
+                }
+
+                // If none filters selected, re-activate All
+                if (activeFilters.size === 0) {
+                    allButton.classList.add('active');
+                }
+            }
+
+            applyFilters();
+        }
+
+        function applyFilters() {
+            const cards = document.querySelectorAll('.masonry .card');
+            cards.forEach(card => {
+                const tags = (card.getAttribute('data-tags') || '').split(' ');
+                // Show if no filters, or card includes every selected filter
+                const shouldShow = activeFilters.size === 0 || [...activeFilters].every(tag => tags.includes(
+                    tag));
+
+                card.style.display = shouldShow ? 'inline-block' : 'none';
             });
         }
     </script>
