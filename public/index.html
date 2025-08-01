@@ -52,6 +52,7 @@
             background: #363c4d;
             /* box-shadow: 0 4px 10px rgb(80, 80, 80); */
             transition: transform 0.3s, box-shadow 0.3s;
+            transition: opacity 0.3s ease, transform 0.3s, box-shadow 0.3s;
         }
 
         .portfolio .Highlight {
@@ -369,23 +370,23 @@
                         onclick="toggleFilter(this)">PC</button>
                     <button type="button" class="btn btn-outline-light" data-tag="Console"
                         onclick="toggleFilter(this)">Console</button>
-                    <button type="button" class="btn btn-outline-light" data-tag="Passion"
-                        onclick="toggleFilter(this)">Passion Project</button>
+                    <button type="button" class="btn btn-outline-light translatable-text" data-key="Time-Tag-Own"
+                        data-tag="Passion" onclick="toggleFilter(this)">Passion Project</button>
                 </div>
             </div>
             <div class="masonry">
                 <a href="project/Floors.html" class="text-decoration-none">
-                    <div class="card Highlight" data-tags="Unity VR">
+                    <div class="card" data-tags="Unity VR">
                         <img src="imgs/Floors.png" class="card-img-top">
                         <div class="card-body text-center">
                             <h3 class="project-title">Floors</h3>
                             <div class="tags">
                                 <span class="tagTime translatable-text" data-key="Time-Tag-4">4 weeks</span>
-                                <span><img src="imgs/Icons/Unity.png" alt="Engine Icon"
-                                        class="tagEngine tagEngineIMGUnity"></span>
-                                <span><img src="imgs/Icons/VR.png" alt="Platform Icon"
-                                        class="tagPlatform tagPlatformIMG"></span>
-                                <span class="tagPeople">4 Devs</span>
+                                    <span><img src="imgs/Icons/Unity.png" alt="Engine Icon"
+                                            class="tagEngine tagEngineIMGUnity"></span>
+                                    <span><img src="imgs/Icons/VR.png" alt="Platform Icon"
+                                            class="tagPlatform tagPlatformIMG"></span>
+                                    <span class="tagPeople">4 Devs</span>
                             </div>
                         </div>
                     </div>
@@ -424,7 +425,7 @@
                 </a>
 
                 <a href="project/AltEgoProject.html" class="text-decoration-none">
-                    <div class="card Highlight" data-tags="Unreal VR">
+                    <div class="card" data-tags="Unreal VR">
                         <img src="imgs/AltEgoMain.png" class="card-img-top">
                         <div class="card-body text-center">
                             <h3 class="project-title">AltEgo</h3>
@@ -454,7 +455,7 @@
                     </div>
                 </a>
                 <a href="project/WhisSis.html" class="text-decoration-none">
-                    <div class="card Highlight" data-tags="Unity VR">
+                    <div class="card" data-tags="Unity VR">
                         <img src="imgs/game_poster_edit.png" class="card-img-top">
                         <div class="card-body text-center">
                             <h3 class="project-title">WhisSis</h3>
@@ -530,7 +531,7 @@
                 "Welcome-Extra": "XR developer and code enthusiast",
                 "Time-Tag-4": "4 weeks",
                 "Time-Tag-8": "8 weeks",
-                "Time-Tag-Own": "Own project",
+                "Time-Tag-Own": "Recreation Project",
                 "AboutMe": "About Me",
                 "AboutMeText": `So let me tell you something about me. I'm 17, always had a passion for games and the military has always had my interest, wich is probably noticable in the picture on the right. My hobby's exist of a martial arts sport, reading, gaming and most of all developing games. As a kid I always wonderd how fun it would be to make games. There had been some douts but eventualy after I found the right study, I whent on to become an XR developer.
                  
@@ -554,7 +555,7 @@
                 "Welcome-Extra": "XR ontwikkelaar en codeliefhebber",
                 "Time-Tag-4": "4 weken",
                 "Time-Tag-8": "8 weken",
-                "Time-Tag-Own": "Eigen project",
+                "Time-Tag-Own": "Recreatie project",
                 "AboutMe": "Over Mij",
                 "AboutMeText": `Laat me iets over mezelf vertellen. Ik ben 17, heb altijd een passie gehad voor games
 en het leger heeft me ook altijd geïnteresseerd, wat waarschijnlijk te zien is op de foto rechts.
@@ -642,13 +643,20 @@ Deze portfolio is gemaakt met HTML, CSS en JavaScript, dus je zou kunnen zeggen 
 
         function applyFilters() {
             const cards = document.querySelectorAll('.masonry .card');
+
+            const noActiveFilters = activeFilters.size === 0;
+
             cards.forEach(card => {
                 const tags = (card.getAttribute('data-tags') || '').split(' ');
-                // Show if no filters, or card includes every selected filter
-                const shouldShow = activeFilters.size === 0 || [...activeFilters].every(tag => tags.includes(
-                    tag));
+                const matches = !noActiveFilters && [...activeFilters].every(tag => tags.includes(tag));
 
-                card.style.display = shouldShow ? 'inline-block' : 'none';
+                if (matches) {
+                    card.classList.add('Highlight');
+                    card.style.opacity = '1';
+                } else {
+                    card.classList.remove('Highlight');
+                    card.style.opacity = noActiveFilters ? '1' : '0.3';
+                }
             });
         }
     </script>

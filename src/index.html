@@ -52,6 +52,7 @@
             background: #363c4d;
             /* box-shadow: 0 4px 10px rgb(80, 80, 80); */
             transition: transform 0.3s, box-shadow 0.3s;
+            transition: opacity 0.3s ease, transform 0.3s, box-shadow 0.3s;
         }
 
         .portfolio .Highlight {
@@ -307,6 +308,29 @@
         .copy-toast.show {
             opacity: 1;
         }
+
+        /* ============================= */
+        /*         Filter tags           */
+        /* ============================= */
+
+        .tag {
+            transition: background-color 0.3s, box-shadow 0.3s;
+            border-radius: 6px;
+            padding: 3px 6px;
+            margin: 2px;
+            display: inline-block;
+            background-color: #555;
+            /* default */
+            color: #f3f3f3;
+            font-size: 0.8rem;
+        }
+
+        .tag.highlighted {
+            background-color: #c4b200;
+            color: black;
+            font-weight: bold;
+            box-shadow: 0 0 6px #e7d436;
+        }
     </style>
 </head>
 
@@ -369,13 +393,13 @@
                         onclick="toggleFilter(this)">PC</button>
                     <button type="button" class="btn btn-outline-light" data-tag="Console"
                         onclick="toggleFilter(this)">Console</button>
-                    <button type="button" class="btn btn-outline-light" data-tag="Passion"
-                        onclick="toggleFilter(this)">Passion Project</button>
+                    <button type="button" class="btn btn-outline-light translatable-text" data-key="Time-Tag-Own"
+                        data-tag="Recreation" onclick="toggleFilter(this)">Recreation Project</button>
                 </div>
             </div>
             <div class="masonry">
                 <a href="project/Floors.html" class="text-decoration-none">
-                    <div class="card Highlight" data-tags="Unity VR">
+                    <div class="card" data-tags="Unity VR">
                         <img src="imgs/Floors.png" class="card-img-top">
                         <div class="card-body text-center">
                             <h3 class="project-title">Floors</h3>
@@ -407,7 +431,7 @@
                     </div>
                 </a>
                 <a href="project/Kuru-Kuru.html" class="text-decoration-none">
-                    <div class="card" data-tags="Unity PC Passion Project">
+                    <div class="card" data-tags="Unity PC Recreation">
                         <img src="imgs/Kuru Kuru.png" class="card-img-top">
                         <div class="card-body text-center">
                             <h3 class="project-title">Kuru Kuru</h3>
@@ -424,7 +448,7 @@
                 </a>
 
                 <a href="project/AltEgoProject.html" class="text-decoration-none">
-                    <div class="card Highlight" data-tags="Unreal VR">
+                    <div class="card" data-tags="Unreal VR">
                         <img src="imgs/AltEgoMain.png" class="card-img-top">
                         <div class="card-body text-center">
                             <h3 class="project-title">AltEgo</h3>
@@ -454,7 +478,7 @@
                     </div>
                 </a>
                 <a href="project/WhisSis.html" class="text-decoration-none">
-                    <div class="card Highlight" data-tags="Unity VR">
+                    <div class="card" data-tags="Unity VR">
                         <img src="imgs/game_poster_edit.png" class="card-img-top">
                         <div class="card-body text-center">
                             <h3 class="project-title">WhisSis</h3>
@@ -469,7 +493,7 @@
                     </div>
                 </a>
                 <a href="project/DungeonShooter.html" class="text-decoration-none">
-                    <div class="card" data-tags="Unity PC Console Passion">
+                    <div class="card" data-tags="Unity PC Console Recreation">
                         <img src="imgs/DungeonShooter.png" class="card-img-top">
                         <div class="card-body text-center">
                             <h3 class="project-title">DungeonShooter</h3>
@@ -530,7 +554,7 @@
                 "Welcome-Extra": "XR developer and code enthusiast",
                 "Time-Tag-4": "4 weeks",
                 "Time-Tag-8": "8 weeks",
-                "Time-Tag-Own": "Own project",
+                "Time-Tag-Own": "Recreation Project",
                 "AboutMe": "About Me",
                 "AboutMeText": `So let me tell you something about me. I'm 17, always had a passion for games and the military has always had my interest, wich is probably noticable in the picture on the right. My hobby's exist of a martial arts sport, reading, gaming and most of all developing games. As a kid I always wonderd how fun it would be to make games. There had been some douts but eventualy after I found the right study, I whent on to become an XR developer.
                  
@@ -554,7 +578,7 @@
                 "Welcome-Extra": "XR ontwikkelaar en codeliefhebber",
                 "Time-Tag-4": "4 weken",
                 "Time-Tag-8": "8 weken",
-                "Time-Tag-Own": "Eigen project",
+                "Time-Tag-Own": "Recreatie project",
                 "AboutMe": "Over Mij",
                 "AboutMeText": `Laat me iets over mezelf vertellen. Ik ben 17, heb altijd een passie gehad voor games
 en het leger heeft me ook altijd geïnteresseerd, wat waarschijnlijk te zien is op de foto rechts.
@@ -642,13 +666,31 @@ Deze portfolio is gemaakt met HTML, CSS en JavaScript, dus je zou kunnen zeggen 
 
         function applyFilters() {
             const cards = document.querySelectorAll('.masonry .card');
+
+            const noActiveFilters = activeFilters.size === 0;
+
             cards.forEach(card => {
                 const tags = (card.getAttribute('data-tags') || '').split(' ');
-                // Show if no filters, or card includes every selected filter
-                const shouldShow = activeFilters.size === 0 || [...activeFilters].every(tag => tags.includes(
-                    tag));
+                const matches = !noActiveFilters && [...activeFilters].every(tag => tags.includes(tag));
 
-                card.style.display = shouldShow ? 'inline-block' : 'none';
+                if (matches) {
+                    card.classList.add('Highlight');
+                    card.style.opacity = '1';
+                } else {
+                    card.classList.remove('Highlight');
+                    card.style.opacity = noActiveFilters ? '1' : '0.3';
+                }
+
+                // Highlight matching tag spans inside card
+                const tagSpans = card.querySelectorAll('[data-tag]');
+                tagSpans.forEach(tagEl => {
+                    const tagValue = tagEl.getAttribute('data-tag');
+                    if (activeFilters.has(tagValue)) {
+                        tagEl.classList.add('highlighted');
+                    } else {
+                        tagEl.classList.remove('highlighted');
+                    }
+                });
             });
         }
     </script>
