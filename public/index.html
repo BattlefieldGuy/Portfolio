@@ -308,6 +308,29 @@
         .copy-toast.show {
             opacity: 1;
         }
+
+        /* ============================= */
+        /*         Filter tags           */
+        /* ============================= */
+
+        .tag {
+            transition: background-color 0.3s, box-shadow 0.3s;
+            border-radius: 6px;
+            padding: 3px 6px;
+            margin: 2px;
+            display: inline-block;
+            background-color: #555;
+            /* default */
+            color: #f3f3f3;
+            font-size: 0.8rem;
+        }
+
+        .tag.highlighted {
+            background-color: #c4b200;
+            color: black;
+            font-weight: bold;
+            box-shadow: 0 0 6px #e7d436;
+        }
     </style>
 </head>
 
@@ -371,7 +394,7 @@
                     <button type="button" class="btn btn-outline-light" data-tag="Console"
                         onclick="toggleFilter(this)">Console</button>
                     <button type="button" class="btn btn-outline-light translatable-text" data-key="Time-Tag-Own"
-                        data-tag="Passion" onclick="toggleFilter(this)">Passion Project</button>
+                        data-tag="Recreation" onclick="toggleFilter(this)">Recreation Project</button>
                 </div>
             </div>
             <div class="masonry">
@@ -382,11 +405,11 @@
                             <h3 class="project-title">Floors</h3>
                             <div class="tags">
                                 <span class="tagTime translatable-text" data-key="Time-Tag-4">4 weeks</span>
-                                    <span><img src="imgs/Icons/Unity.png" alt="Engine Icon"
-                                            class="tagEngine tagEngineIMGUnity"></span>
-                                    <span><img src="imgs/Icons/VR.png" alt="Platform Icon"
-                                            class="tagPlatform tagPlatformIMG"></span>
-                                    <span class="tagPeople">4 Devs</span>
+                                <span><img src="imgs/Icons/Unity.png" alt="Engine Icon"
+                                        class="tagEngine tagEngineIMGUnity"></span>
+                                <span><img src="imgs/Icons/VR.png" alt="Platform Icon"
+                                        class="tagPlatform tagPlatformIMG"></span>
+                                <span class="tagPeople">4 Devs</span>
                             </div>
                         </div>
                     </div>
@@ -408,7 +431,7 @@
                     </div>
                 </a>
                 <a href="project/Kuru-Kuru.html" class="text-decoration-none">
-                    <div class="card" data-tags="Unity PC Passion Project">
+                    <div class="card" data-tags="Unity PC Recreation">
                         <img src="imgs/Kuru Kuru.png" class="card-img-top">
                         <div class="card-body text-center">
                             <h3 class="project-title">Kuru Kuru</h3>
@@ -470,7 +493,7 @@
                     </div>
                 </a>
                 <a href="project/DungeonShooter.html" class="text-decoration-none">
-                    <div class="card" data-tags="Unity PC Console Passion">
+                    <div class="card" data-tags="Unity PC Console Recreation">
                         <img src="imgs/DungeonShooter.png" class="card-img-top">
                         <div class="card-body text-center">
                             <h3 class="project-title">DungeonShooter</h3>
@@ -657,6 +680,17 @@ Deze portfolio is gemaakt met HTML, CSS en JavaScript, dus je zou kunnen zeggen 
                     card.classList.remove('Highlight');
                     card.style.opacity = noActiveFilters ? '1' : '0.3';
                 }
+
+                // Highlight matching tag spans inside card
+                const tagSpans = card.querySelectorAll('[data-tag]');
+                tagSpans.forEach(tagEl => {
+                    const tagValue = tagEl.getAttribute('data-tag');
+                    if (activeFilters.has(tagValue)) {
+                        tagEl.classList.add('highlighted');
+                    } else {
+                        tagEl.classList.remove('highlighted');
+                    }
+                });
             });
         }
     </script>
