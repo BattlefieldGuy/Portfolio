@@ -18,18 +18,123 @@
             max-width: 900px;
             margin: auto;
         }
+
+        .about-more {
+            padding: 60px 0;
+            color: #f3f3f3;
+        }
+
+        .about-section {
+            display: flex;
+            align-items: center;
+            margin-bottom: 50px;
+        }
+
+        .about-section.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .about-text {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .about-text h3 {
+            color: #ffd966;
+            /* highlight color */
+            margin-bottom: 15px;
+        }
+
+        .about-media {
+            flex: 1;
+            text-align: center;
+        }
+
+        .about-media img,
+        .about-media video {
+            width: 90%;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
     </style>
 </head>
 
 <body>
-    <div class="about-container">
-        <h1>About Me</h1>
-        <p>
-            Here’s where you can add your full story, career goals, inspirations, hobbies, or whatever you want visitors
-            to know.
-        </p>
-        <a href="index.html" class="btn btn-outline-light mt-4">⬅ Back to Home</a>
-    </div>
+    <section class="about-more">
+        <div class="container">
+            <h2 class="page-title">More About Me</h2>
+
+            <!-- Hobby Section -->
+            <div class="about-section">
+                <div class="about-text">
+                    <h3>My Hobbies</h3>
+                    <p>I enjoy building small prototypes in Unity, playing VR games, and editing videos.
+                        It helps me experiment with mechanics and improve my creativity.</p>
+                </div>
+                <div class="about-media">
+                    <img src="imgs/hobby-example.jpg" alt="Working on a prototype">
+                </div>
+            </div>
+
+            <!-- Goals Section -->
+            <div class="about-section reverse">
+                <div class="about-media">
+                    <video autoplay loop muted>
+                        <source src="videos/goals-demo.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="about-text">
+                    <h3>My Goals</h3>
+                    <p>My goal is to work on immersive game mechanics that push creativity and
+                        storytelling. Eventually, I’d like to specialize in gameplay programming.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+
+    <a href="index.html" class="btn btn-outline-light mt-4">⬅ Back to Home</a>
+
 </body>
+
+<script>
+    // Translation
+    const translations = {
+        en: {
+
+        },
+        nl: {
+
+        }
+    }
+
+    function setLanguage(lang) {
+        const langData = translations[lang];
+        if (!langData) return;
+
+        // Translate unique IDs
+        for (const id in langData) {
+            const el = document.getElementById(id);
+            if (el) el.innerText = langData[id];
+        }
+
+        // Translate tags with classes and data-key
+        document.querySelectorAll(".translatable-text").forEach(el => {
+            const key = el.getAttribute("data-key");
+            if (langData[key]) {
+                el.innerText = langData[key];
+            }
+        });
+
+        localStorage.setItem("language", lang);
+    }
+    // Auto-load the preferred language on page load
+    document.addEventListener("DOMContentLoaded", () => {
+        const savedLanguage = localStorage.getItem("language") || "en"; // Default to English
+        setLanguage(savedLanguage);
+    });
+</script>
 
 </html>
