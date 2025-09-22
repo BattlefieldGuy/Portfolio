@@ -14,72 +14,193 @@
             padding: 40px;
         }
 
-        .about-container {
-            max-width: 900px;
-            margin: auto;
+        /*  About Me Sections   */
+        .about-me {
+            display: flex;
+            height: 100vh;
+            /* full screen */
+            overflow: hidden;
+            border-radius: 20px;
+            /* optional if you want both sides together rounded */
         }
 
-        .about-more {
-            padding: 60px 0;
-            color: #f3f3f3;
-        }
-
-        .about-section {
+        .about-panel {
+            flex: 1;
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            margin-bottom: 60px;
-            gap: 40px;
-        }
-
-        .about-section.reverse {
-            flex-direction: row-reverse;
-        }
-
-        .about-text {
-            flex: 1;
-            color: #f3f3f3;
-        }
-
-        .about-text h3 {
-            font-size: 1.8rem;
-            margin-bottom: 15px;
-            color: #ffd966;
-        }
-
-        .about-text p {
-            font-size: 1rem;
-            line-height: 1.6;
-            color: #cfcfcf;
-        }
-
-        .about-media {
-            flex: 1;
-            text-align: center;
-        }
-
-        .about-media img,
-        .about-media video {
-            max-width: 100%;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-        }
-
-        /* Carousel custom style */
-        /* Make controls visible on dark backgrounds */
-        .carousel .carousel-control-prev-icon,
-        .carousel .carousel-control-next-icon {
-            filter: invert(1) drop-shadow(0 0 6px rgba(255, 255, 255, .6));
-        }
-
-        /* Nice rounding/shadow to match your cards */
-        .about-media .carousel {
-            border-radius: 20px;
+            justify-content: center;
+            background: #2e3445;
+            color: #fff;
+            transition: flex 0.8s ease, opacity 0.8s ease;
+            cursor: pointer;
+            position: relative;
             overflow: hidden;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, .4);
         }
 
-        
+        /* Round corners only on the outside edges */
+        .about-panel.left {
+            border-top-left-radius: 20px;
+            border-bottom-left-radius: 20px;
+        }
+
+        .about-panel.right {
+            border-top-right-radius: 20px;
+            border-bottom-right-radius: 20px;
+        }
+
+        .about-panel.inactive {
+            opacity: 0.4;
+        }
+
+        .about-panel.active {
+            flex: 4;
+            /* expands to 80% */
+        }
+
+        .about-panel:not(.active) {
+            flex: 1;
+            /* shrinks to 20% */
+        }
+
+        .panel-content {
+            max-width: 600px;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .details {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .about-panel.active .details {
+            display: block;
+        }
+
+        /* Media handling */
+        .about-panel video,
+        .about-panel img {
+            max-width: 100%;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+
+
+
+
+        /*  Inactive details    */
+        .about-panel.inactive {
+            opacity: 0.4;
+            position: relative;
+        }
+
+        .about-panel.inactive::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            /* soft dark overlay */
+            pointer-events: none;
+            /* don’t block clicks */
+            border-radius: inherit;
+            /* keep rounded corners */
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+            /* inner shadow */
+        }
+
+        /*  About content   */
+        .about-content {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .media-block {
+            flex: 1 1 300px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+        }
+
+        .media-block img,
+        .media-block video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Borders by type */
+        /* Blue */
+        .image-type {
+            border: 4px solid #007bff;
+        }
+
+        /* Green */
+        .video-type {
+            border: 4px solid #21b300;
+        }
+
+        /* Orange */
+        .gallery-type {
+            border: 4px solid #ff9800;
+        }
+
+
+        /* Scrolling gallery */
+        .gallery-type {
+            border: 4px solid #ff9800;
+            /* Orange */
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .scroll-gallery {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .scroll-track {
+            display: flex;
+            gap: 10px;
+            animation: scrollGallery 25s linear infinite;
+        }
+
+        .scroll-track img {
+            width: 250px;
+            border-radius: 10px;
+            flex-shrink: 0;
+        }
+
+        /* Duplicate the track for seamless loop */
+        .scroll-track::after {
+            content: '';
+            display: flex;
+        }
+
+        .scroll-track::after {
+            content: attr(data-duplicate);
+            /* Fake content trick */
+        }
+
+        /* Animation */
+        @keyframes scrollGallery {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* Pause on hover */
+        .scroll-gallery:hover .scroll-track {
+            animation-play-state: paused;
+        }
     </style>
 </head>
 
@@ -87,59 +208,51 @@
 
     <!-- room for titel -->
 
-    <!-- About Section Block PREFAB-->
-    <div class="about-section">
-        <div class="about-text">
-            <h3>My Hobby Example</h3>
-            <p>
-                I love experimenting with VR mechanics and prototyping new interaction
-                styles. Here’s a little showcase of screenshots from my prototypes.
-            </p>
+    <div class="about-me">
+        <!-- Left: Hobbies -->
+        <div class="about-panel left" onclick="expandPanel('left')">
+            <div class="panel-content">
+                <h2>Hobbies</h2>
+                <p class="intro">Click to learn more about my hobbies</p>
+                <div class="details">
+                    <h3>Example Hobby</h3>
+                    <p>Some longer text about hobbies goes here. Could include images/videos later.</p>
+                    <video muted loop>
+                        <source src="videos/example.mp4" type="video/mp4">
+                    </video>
+
+                    <div class="media-block gallery-type">
+                        <div class="scroll-gallery">
+                            <div class="scroll-track">
+                                <img src="imgs/DungeonShooter.png" alt="Gallery 1">
+                                <img src="imgs/DungeonShooter2.png" alt="Gallery 2">
+                                <img src="imgs/DungeonShooter1.png" alt="Gallery 3">
+                                <img src="imgs/DungeonShooter3.png" alt="Gallery 4">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div class="about-media">
-            <div id="aboutCarousel1" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000"
-                data-bs-pause="hover" data-bs-touch="true" data-bs-wrap="true">
-
-                <!-- Indicators -->
-                <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#aboutCarousel1" data-bs-slide-to="0" class="active"
-                        aria-current="true"></button>
-                    <button type="button" data-bs-target="#aboutCarousel1" data-bs-slide-to="1"></button>
-                    <button type="button" data-bs-target="#aboutCarousel1" data-bs-slide-to="2"></button>
+        <!-- Right: Skills -->
+        <div class="about-panel right" onclick="expandPanel('right')">
+            <div class="panel-content">
+                <h2>Skills</h2>
+                <p class="intro">Click to explore my skills</p>
+                <div class="details">
+                    <h3>Example Skill</h3>
+                    <p>Some longer text about skills goes here. Could include carousel later.</p>
+                    <img src="imgs/example.jpg" alt="Example skill">
                 </div>
-
-                <!-- Slides -->
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="imgs/DungeonShooter.png" class="d-block w-100" alt="...">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="imgs/DungeonShooter2.png" class="d-block w-100" alt="...">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="imgs/DungeonShooter1.png" class="d-block w-100" alt="...">
-                    </div>
-                </div>
-
-                <!-- Controls -->
-                <button class="carousel-control-prev" type="button" data-bs-target="#aboutCarousel1"
-                    data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#aboutCarousel1"
-                    data-bs-slide="next">
-                    <span class="carousel-control-next-icon"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
             </div>
         </div>
     </div>
 
 
 
-        <a href="index.html" class="btn btn-outline-light mt-4">⬅ Back to Home</a>
+
+    <a href="index.html" class="btn btn-outline-light mt-4">⬅ Back to Home</a>
 
 </body>
 
@@ -180,21 +293,75 @@
         setLanguage(savedLanguage);
     });
 
-    //carousel
-    document.addEventListener('DOMContentLoaded', function () {
-    const el = document.getElementById('aboutCarousel1');
-    if (window.bootstrap && el) {
-      new bootstrap.Carousel(el, {
-        interval: 5000,   // auto-slide every 5s
-        ride: 'carousel', // start automatically
-        pause: 'hover',   // pause when hovered
-        touch: true,
-        wrap: true
-      });
-    } else {
-      console.warn('Bootstrap not loaded or #aboutCarousel1 not found.');
+    // Section devider
+    function expandPanel(side) {
+        const left = document.querySelector('.about-panel.left');
+        const right = document.querySelector('.about-panel.right');
+
+        if (side === 'left') {
+            left.classList.add('active');
+            left.classList.remove('inactive');
+            right.classList.add('inactive');
+            right.classList.remove('active');
+            pauseMedia(right);
+            playMedia(left);
+        } else {
+            right.classList.add('active');
+            right.classList.remove('inactive');
+            left.classList.add('inactive');
+            left.classList.remove('active');
+            pauseMedia(left);
+            playMedia(right);
+        }
     }
-  });
+
+    function playMedia(panel) {
+        panel.querySelectorAll('video').forEach(v => v.play());
+    }
+
+    function pauseMedia(panel) {
+        panel.querySelectorAll('video').forEach(v => v.pause());
+    }
+
+    // gallery
+    document.querySelectorAll('.scroll-track').forEach(track => {
+        const clone = track.innerHTML;
+        track.innerHTML += clone; // duplicate all images once
+    });
+
+
 </script>
 
 </html>
+
+
+<!-- Prefabs
+ 
+   /// Single Image
+
+    <div class="media-block image-type">
+        <img src="imgs/example.jpg" alt="Example Image">
+    </div>
+    
+   /// Video
+
+    <div class="media-block video-type">
+        <video autoplay loop muted playsinline>
+            <source src="videos/example.mp4" type="video/mp4">
+        </video>
+    </div>
+    
+   /// Scrolling Gallery
+
+    <div class="media-block gallery-type">
+        <div class="scroll-gallery">
+            <div class="scroll-track">
+                <img src="imgs/DungeonShooter.png" alt="Gallery 1">
+                <img src="imgs/DungeonShooter2.png" alt="Gallery 2">
+                <img src="imgs/DungeonShooter1.png" alt="Gallery 3">
+                <img src="imgs/DungeonShooter3.png" alt="Gallery 4">
+          </div>
+        </div>
+    </div>
+
+    -->
