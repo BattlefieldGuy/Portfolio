@@ -158,48 +158,30 @@
         }
 
         .scroll-gallery {
-            width: 100%;
-            overflow: hidden;
+            overflow-x: auto;
+            /* allow manual scrolling */
+            scrollbar-width: thin;
+            /* Firefox */
+            scrollbar-color: #ffc107 transparent;
+            
+            /* border for image type */
+            border-radius: 12px;
+            padding: 10px;
+            margin: 20px 0;
             position: relative;
         }
 
         .scroll-track {
             display: flex;
-            gap: 10px;
-            animation: scrollGallery 25s linear infinite;
+            gap: 15px;
+            will-change: transform;
         }
 
-        .scroll-track img {
-            width: 250px;
-            border-radius: 10px;
-            flex-shrink: 0;
-        }
-
-        /* Duplicate the track for seamless loop */
-        .scroll-track::after {
-            content: '';
-            display: flex;
-        }
-
-        .scroll-track::after {
-            content: attr(data-duplicate);
-            /* Fake content trick */
-        }
-
-        /* Animation */
-        @keyframes scrollGallery {
-            0% {
-                transform: translateX(0);
-            }
-
-            100% {
-                transform: translateX(-50%);
-            }
-        }
-
-        /* Pause on hover */
-        .scroll-gallery:hover .scroll-track {
-            animation-play-state: paused;
+        .scroll-gallery img {
+            height: 200px;
+            border-radius: 8px;
+            object-fit: contain;
+            display: block;
         }
     </style>
 </head>
@@ -222,12 +204,11 @@
                     </video>
 
                     <div class="media-block gallery-type">
-                        <div class="scroll-gallery">
+                        <div class="scroll-gallery" id="scrollGallery1">
                             <div class="scroll-track">
-                                <img src="imgs/DungeonShooter.png" alt="Gallery 1">
-                                <img src="imgs/DungeonShooter2.png" alt="Gallery 2">
-                                <img src="imgs/DungeonShooter1.png" alt="Gallery 3">
-                                <img src="imgs/DungeonShooter3.png" alt="Gallery 4">
+                                <img src="imgs/DungeonShooter.png" alt="Image 1">
+                                <img src="imgs/DungeonShooter1.png" alt="Image 2">
+                                <img src="imgs/DungeonShooter2.png" alt="Image 3">
                             </div>
                         </div>
                     </div>
@@ -324,10 +305,54 @@
     }
 
     // gallery
-    document.querySelectorAll('.scroll-track').forEach(track => {
-        const clone = track.innerHTML;
-        track.innerHTML += clone; // duplicate all images once
-    });
+    function initPingPongScroll(galleryId, duration = 10000) {
+        const gallery = document.getElementById(galleryId);
+        const track = gallery.querySelector('.scroll-track');
+
+        let direction = -1; // start scrolling left
+        let start = null;
+
+        function step(timestamp) {
+            if (!start) start = timestamp;
+            const elapsed = timestamp - start;
+
+            // total scrollable width
+            const maxScroll = track.scrollWidth - gallery.clientWidth;
+
+            // distance we move per frame
+            const progress = (elapsed / duration) * maxScroll;
+
+            // Calculate new scroll position
+            let pos = gallery.scrollLeft + direction * (maxScroll / (duration / 16.6)); // ~60fps
+
+            // Reverse direction if at edges
+            if (pos <= 0) {
+                direction = 1;
+                pos = 0;
+            } else if (pos >= maxScroll) {
+                direction = -1;
+                pos = maxScroll;
+            }
+
+            gallery.scrollLeft = pos;
+
+            if (!gallery.matches(':hover')) {
+                requestAnimationFrame(step);
+            }
+        }
+
+        requestAnimationFrame(step);
+
+        // Resume when hover ends
+        gallery.addEventListener('mouseleave', () => {
+            start = null;
+            requestAnimationFrame(step);
+        });
+    }
+
+    // Initialize
+    initPingPongScroll('scrollGallery1');
+
 
 
 </script>
@@ -354,13 +379,12 @@
    /// Scrolling Gallery
 
     <div class="media-block gallery-type">
-        <div class="scroll-gallery">
+        <div class="scroll-gallery" id="scrollGallery1">
             <div class="scroll-track">
-                <img src="imgs/DungeonShooter.png" alt="Gallery 1">
-                <img src="imgs/DungeonShooter2.png" alt="Gallery 2">
-                <img src="imgs/DungeonShooter1.png" alt="Gallery 3">
-                <img src="imgs/DungeonShooter3.png" alt="Gallery 4">
-          </div>
+                <img src="imgs/DungeonShooter.png" alt="Image 1">
+                <img src="imgs/DungeonShooter1.png" alt="Image 2">
+                <img src="imgs/DungeonShooter2.png" alt="Image 3">
+            </div>
         </div>
     </div>
 
