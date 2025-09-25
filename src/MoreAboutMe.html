@@ -163,7 +163,7 @@
             scrollbar-width: thin;
             /* Firefox */
             scrollbar-color: #ffc107 transparent;
-            
+
             /* border for image type */
             border-radius: 12px;
             padding: 10px;
@@ -305,50 +305,76 @@
     }
 
     // gallery
-    function initPingPongScroll(galleryId, duration = 10000) {
+    function initPingPongScroll(galleryId, duration = 1000, pauseTime = 2000, easingDistance = 100) {
         const gallery = document.getElementById(galleryId);
         const track = gallery.querySelector('.scroll-track');
 
-        let direction = -1; // start scrolling left
-        let start = null;
+        let direction = 1; // 1 = right, -1 = left
+        let speed = (track.scrollWidth - gallery.clientWidth) / (duration / 16.6); // px per frame ~60fps
+        let currentSpeed = speed; // allows easing
+        let paused = false;
+        let pauseTimeout;
 
-        function step(timestamp) {
-            if (!start) start = timestamp;
-            const elapsed = timestamp - start;
+        function step() {
+            if (gallery.matches(':hover')) {
+                requestAnimationFrame(step);
+                return; // stop auto when hovered
+            }
 
-            // total scrollable width
             const maxScroll = track.scrollWidth - gallery.clientWidth;
+            let pos = gallery.scrollLeft + direction * currentSpeed;
 
-            // distance we move per frame
-            const progress = (elapsed / duration) * maxScroll;
-
-            // Calculate new scroll position
-            let pos = gallery.scrollLeft + direction * (maxScroll / (duration / 16.6)); // ~60fps
-
-            // Reverse direction if at edges
-            if (pos <= 0) {
-                direction = 1;
-                pos = 0;
-            } else if (pos >= maxScroll) {
-                direction = -1;
-                pos = maxScroll;
+            // Detect nearing edges → decelerate
+            if (direction === 1 && pos >= maxScroll - easingDistance) {
+                currentSpeed = Math.max(1, currentSpeed * 0.9); // slow down
+                if (pos >= maxScroll) {
+                    pos = maxScroll;
+                    handlePause(-1); // flip direction after pause
+                }
+            } else if (direction === -1 && pos <= easingDistance) {
+                currentSpeed = Math.max(1, currentSpeed * 0.9);
+                if (pos <= 0) {
+                    pos = 0;
+                    handlePause(1); // flip direction after pause
+                }
+            } else {
+                // cruising in the middle
+                currentSpeed = speed;
             }
 
             gallery.scrollLeft = pos;
 
-            if (!gallery.matches(':hover')) {
-                requestAnimationFrame(step);
+            if (!paused) requestAnimationFrame(step);
+        }
+
+        function handlePause(nextDirection) {
+            paused = true;
+            direction = nextDirection;
+            currentSpeed = 0;
+            clearTimeout(pauseTimeout);
+            pauseTimeout = setTimeout(() => {
+                currentSpeed = 1; // start slow
+                paused = false;
+                accelerate();
+            }, pauseTime);
+        }
+
+        function accelerate() {
+            currentSpeed = Math.min(speed, currentSpeed * 1.2);
+            if (!paused && currentSpeed < speed) {
+                requestAnimationFrame(accelerate);
             }
+            if (!paused) requestAnimationFrame(step);
         }
 
         requestAnimationFrame(step);
 
-        // Resume when hover ends
-        gallery.addEventListener('mouseleave', () => {
-            start = null;
-            requestAnimationFrame(step);
+        // Recalc on resize
+        window.addEventListener('resize', () => {
+            speed = (track.scrollWidth - gallery.clientWidth) / (duration / 16.6);
         });
     }
+
 
     // Initialize
     initPingPongScroll('scrollGallery1');

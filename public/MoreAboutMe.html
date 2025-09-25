@@ -209,7 +209,6 @@
                                 <img src="imgs/DungeonShooter.png" alt="Image 1">
                                 <img src="imgs/DungeonShooter1.png" alt="Image 2">
                                 <img src="imgs/DungeonShooter2.png" alt="Image 3">
-                                <img src="imgs/DungeonShooter3.png" alt="Image 4">
                             </div>
                         </div>
                     </div>
@@ -306,69 +305,79 @@
     }
 
     // gallery
-    function initPingPongScroll(galleryId, duration = 8000, edgeDelay = 1000, resumeDelay = 2000) {
+    function initPingPongScroll(galleryId, duration = 1000, pauseTime = 2000, easingDistance = 100) {
         const gallery = document.getElementById(galleryId);
+        const track = gallery.querySelector('.scroll-track');
+
         let direction = 1; // 1 = right, -1 = left
-        let pos = 0;
-        let maxScroll = gallery.scrollWidth - gallery.clientWidth;
+        let speed = (track.scrollWidth - gallery.clientWidth) / (duration / 16.6); // px per frame ~60fps
+        let currentSpeed = speed; // allows easing
         let paused = false;
-        let userInteracting = false;
-        let userTimeout;
+        let pauseTimeout;
 
         function step() {
-            if (paused || userInteracting || gallery.matches(':hover')) return;
-
-            const speed = maxScroll / (duration / 16.6); // ~60fps
-            pos += direction * speed;
-
-            // Clamp at edges & reverse
-            if (pos <= 0) {
-                pos = 0;
-                direction = 1;
-                paused = true;
-                setTimeout(() => { paused = false; requestAnimationFrame(step); }, edgeDelay);
-            } else if (pos >= maxScroll) {
-                pos = maxScroll;
-                direction = -1;
-                paused = true;
-                setTimeout(() => { paused = false; requestAnimationFrame(step); }, edgeDelay);
+            if (gallery.matches(':hover')) {
+                requestAnimationFrame(step);
+                return; // stop auto when hovered
             }
 
-            // ✅ instant scroll update
+            const maxScroll = track.scrollWidth - gallery.clientWidth;
+            let pos = gallery.scrollLeft + direction * currentSpeed;
+
+            // Detect nearing edges → decelerate
+            if (direction === 1 && pos >= maxScroll - easingDistance) {
+                currentSpeed = Math.max(1, currentSpeed * 0.9); // slow down
+                if (pos >= maxScroll) {
+                    pos = maxScroll;
+                    handlePause(-1); // flip direction after pause
+                }
+            } else if (direction === -1 && pos <= easingDistance) {
+                currentSpeed = Math.max(1, currentSpeed * 0.9);
+                if (pos <= 0) {
+                    pos = 0;
+                    handlePause(1); // flip direction after pause
+                }
+            } else {
+                // cruising in the middle
+                currentSpeed = speed;
+            }
+
             gallery.scrollLeft = pos;
 
             if (!paused) requestAnimationFrame(step);
         }
 
-        requestAnimationFrame(step);
-
-        // Detect user scroll/interaction
-        function onUserScroll() {
-            userInteracting = true;
-            clearTimeout(userTimeout);
-
-            pos = gallery.scrollLeft;
-
-            userTimeout = setTimeout(() => {
-                userInteracting = false;
-                direction = (pos >= maxScroll) ? -1 : (pos <= 0 ? 1 : direction);
-                requestAnimationFrame(step);
-            }, resumeDelay);
+        function handlePause(nextDirection) {
+            paused = true;
+            direction = nextDirection;
+            currentSpeed = 0;
+            clearTimeout(pauseTimeout);
+            pauseTimeout = setTimeout(() => {
+                currentSpeed = 1; // start slow
+                paused = false;
+                accelerate();
+            }, pauseTime);
         }
 
-        gallery.addEventListener('scroll', onUserScroll);
+        function accelerate() {
+            currentSpeed = Math.min(speed, currentSpeed * 1.2);
+            if (!paused && currentSpeed < speed) {
+                requestAnimationFrame(accelerate);
+            }
+            if (!paused) requestAnimationFrame(step);
+        }
 
+        requestAnimationFrame(step);
+
+        // Recalc on resize
         window.addEventListener('resize', () => {
-            maxScroll = gallery.scrollWidth - gallery.clientWidth;
+            speed = (track.scrollWidth - gallery.clientWidth) / (duration / 16.6);
         });
     }
 
 
-    // Example usage
-    document.addEventListener("DOMContentLoaded", () => {
-        initPingPongScroll('scrollGallery1', 8000, 1500, 2000);
-    });
-
+    // Initialize
+    initPingPongScroll('scrollGallery1');
 
 
 
