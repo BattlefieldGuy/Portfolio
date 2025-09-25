@@ -163,7 +163,7 @@
             scrollbar-width: thin;
             /* Firefox */
             scrollbar-color: #ffc107 transparent;
-            
+
             /* border for image type */
             border-radius: 12px;
             padding: 10px;
@@ -209,6 +209,7 @@
                                 <img src="imgs/DungeonShooter.png" alt="Image 1">
                                 <img src="imgs/DungeonShooter1.png" alt="Image 2">
                                 <img src="imgs/DungeonShooter2.png" alt="Image 3">
+                                <img src="imgs/DungeonShooter3.png" alt="Image 4">
                             </div>
                         </div>
                     </div>
@@ -305,53 +306,69 @@
     }
 
     // gallery
-    function initPingPongScroll(galleryId, duration = 10000) {
+    function initPingPongScroll(galleryId, duration = 8000, edgeDelay = 1000, resumeDelay = 2000) {
         const gallery = document.getElementById(galleryId);
-        const track = gallery.querySelector('.scroll-track');
+        let direction = 1; // 1 = right, -1 = left
+        let pos = 0;
+        let maxScroll = gallery.scrollWidth - gallery.clientWidth;
+        let paused = false;
+        let userInteracting = false;
+        let userTimeout;
 
-        let direction = -1; // start scrolling left
-        let start = null;
+        function step() {
+            if (paused || userInteracting || gallery.matches(':hover')) return;
 
-        function step(timestamp) {
-            if (!start) start = timestamp;
-            const elapsed = timestamp - start;
+            const speed = maxScroll / (duration / 16.6); // ~60fps
+            pos += direction * speed;
 
-            // total scrollable width
-            const maxScroll = track.scrollWidth - gallery.clientWidth;
-
-            // distance we move per frame
-            const progress = (elapsed / duration) * maxScroll;
-
-            // Calculate new scroll position
-            let pos = gallery.scrollLeft + direction * (maxScroll / (duration / 16.6)); // ~60fps
-
-            // Reverse direction if at edges
+            // Clamp at edges & reverse
             if (pos <= 0) {
-                direction = 1;
                 pos = 0;
+                direction = 1;
+                paused = true;
+                setTimeout(() => { paused = false; requestAnimationFrame(step); }, edgeDelay);
             } else if (pos >= maxScroll) {
-                direction = -1;
                 pos = maxScroll;
+                direction = -1;
+                paused = true;
+                setTimeout(() => { paused = false; requestAnimationFrame(step); }, edgeDelay);
             }
 
+            // ✅ instant scroll update
             gallery.scrollLeft = pos;
 
-            if (!gallery.matches(':hover')) {
-                requestAnimationFrame(step);
-            }
+            if (!paused) requestAnimationFrame(step);
         }
 
         requestAnimationFrame(step);
 
-        // Resume when hover ends
-        gallery.addEventListener('mouseleave', () => {
-            start = null;
-            requestAnimationFrame(step);
+        // Detect user scroll/interaction
+        function onUserScroll() {
+            userInteracting = true;
+            clearTimeout(userTimeout);
+
+            pos = gallery.scrollLeft;
+
+            userTimeout = setTimeout(() => {
+                userInteracting = false;
+                direction = (pos >= maxScroll) ? -1 : (pos <= 0 ? 1 : direction);
+                requestAnimationFrame(step);
+            }, resumeDelay);
+        }
+
+        gallery.addEventListener('scroll', onUserScroll);
+
+        window.addEventListener('resize', () => {
+            maxScroll = gallery.scrollWidth - gallery.clientWidth;
         });
     }
 
-    // Initialize
-    initPingPongScroll('scrollGallery1');
+
+    // Example usage
+    document.addEventListener("DOMContentLoaded", () => {
+        initPingPongScroll('scrollGallery1', 8000, 1500, 2000);
+    });
+
 
 
 

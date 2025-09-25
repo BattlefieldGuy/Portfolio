@@ -6,6 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project Title</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/atom-one-dark-reasonable.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+
+    <!-- and it's easy to individually load additional languages -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/go.min.js"></script>
+
+    <script>hljs.highlightAll();</script>
+
     <style>
         /* ============================= */
         /*             Base              */
@@ -376,7 +386,7 @@
         }
 
         .code-example {
-            background: #1e1e1e;
+            background: #282c34;
             color: #ffffff;
             padding: 15px;
             border-radius: 10px;
@@ -577,7 +587,7 @@
                     <div class="details-section" id="details1">
                         <div class="details-content">
                             <div class="code-example">
-                                <pre><code> protected override void Shoot(InputAction.CallbackContext context)
+                                <pre><code class="language-csharp"> protected override void Shoot(InputAction.CallbackContext context)
  {
      if (CheckAmmo() && this.isReloading == false)
      {
