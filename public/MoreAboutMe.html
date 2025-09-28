@@ -63,7 +63,6 @@
         }
 
         .panel-content {
-            max-width: 600px;
             text-align: center;
             padding: 20px;
         }
@@ -123,6 +122,7 @@
             border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+            width: 70%;
         }
 
         .media-block img,
@@ -150,38 +150,91 @@
 
 
         /* Scrolling gallery */
-        .gallery-type {
-            border: 4px solid #ff9800;
-            /* Orange */
-            border-radius: 15px;
-            overflow: hidden;
-        }
-
-        .scroll-gallery {
-            overflow-x: hidden;
-            /* allow manual scrolling */
-            scrollbar-width: thin;
-            /* Firefox */
-            scrollbar-color: #ffc107 transparent;
-
-            /* border for image type */
-            border-radius: 12px;
-            padding: 10px;
-            margin: 20px 0;
+        /* grid layout */
+        .photo-grid {
             position: relative;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 12px;
         }
 
-        .scroll-track {
-            display: flex;
-            gap: 15px;
-            will-change: transform;
-        }
-
-        .scroll-gallery img {
-            height: 200px;
+        .photo-grid img {
+            width: 100%;
+            height: auto;
             border-radius: 8px;
-            object-fit: contain;
+            cursor: zoom-in;
+            transition: transform 400ms cubic-bezier(.2, .9, .2, 1), box-shadow 300ms;
+            will-change: transform;
+            z-index: 1;
+            position: relative;
+            /* keep it in flow; transforms don't affect layout */
+        }
+
+        .photo-grid img.zoomed {
+            cursor: zoom-out;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+            z-index: 999;
+            /* transform set inline by JS */
+        }
+
+        /* optional soft overlay when zoomed */
+        .photo-grid.zoom-active::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.45);
+            pointer-events: none;
+            z-index: 50;
+            border-radius: inherit;
+        }
+
+        /*  Content */
+        .content-section {
+            padding: 40px;
+        }
+
+        .content-block {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        /* Media + Text sizing */
+        .media-container {
+            flex: 1;
+            max-width: 500px;
+        }
+
+        .media-container img,
+        .media-container video {
+            width: 100%;
+            border-radius: 12px;
             display: block;
+        }
+
+        .text-container {
+            flex: 2;
+            color: #ccc;
+            line-height: 1.6;
+            width: 30%;
+        }
+
+        /* Flip layout (media right / text left) */
+        .content-block.right-media {
+            flex-direction: row-reverse;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .content-block {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .content-block.right-media {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
@@ -194,24 +247,45 @@
         <!-- Left: Hobbies -->
         <div class="about-panel left" onclick="expandPanel('left')">
             <div class="panel-content">
-                <h2>Hobbies</h2>
+                <h1>Hobbies</h1>
                 <p class="intro">Click to learn more about my hobbies</p>
                 <div class="details">
-                    <h3>Example Hobby</h3>
-                    <p>Some longer text about hobbies goes here. Could include images/videos later.</p>
-                    <video muted loop>
-                        <source src="videos/example.mp4" type="video/mp4">
-                    </video>
+                
+                    <!-- Content Section -->
+                    <section class="content-section">
+                        <div class="content-block right-media">
+                            <!-- Media -->
+                            <div class="media-container">
+                                <div class="media-block gallery-type">
+                                    <div class="photo-grid" id="photoGrid">
+                                        <img src="imgs/DungeonShooter.png" alt="Image 1" onclick="toggleZoom(this)">
+                                        <img src="imgs/DungeonShooter1.png" alt="Image 2" onclick="toggleZoom(this)">
+                                        <img src="imgs/DungeonShooter2.png" alt="Image 3" onclick="toggleZoom(this)">
+                                        <img src="imgs/DungeonShooter3.png" alt="Image 3" onclick="toggleZoom(this)">
+                                        <img src="imgs/Whissis1.png" alt="Image 3" onclick="toggleZoom(this)">
+                                        <img src="imgs/Whissis2.png" alt="Image 3" onclick="toggleZoom(this)">
+                                    </div>
+                                </div>
+                            </div>
 
-                    <div class="media-block gallery-type">
-                        <div class="scroll-gallery" id="scrollGallery1">
-                            <div class="scroll-track">
-                                <img src="imgs/DungeonShooter.png" alt="Image 1">
-                                <img src="imgs/DungeonShooter1.png" alt="Image 2">
-                                <img src="imgs/DungeonShooter2.png" alt="Image 3">
+                            <!-- Text -->
+                            <div class="text-container">
+                                <h2>Example Topic</h2>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                    Nulla at felis sit amet magna tincidunt malesuada.
+                                    Suspendisse potenti. Donec suscipit erat et lacus aliquam,
+                                    a volutpat nisl pretium.
+                                </p>
+                                <p>
+                                    Morbi in porttitor neque. Integer non varius nunc.
+                                    Fusce ac sapien eu orci varius finibus.
+                                    Duis nec dui eget velit blandit maximus.
+                                </p>
                             </div>
                         </div>
-                    </div>
+                    </section>
+
                 </div>
             </div>
         </div>
@@ -305,73 +379,113 @@
     }
 
     // gallery
-    function initPingPongScroll(galleryId, pixelsPerSecond = 60, pauseTime = 1500, easingDistance = 120) {
-        const gallery = document.getElementById(galleryId);
-        if (!gallery) return;
+    (function () {
+        let zoomedImg = null;
+        const GRID_PADDING = 0.90; // how much of grid the image can span while zoomed (0..1)
 
-        gallery.style.overflowX = "hidden"; // disable scrollbar
-
-        let direction = 1; // 1 = right, -1 = left
-        let paused = false;
-        let lastTime = null;
-
-        function getMaxScroll() {
-            return Math.max(0, gallery.scrollWidth - gallery.clientWidth);
-        }
-
-        function step(timestamp) {
-            if (lastTime === null) lastTime = timestamp;
-            const dt = (timestamp - lastTime) / 1000; // seconds
-            lastTime = timestamp;
-
-            const maxScroll = getMaxScroll();
-            if (maxScroll > 0 && !paused) {
-                let pos = gallery.scrollLeft;
-                const remaining = direction === 1 ? (maxScroll - pos) : pos;
-
-                // Ease near edges
-                let easeFactor = 1;
-                if (remaining < easingDistance) {
-                    easeFactor = Math.max(0.05, remaining / easingDistance);
-                }
-
-                // Distance this frame
-                let move = direction * pixelsPerSecond * dt * easeFactor;
-
-                // If overshoot → clamp to edge, pause, flip
-                if (direction === 1 && pos + move >= maxScroll) {
-                    gallery.scrollLeft = maxScroll;
-                    triggerPause(-1);
-                } else if (direction === -1 && pos + move <= 0) {
-                    gallery.scrollLeft = 0;
-                    triggerPause(1);
-                } else {
-                    gallery.scrollLeft = pos + move;
-                }
+        function toggleZoom(img) {
+            if (zoomedImg && zoomedImg === img) {
+                unzoom();
+            } else {
+                zoom(img);
             }
-
-            requestAnimationFrame(step);
         }
 
-        function triggerPause(nextDir) {
-            if (paused) return;
-            paused = true;
+        function zoom(img) {
+            const grid = img.closest('.photo-grid') || document.getElementById('photoGrid');
+            if (!grid) return;
+
+            // set state
+            if (zoomedImg) unzoom(); // close previous if any
+            zoomedImg = img;
+            grid.classList.add('zoom-active');
+
+            // compute geometry
+            const imgRect = img.getBoundingClientRect();
+            const gridRect = grid.getBoundingClientRect();
+
+            const imgCenterX = imgRect.left + imgRect.width / 2;
+            const imgCenterY = imgRect.top + imgRect.height / 2;
+            const gridCenterX = gridRect.left + gridRect.width / 2;
+            const gridCenterY = gridRect.top + gridRect.height / 2;
+
+            const deltaX = gridCenterX - imgCenterX;
+            const deltaY = gridCenterY - imgCenterY;
+
+            // compute scale to fit into grid with padding
+            const maxWidth = gridRect.width * GRID_PADDING;
+            const maxHeight = gridRect.height * GRID_PADDING;
+            const scaleX = maxWidth / imgRect.width;
+            const scaleY = maxHeight / imgRect.height;
+            const scale = Math.max(1, Math.min(scaleX, scaleY));
+
+            // apply transform (translate then scale). use px values for translate
+            // Keep transform origin center so translate is correct.
+            img.style.transformOrigin = 'center center';
+            // use requestAnimationFrame so transition animates
+            requestAnimationFrame(() => {
+                img.classList.add('zoomed');
+                img.style.transform = `translate(${deltaX}px, ${deltaY}px) scale(${scale})`;
+            });
+
+            // attach handlers to close by clicking outside or pressing Esc
             setTimeout(() => {
-                direction = nextDir;
-                paused = false;
-                lastTime = null; // reset timing
-            }, pauseTime);
+                document.addEventListener('click', outsideClickHandler);
+                document.addEventListener('keydown', escHandler);
+                window.addEventListener('resize', resizeHandler);
+            }, 0);
         }
 
-        requestAnimationFrame(step);
-    }
+        function unzoom() {
+            if (!zoomedImg) return;
+            const img = zoomedImg;
+            const grid = img.closest('.photo-grid') || document.getElementById('photoGrid');
 
-    // after DOM is ready
-    document.addEventListener("DOMContentLoaded", () => {
-        initPingPongScroll("scrollGallery1", 600, 1500, 120);
-    });
+            img.classList.remove('zoomed');
+            img.style.transform = '';
+            img.style.transformOrigin = '';
+            zoomedImg = null;
+            if (grid) grid.classList.remove('zoom-active');
 
+            document.removeEventListener('click', outsideClickHandler);
+            document.removeEventListener('keydown', escHandler);
+            window.removeEventListener('resize', resizeHandler);
+        }
 
+        // if user clicks anywhere that's not the zoomed image, close
+        function outsideClickHandler(e) {
+            if (!zoomedImg) return;
+            if (e.target === zoomedImg) return; // click on the image itself will toggle via onclick
+            if (e.target.closest && e.target.closest('.photo-grid') === zoomedImg.closest('.photo-grid')) {
+                // If clicked inside the same grid but not on image -> close
+                unzoom();
+                return;
+            }
+            // clicked outside grid
+            unzoom();
+        }
+
+        function escHandler(e) {
+            if (e.key === 'Escape') unzoom();
+        }
+
+        function resizeHandler() {
+            // recompute transform so the zoomed image stays centered on resize
+            if (!zoomedImg) return;
+            // re-apply zoom with current image
+            const img = zoomedImg;
+            // small timeout so layout settles
+            setTimeout(() => {
+                // call zoom with same image will recalc and apply new transform
+                zoom(img);
+            }, 50);
+        }
+
+        // expose toggle to global (so inline onclick works)
+        window.toggleZoom = toggleZoom;
+        window.unzoomPhoto = unzoom;
+
+    })();
 
 </script>
 
