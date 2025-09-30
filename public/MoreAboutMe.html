@@ -18,12 +18,15 @@
         /*  About Me Sections   */
         .about-me {
             display: flex;
-            height: 100vh;
-            /* full screen */
-            overflow: hidden;
+            min-height: 100vh;
+            /* at least full screen, but can grow */
+            height: auto;
+            /* allow expansion with content */
+            overflow: visible;
+            /* so details aren’t clipped */
             border-radius: 20px;
-            /* optional if you want both sides together rounded */
         }
+
 
         .about-panel {
             flex: 1;
@@ -157,14 +160,33 @@
             gap: 12px;
         }
 
-        .grid1{
+        .grid1 {
             grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
         }
+
+        .grid2 {
+            grid-template-columns: repeat(auto-fit, minmax(125px, 1fr));
+        }
+
+        .grid3 {
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        }
+
         /*more*/
 
         .media-block1 {
             width: 80%;
-            Height: 340px;
+            Height: 450px;
+        }
+
+        .media-block2 {
+            width: 70%;
+            Height: 490px;
+        }
+
+        .media-block3 {
+            width: 90%;
+            Height: 470px;
         }
 
         /*more*/
@@ -291,6 +313,67 @@
                                     I train 3 times a week 4 hours in total. One of those day's I also teach the lower
                                     belts, wich in turn also gives me a new insight on how certain techiques are done.
                                     This help a lot with my development and gets me to keep up with all the material.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="content-block left-media">
+                            <!-- Media -->
+                            <div class="media-container">
+                                <div class="media-block media-block2 gallery-type">
+                                    <div class="photo-grid grid2" id="photoGrid">
+                                        <img src="imgs/AboutMe/Stars/img1.jpg" alt="Image 1" onclick="toggleZoom(this)">
+                                        <img src="imgs/AboutMe/Stars/img2.jpg" alt="Image 2" onclick="toggleZoom(this)">
+                                        <img src="imgs/AboutMe/Stars/img3.jpg" alt="Image 2" onclick="toggleZoom(this)">
+                                        <img src="imgs/AboutMe/Stars/img4.jpg" alt="Image 2" onclick="toggleZoom(this)">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Text -->
+                            <div class="text-container">
+                                <h2>Stars</h2>
+                                <p>
+                                    As one of the things we don't look up to engough the stars always get a big look
+                                    from
+                                    me. With just a beginners telescope and my phone, the photo's to the left are all
+                                    made with just those two.
+                                </p>
+                                <p>
+                                    Something we know so littel about can always get my attention. Why do the stars
+                                    exist? How do they exist? When did they apear? These question are just a few that
+                                    roam my mind and that's why I admire it. You can't reach it, but you can see it.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="content-block right-media">
+                            <!-- Media -->
+                            <div class="media-container">
+                                <div class="media-block media-block3 gallery-type">
+                                    <div class="photo-grid grid3" id="photoGrid">
+                                        <img src="imgs/AboutMe/Range/img1.jpg" alt="Image 1" onclick="toggleZoom(this)">
+                                        <img src="imgs/AboutMe/Range/img2.jpg" alt="Image 2" onclick="toggleZoom(this)">
+                                        <img src="imgs/AboutMe/Range/img5.jpg" alt="Image 2" onclick="toggleZoom(this)">
+                                        <img src="imgs/AboutMe/Range/img6.jpg" alt="Image 2" onclick="toggleZoom(this)">
+                                        <img src="imgs/AboutMe/Range/img7.jpg" alt="Image 2" onclick="toggleZoom(this)">
+                                        <img src="imgs/AboutMe/Range/img10.png" alt="Image 2"
+                                            onclick="toggleZoom(this)">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Text -->
+                            <div class="text-container">
+                                <h2>Range/Militairy</h2>
+                                <p>
+                                    The passion for the militairy does show here. From when I was young I was always
+                                    playing with nerfguns. I understand that not everyone is very fond of weapons, but
+                                    it is my interest. Safety first though, that's what my dad was already teaching me
+                                    from a young age.
+                                </p>
+                                <p>
+                                    That is also needed at the range. If you don't follow rules it's as easy as getting
+                                    kicked out. You shoot safe or you don't shoot. One of the reasons I started at this
+                                    specific range.
                                 </p>
                             </div>
                         </div>
