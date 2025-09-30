@@ -9,6 +9,7 @@
     <style>
         body {
             font-family: 'Montserrat', sans-serif;
+            font-size: large;
             background: linear-gradient(135deg, #233440, #1a1c29);
             color: #919191;
             padding: 40px;
@@ -122,7 +123,6 @@
             border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-            width: 70%;
         }
 
         .media-block img,
@@ -154,9 +154,20 @@
         .photo-grid {
             position: relative;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
             gap: 12px;
         }
+
+        .grid1{
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+        }
+        /*more*/
+
+        .media-block1 {
+            width: 80%;
+            Height: 340px;
+        }
+
+        /*more*/
 
         .photo-grid img {
             width: 100%;
@@ -236,6 +247,8 @@
                 flex-direction: column;
             }
         }
+
+        /*  Specific Gallery blocks */
     </style>
 </head>
 
@@ -250,37 +263,34 @@
                 <h1>Hobbies</h1>
                 <p class="intro">Click to learn more about my hobbies</p>
                 <div class="details">
-                
+
                     <!-- Content Section -->
                     <section class="content-section">
                         <div class="content-block right-media">
                             <!-- Media -->
                             <div class="media-container">
-                                <div class="media-block gallery-type">
-                                    <div class="photo-grid" id="photoGrid">
-                                        <img src="imgs/DungeonShooter.png" alt="Image 1" onclick="toggleZoom(this)">
-                                        <img src="imgs/DungeonShooter1.png" alt="Image 2" onclick="toggleZoom(this)">
-                                        <img src="imgs/DungeonShooter2.png" alt="Image 3" onclick="toggleZoom(this)">
-                                        <img src="imgs/DungeonShooter3.png" alt="Image 3" onclick="toggleZoom(this)">
-                                        <img src="imgs/Whissis1.png" alt="Image 3" onclick="toggleZoom(this)">
-                                        <img src="imgs/Whissis2.png" alt="Image 3" onclick="toggleZoom(this)">
+                                <div class="media-block media-block1 gallery-type">
+                                    <div class="photo-grid grid1" id="photoGrid">
+                                        <img src="imgs/AboutMe/Kenpo/img1.jpg" alt="Image 1" onclick="toggleZoom(this)">
+                                        <img src="imgs/AboutMe/Kenpo/img4.jpg" alt="Image 3" onclick="toggleZoom(this)">
+                                        <img src="imgs/AboutMe/Kenpo/img3.jpg" alt="Image 3" onclick="toggleZoom(this)">
+                                        <img src="imgs/AboutMe/Kenpo/img2.jpg" alt="Image 2" onclick="toggleZoom(this)">
                                     </div>
                                 </div>
                             </div>
 
                             <!-- Text -->
                             <div class="text-container">
-                                <h2>Example Topic</h2>
+                                <h2>Martial Arts</h2>
                                 <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                    Nulla at felis sit amet magna tincidunt malesuada.
-                                    Suspendisse potenti. Donec suscipit erat et lacus aliquam,
-                                    a volutpat nisl pretium.
+                                    I personaly think it's good for everyone to have something they absolutly are fond
+                                    about.
+                                    For me it's my martial arts sport called: "American Kenpo Karate".
                                 </p>
                                 <p>
-                                    Morbi in porttitor neque. Integer non varius nunc.
-                                    Fusce ac sapien eu orci varius finibus.
-                                    Duis nec dui eget velit blandit maximus.
+                                    I train 3 times a week 4 hours in total. One of those day's I also teach the lower
+                                    belts, wich in turn also gives me a new insight on how certain techiques are done.
+                                    This help a lot with my development and gets me to keep up with all the material.
                                 </p>
                             </div>
                         </div>
