@@ -287,11 +287,12 @@
             display: flex;
             flex-direction: column;
             max-width: 320px;
+            margin: 15px;
         }
 
         .skill-card:hover {
             transform: translateY(-6px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.45);
+            box-shadow: 0 10px 20px rgba(255, 255, 255, 0.45);
         }
 
         .skill-image img {
@@ -329,6 +330,70 @@
 
         .skill-tag:hover {
             background: #007bff;
+        }
+
+        .skill-card-container {
+            display: flex;
+            flex-wrap: wrap;
+            /* allows wrapping onto next row */
+            gap: 20px;
+            /* spacing between cards */
+            justify-content: center;
+            /* center them nicely */
+        }
+
+
+
+        /* ============================= */
+        /*        Hidden overlay         */
+        /* ============================= */
+        .overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        /* Cover panel */
+        .overlay-content {
+            background: #2e3445;
+            color: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            width: 70%;
+            max-width: 800px;
+            min-height: 300px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+            animation: fadeIn 0.3s ease;
+            position: relative;
+        }
+
+        /* Close button */
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from {
+                transform: scale(0.95);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
         }
     </style>
 </head>
@@ -449,32 +514,60 @@
                 <p class="intro">Click to explore my skills</p>
                 <div class="details">
                     <!-- Skill Card -->
-                    <div class="skill-card">
-                        <div class="skill-image">
-                            <img src="imgs/AboutMe/Skills/GameEngineIcon2.png" alt="Unreal Engine Example">
+                    <div class="skill-card-container">
+                        <div class="skill-card" onclick="openOverlay('Skill 1')">
+                            <div class="skill-image">
+                                <img src="imgs/AboutMe/Skills/ProgrammingLanguageIcon.jpg" alt="Unreal Engine Example">
+                            </div>
+                            <div class="skill-content">
+                                <h3 class="skill-title">Language</h3>
+                                <div class="skill-tags">
+                                    <span class="skill-tag">C#</span>
+                                    <span class="skill-tag">C++</span>
+                                    <span class="skill-tag">HTML</span>
+                                    <span class="skill-tag">CSS</span>
+                                    <span class="skill-tag">JS</span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="skill-content">
-                            <h3 class="skill-title">Game Engines</h3>
-                            <div class="skill-tags">
-                                <span class="skill-tag">Unreal Engine</span>
-                                <span class="skill-tag">Unity</span>
+                        <div class="skill-card" onclick="openOverlay('Skill 2')">
+                            <div class="skill-image">
+                                <img src="imgs/AboutMe/Skills/GameEngineIcon2.png" alt="Unreal Engine Example">
+                            </div>
+                            <div class="skill-content">
+                                <h3 class="skill-title">Game Engines</h3>
+                                <div class="skill-tags">
+                                    <span class="skill-tag">Unreal Engine</span>
+                                    <span class="skill-tag">Unity</span>
+                                    <span class="skill-tag">RayLib</span>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-card" onclick="openOverlay('Skill 3')">
+                            <div class="skill-image">
+                                <img src="imgs/AboutMe/Skills/SoftSkillsIcon.png" alt="Unreal Engine Example">
+                            </div>
+                            <div class="skill-content">
+                                <h3 class="skill-title">Softskill</h3>
+                                <div class="skill-tags">
+                                    <span class="skill-tag">Teamwork</span>
+                                    <span class="skill-tag">Teaching</span>
+                                    <span class="skill-tag">Scrum</span>
+
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="skill-card">
-                        <div class="skill-image">
-                            <img src="imgs/AboutMe/Skills/ProgrammingLanguageIcon.jpg" alt="Unreal Engine Example">
-                        </div>
-                        <div class="skill-content">
-                            <h3 class="skill-title">Language</h3>
-                            <div class="skill-tags">
-                                <span class="skill-tag">C#</span>
-                                <span class="skill-tag">C++</span>
-                                <span class="skill-tag">HTML</span>
-                                <span class="skill-tag">CSS</span>
-                                <span class="skill-tag">JS</span>
 
-                            </div>
+                    <div id="overlay" class="overlay" onclick="closeOverlay(event)">
+                        <div class="overlay-content" onclick="event.stopPropagation()">
+                            <button class="close-btn" onclick="closeOverlay()">✕</button>
+                            <h2 id="overlay-title"></h2>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                More details about this skill go here.
+                            </p>
                         </div>
                     </div>
 
@@ -665,6 +758,18 @@
         window.unzoomPhoto = unzoom;
 
     })();
+
+
+    //Cover Overlay
+    function openOverlay(skillName) {
+        document.getElementById("overlay-title").innerText = skillName;
+        document.getElementById("overlay").style.display = "flex";
+    }
+
+    function closeOverlay(event) {
+        document.getElementById("overlay").style.display = "none";
+    }
+
 
 </script>
 
