@@ -38,7 +38,8 @@
             transition: flex 0.8s ease, opacity 0.8s ease;
             cursor: pointer;
             position: relative;
-            overflow: hidden;
+            overflow: auto;
+            /* instead of hidden, lets content scroll if needed */
         }
 
         /* Round corners only on the outside edges */
@@ -115,6 +116,9 @@
         }
 
         /*  About content   */
+        /* ============================= */
+        /*           Hobbies             */
+        /* ============================= */
         .about-content {
             display: flex;
             gap: 20px;
@@ -270,7 +274,62 @@
             }
         }
 
-        /*  Specific Gallery blocks */
+        /* ============================= */
+        /*           Skills              */
+        /* ============================= */
+
+        .skill-card {
+            background: #2e3445;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            max-width: 320px;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.45);
+        }
+
+        .skill-image img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-bottom: 3px solid #1a1c29;
+        }
+
+        .skill-content {
+            padding: 20px;
+        }
+
+        .skill-title {
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            color: #fff;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-tag {
+            background: #3d4457;
+            color: #fff;
+            padding: 6px 12px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            white-space: nowrap;
+            transition: background 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: #007bff;
+        }
     </style>
 </head>
 
@@ -389,9 +448,36 @@
                 <h2>Skills</h2>
                 <p class="intro">Click to explore my skills</p>
                 <div class="details">
-                    <h3>Example Skill</h3>
-                    <p>Some longer text about skills goes here. Could include carousel later.</p>
-                    <img src="imgs/example.jpg" alt="Example skill">
+                    <!-- Skill Card -->
+                    <div class="skill-card">
+                        <div class="skill-image">
+                            <img src="imgs/AboutMe/Skills/GameEngineIcon2.png" alt="Unreal Engine Example">
+                        </div>
+                        <div class="skill-content">
+                            <h3 class="skill-title">Game Engines</h3>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Unreal Engine</span>
+                                <span class="skill-tag">Unity</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-image">
+                            <img src="imgs/AboutMe/Skills/ProgrammingLanguageIcon.jpg" alt="Unreal Engine Example">
+                        </div>
+                        <div class="skill-content">
+                            <h3 class="skill-title">Language</h3>
+                            <div class="skill-tags">
+                                <span class="skill-tag">C#</span>
+                                <span class="skill-tag">C++</span>
+                                <span class="skill-tag">HTML</span>
+                                <span class="skill-tag">CSS</span>
+                                <span class="skill-tag">JS</span>
+
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
