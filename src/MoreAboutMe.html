@@ -513,14 +513,16 @@
                 <h2>Skills</h2>
                 <p class="intro">Click to explore my skills</p>
                 <div class="details">
-                    <!-- Skill Card -->
+
                     <div class="skill-card-container">
-                        <div class="skill-card" onclick="openOverlay('Skill 1')">
+                        <!-- Skill Card 1 -->
+                        <div class="skill-card"
+                            onclick="document.getElementById('overlay-Skill-1').style.display='flex'">
                             <div class="skill-image">
-                                <img src="imgs/AboutMe/Skills/ProgrammingLanguageIcon.jpg" alt="Unreal Engine Example">
+                                <img src="imgs/AboutMe/Skills/ProgrammingLanguageIcon.jpg" alt="Programming">
                             </div>
                             <div class="skill-content">
-                                <h3 class="skill-title">Language</h3>
+                                <h3 class="skill-title">Languages</h3>
                                 <div class="skill-tags">
                                     <span class="skill-tag">C#</span>
                                     <span class="skill-tag">C++</span>
@@ -530,9 +532,22 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="skill-card" onclick="openOverlay('Skill 2')">
+
+                        <!-- Overlay: Skill 1 -->
+                        <div id="overlay-Skill-1" class="overlay" onclick="closeOverlay(event)">
+                            <div class="overlay-content" onclick="event.stopPropagation()">
+                                <button class="close-btn" onclick="closeOverlay()">✕</button>
+                                <h2>Programming Skills</h2>
+                                <p>Details about programming here...</p>
+                            </div>
+                        </div>
+
+
+                        <!-- Skill Card 2 -->
+                        <div class="skill-card"
+                            onclick="document.getElementById('overlay-Skill-2').style.display='flex'">
                             <div class="skill-image">
-                                <img src="imgs/AboutMe/Skills/GameEngineIcon2.png" alt="Unreal Engine Example">
+                                <img src="imgs/AboutMe/Skills/GameEngineIcon2.png" alt="Game Engines">
                             </div>
                             <div class="skill-content">
                                 <h3 class="skill-title">Game Engines</h3>
@@ -540,34 +555,43 @@
                                     <span class="skill-tag">Unreal Engine</span>
                                     <span class="skill-tag">Unity</span>
                                     <span class="skill-tag">RayLib</span>
-
                                 </div>
                             </div>
                         </div>
-                        <div class="skill-card" onclick="openOverlay('Skill 3')">
+
+                        <!-- Overlay: Skill 2 -->
+                        <div id="overlay-Skill-2" class="overlay" onclick="closeOverlay(event)">
+                            <div class="overlay-content" onclick="event.stopPropagation()">
+                                <button class="close-btn" onclick="closeOverlay()">✕</button>
+                                <h2>Game Engine Skills</h2>
+                                <p>Details about game engine experience...</p>
+                            </div>
+                        </div>
+
+
+                        <!-- Skill Card 3 -->
+                        <div class="skill-card"
+                            onclick="document.getElementById('overlay-Skill-3').style.display='flex'">
                             <div class="skill-image">
-                                <img src="imgs/AboutMe/Skills/SoftSkillsIcon.png" alt="Unreal Engine Example">
+                                <img src="imgs/AboutMe/Skills/SoftSkillsIcon.png" alt="Soft Skills">
                             </div>
                             <div class="skill-content">
-                                <h3 class="skill-title">Softskill</h3>
+                                <h3 class="skill-title">Soft Skills</h3>
                                 <div class="skill-tags">
                                     <span class="skill-tag">Teamwork</span>
                                     <span class="skill-tag">Teaching</span>
                                     <span class="skill-tag">Scrum</span>
-
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div id="overlay" class="overlay" onclick="closeOverlay(event)">
-                        <div class="overlay-content" onclick="event.stopPropagation()">
-                            <button class="close-btn" onclick="closeOverlay()">✕</button>
-                            <h2 id="overlay-title"></h2>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                More details about this skill go here.
-                            </p>
+                        <!-- Overlay: Skill 3 -->
+                        <div id="overlay-Skill-3" class="overlay" onclick="closeOverlay(event)">
+                            <div class="overlay-content" onclick="event.stopPropagation()">
+                                <button class="close-btn" onclick="closeOverlay()">✕</button>
+                                <h2>Soft Skills</h2>
+                                <p>Details about teamwork, teaching, scrum...</p>
+                            </div>
                         </div>
                     </div>
 
@@ -761,14 +785,18 @@
 
 
     //Cover Overlay
-    function openOverlay(skillName) {
-        document.getElementById("overlay-title").innerText = skillName;
-        document.getElementById("overlay").style.display = "flex";
+    function closeOverlay(event) {
+        if (event) {
+            // Close only if clicked background or close button
+            if (event.target.classList.contains('overlay') || event.target.classList.contains('close-btn')) {
+                event.target.closest('.overlay').style.display = "none";
+            }
+        } else {
+            // fallback: close all
+            document.querySelectorAll('.overlay').forEach(o => o.style.display = "none");
+        }
     }
 
-    function closeOverlay(event) {
-        document.getElementById("overlay").style.display = "none";
-    }
 
 
 </script>
