@@ -313,13 +313,13 @@
         }
 
         .skill-tags {
-            display: flex;
             flex-wrap: wrap;
             gap: 8px;
+
         }
 
         .skill-tag {
-            background: #3d4457;
+            background: #46506a;
             color: #fff;
             padding: 6px 12px;
             border-radius: 50px;
@@ -359,13 +359,16 @@
 
         /* Cover panel */
         .overlay-content {
-            background: #2e3445;
+            background: #363b4e;
             color: #fff;
             padding: 30px;
             border-radius: 12px;
             width: 70%;
-            max-width: 800px;
+            max-width: 75%px;
             min-height: 300px;
+            max-height: 80vh;
+            /* take up to 80% of viewport height */
+            overflow-y: auto;
             box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
             animation: fadeIn 0.3s ease;
             position: relative;
@@ -394,6 +397,39 @@
                 transform: scale(1);
                 opacity: 1;
             }
+        }
+
+        /* Custom Scrollbar for Overlay */
+        .overlay-content::-webkit-scrollbar {
+            width: 10px;
+            /* scrollbar width */
+        }
+
+        .overlay-content::-webkit-scrollbar-track {
+            background: #2e3445;
+            /* track color */
+            border-radius: 10px;
+        }
+
+        .overlay-content::-webkit-scrollbar-thumb {
+            background: #555d72;
+            /* thumb color */
+            border-radius: 10px;
+            border: 2px solid #2e3445;
+            /* padding effect */
+        }
+
+        .overlay-content::-webkit-scrollbar-thumb:hover {
+            background: #007bff;
+            /* glow on hover */
+        }
+
+        /* Firefox support */
+        .overlay-content {
+            scrollbar-width: 5%;
+            /* slim scrollbar */
+            scrollbar-color: #354877 #2e3445;
+            /* thumb | track */
         }
     </style>
 </head>
@@ -564,7 +600,87 @@
                             <div class="overlay-content" onclick="event.stopPropagation()">
                                 <button class="close-btn" onclick="closeOverlay()">✕</button>
                                 <h2>Game Engine Skills</h2>
-                                <p>Details about game engine experience...</p>
+                                <div class="skill-tags">
+                                    <span class="skill-tag">Unreal Engine</span>
+                                    <span class="skill-tag">Unity</span>
+                                    <span class="skill-tag">RayLib</span>
+                                </div>
+                                <section class="content-section">
+                                    <div class="content-block right-media">
+                                        <!-- Media -->
+                                        <div class="media-container">
+
+                                        </div>
+
+                                        <!-- Text -->
+                                        <div class="text-container">
+                                            <h2>Unity</h2>
+                                            <p>
+                                                Of course Unity is a bit of a well know program for developers. My study
+                                                course at GLU always uses this as the standerd so I will say that my
+                                                experience in Unity is quit big. Considering I've already worked with it
+                                                for almost more then 2 years.
+                                            </p>
+                                            <p>
+                                                Much of my offtime programming is in Unity. It's easy to start up so I
+                                                don't have to worry about all the shenanigans. It's also a fan of VR and
+                                                that's a plus point of course. The XR-intergration toolkit is always on
+                                                hand when talking about a VR game in Unity.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="content-block left-media">
+                                        <!-- Media -->
+                                        <div class="media-container">
+
+                                        </div>
+
+                                        <!-- Text -->
+                                        <div class="text-container">
+                                            <h2>Unreal</h2>
+                                            <p>
+                                                The program more know for it's power. It's less familiar to me then
+                                                unity, but I do find my way around blueprints verymuch. Learning C++ is going to
+                                                be my main goal moving forward when developing with Unreal. 
+                                            </p>
+                                            <p>
+                                                Something we know so littel about can always get my attention. Why do
+                                                the stars
+                                                exist? How do they exist? When did they apear? These question are just a
+                                                few that
+                                                roam my mind and that's why I admire it. You can't reach it, but you can
+                                                see it.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="content-block right-media">
+                                        <!-- Media -->
+                                        <div class="media-container">
+
+                                        </div>
+
+                                        <!-- Text -->
+                                        <div class="text-container">
+                                            <h2>RayLib</h2>
+                                            <p>
+                                                The passion for the militairy does show here. From when I was young I
+                                                was always
+                                                playing with nerfguns. I understand that not everyone is very fond of
+                                                weapons, but
+                                                it is my interest. Safety first though, that's what my dad was already
+                                                teaching me
+                                                from a young age.
+                                            </p>
+                                            <p>
+                                                That is also needed at the range. If you don't follow rules it's as easy
+                                                as getting
+                                                kicked out. You shoot safe or you don't shoot. One of the reasons I
+                                                started at this
+                                                specific range.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </section>
                             </div>
                         </div>
 
