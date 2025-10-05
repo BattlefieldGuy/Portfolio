@@ -431,6 +431,20 @@
             scrollbar-color: #354877 #2e3445;
             /* thumb | track */
         }
+
+        /*background images */
+        .engine-bg {
+            background: url("imgs/AboutMe/Skills/EnginesBG.jpg") center/cover no-repeat;
+        }
+
+        .language-bg {
+            background: url("imgs/AboutMe/Skills/LanguagesBG.png") center/cover no-repeat;
+            
+        }
+
+        .softskills-bg {
+            background: url("imgs/AboutMe/Skills/SoftBG.jpg") center/cover no-repeat;
+        }
     </style>
 </head>
 
@@ -571,10 +585,70 @@
 
                         <!-- Overlay: Skill 1 -->
                         <div id="overlay-Skill-1" class="overlay" onclick="closeOverlay(event)">
-                            <div class="overlay-content" onclick="event.stopPropagation()">
+                            <div class="overlay-content language-bg" onclick="event.stopPropagation()">
                                 <button class="close-btn" onclick="closeOverlay()">✕</button>
-                                <h2>Programming Skills</h2>
-                                <p>Details about programming here...</p>
+                                <div class="skill-tags">
+                                    <h2>Languages</h2>
+                                    <span class="skill-tag">C#</span>
+                                    <span class="skill-tag">C++</span>
+                                    <span class="skill-tag">HTML</span>
+                                    <span class="skill-tag">CSS</span>
+                                    <span class="skill-tag">JS</span>
+                                </div>
+                                <section class="content-section">
+                                    <!-- content block -->
+                                    <div class="content-block left-media">
+                                        <!-- Media -->
+                                        <div class="media-container">
+
+                                        </div>
+
+                                        <!-- Text -->
+                                        <div class="text-container">
+                                            <h2>C#</h2>
+                                            <p>
+                                                Obviously tied to the fact that I work a lot with Unity. I Learned the
+                                                most with it and do the most with it.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <!-- content block -->
+                                    <div class="content-block right-media">
+                                        <!-- Media -->
+                                        <div class="media-container">
+
+                                        </div>
+
+                                        <!-- Text -->
+                                        <div class="text-container">
+                                            <h2>C++</h2>
+                                            <p>
+                                                A bit les know but a familiar programming language for me. Used in a
+                                                special project with Raylib, it's not quite the same as C#.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <!-- content block -->
+                                    <div class="content-block left-media">
+                                        <!-- Media -->
+                                        <div class="media-container">
+
+                                        </div>
+
+                                        <!-- Text -->
+                                        <div class="text-container">
+                                            <h2>WEB</h2>
+                                            <p>
+                                                If you are reading this, then you'd know that I made this website. It
+                                                started with the help of AI but that's rarely needed anymore. All three
+                                                Languages used in this website are well known to me. That being HTML,
+                                                CSS and JS Mostly due to the fact that I made this portfolio. I did
+                                                however start programming in P5JS, in wich case helped me learn JS
+                                                faster.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </section>
                             </div>
                         </div>
 
