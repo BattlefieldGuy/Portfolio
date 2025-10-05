@@ -419,8 +419,106 @@
             font-weight: bold;
             box-shadow: 0 0 6px #e7d436;
         }
+
+        /* Preloader background */
+        #preloader {
+            position: fixed;
+            inset: 0;
+            background: #0a0a0a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.6s ease, visibility 0.6s ease;
+        }
+
+        /* Loader animation */
+        .loader {
+            width: 60px;
+            height: 60px;
+            border: 6px solid #333;
+            border-top-color: #f5f5f5;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* When loading is done */
+        #preloader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        /* welcome popup */
+        .welcome-popup {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.75);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9998;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.6s ease, visibility 0.6s ease;
+        }
+
+        .welcome-popup.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .popup-content {
+            background: rgba(30, 30, 30, 0.9);
+            border-radius: 20px;
+            padding: 30px 40px;
+            text-align: center;
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+            animation: popupIn 0.6s ease;
+        }
+
+        .popup-content h2 {
+            margin-bottom: 15px;
+        }
+
+        .popup-content button {
+            margin-top: 20px;
+            padding: 10px 25px;
+            background: #f5f5f5;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .popup-content button:hover {
+            background: #ddd;
+        }
+
+        @keyframes popupIn {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
     </style>
 </head>
+
+<!-- preloader -->
+<div id="preloader">
+    <div class="loader"></div>
+</div>
 
 <body>
 
@@ -624,6 +722,16 @@
 
     </section>
 
+    <!-- welcome popup -->
+    <div id="welcome-popup" class="welcome-popup">
+        <div class="popup-content">
+            <h2>Welcome!</h2>
+            <p>Thanks for looking! Find anything out of place or you have a question? My contacts are down below↓ Feel
+                free to contact me about the question/problem!</p>
+            <button onclick="closeWelcome()">Let's Go</button>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer>
         <div>
@@ -788,6 +896,35 @@ Deze portfolio is gemaakt met HTML, CSS en JavaScript, dus je zou kunnen zeggen 
                 });
             });
         }
+
+        //preloader  
+        window.addEventListener("load", () => {
+            const preloader = document.getElementById("preloader");
+            preloader.classList.add("hidden");
+        });
+
+        //welcome popup
+        function closeWelcome() {
+            const popup = document.getElementById("welcome-popup");
+            popup.classList.remove("active");
+            localStorage.setItem("welcomeShown", "true"); // remember that it's been shown
+        }
+
+        window.addEventListener("load", () => {
+            const popup = document.getElementById("welcome-popup");
+            const preloader = document.getElementById("preloader");
+            const alreadyShown = localStorage.getItem("welcomeShown");
+
+            // hide preloader first
+            preloader.classList.add("hidden");
+
+            // show popup only if not shown before
+            if (!alreadyShown) {
+                setTimeout(() => {
+                    popup.classList.add("active");
+                }, 800); // short delay for smooth transition
+            }
+        });
     </script>
 </body>
 
