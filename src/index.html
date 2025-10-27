@@ -564,8 +564,8 @@
             <h2 class="text-center mb-4 ProjectsHeader">Projects</h2>
             <div class="text-center mb-4">
                 <div class="btn-group filter-group" role="group" aria-label="Filter projects">
-                    <button type="button" class="btn btn-outline-light active" data-tag="all"
-                        onclick="toggleFilter(this)">All</button>
+                    <button type="button" class="btn btn-outline-light translatable-text active" data-key="All-Filter"
+                        data-tag="all" onclick="toggleFilter(this)">All</button>
                     <button type="button" class="btn btn-outline-light" data-tag="Unity"
                         onclick="toggleFilter(this)">Unity C#</button>
                     <button type="button" class="btn btn-outline-light" data-tag="Unreal"
@@ -576,8 +576,8 @@
                         onclick="toggleFilter(this)">PC</button>
                     <button type="button" class="btn btn-outline-light" data-tag="Console"
                         onclick="toggleFilter(this)">Console</button>
-                    <button type="button" class="btn btn-outline-light translatable-text" data-key="Time-Tag-Own"
-                        data-tag="Recreation" onclick="toggleFilter(this)">Recreation Project</button>
+                    <button type="button" class="btn btn-outline-light " data-tag="Recreation"
+                        onclick="toggleFilter(this)">Hobby Project</button>
                 </div>
             </div>
             <div class="masonry">
@@ -619,7 +619,7 @@
                         <div class="card-body text-center">
                             <h3 class="project-title">Kuru Kuru</h3>
                             <div class="tags">
-                                <span class="tagTime translatable-text" data-key="Time-Tag-Own">Own time</span>
+                                <span class="tagTime">Hobby Project</span>
                                 <span><img src="imgs/Icons/Unity.png" alt="Engine Icon"
                                         class="tagEngine tagEngineIMGUnity"></span>
                                 <span><img src="imgs/Icons/PC.png" alt="Platform Icon" class="tagPlatform"
@@ -681,7 +681,7 @@
                         <div class="card-body text-center">
                             <h3 class="project-title">DungeonShooter</h3>
                             <div class="tags">
-                                <span class="tagTime translatable-text" data-key="Time-Tag-Own">Own time</span>
+                                <span class="tagTime">Hobby Project</span>
                                 <span><img src="imgs/Icons/Unity.png" alt="Engine Icon"
                                         class="tagEngine tagEngineIMGUnity"></span>
                                 <span><img src="imgs/Icons/PC.png" class="tagPlatform tagPlatformIMG"> <img
@@ -711,15 +711,13 @@
                     </a>
 
                     <!-- Carved text around -->
-                    <span class="carved-text top-left">MORE</span>
-                    <span class="carved-text top-right">ABOUT</span>
-                    <span class="carved-text bottom-left">ME</span>
-                    <span class="carved-text bottom-right">HERE</span>
+                    <span class="carved-text top-left translatable-text" data-key="More">MORE</span>
+                    <span class="carved-text top-right translatable-text" data-key="About">ABOUT</span>
+                    <span class="carved-text bottom-left translatable-text" data-key="Me">ME</span>
+                    <span class="carved-text bottom-right translatable-text" data-key="Here">HERE</span>
                 </div>
             </div>
         </div>
-
-
     </section>
 
     <!-- welcome popup -->
@@ -757,11 +755,16 @@
                 "Welcome-Extra": "XR developer and code enthusiast",
                 "Time-Tag-4": "4 weeks",
                 "Time-Tag-8": "8 weeks",
-                "Time-Tag-Own": "Recreation Project",
+                "All-Filter": "All",
                 "AboutMe": "About Me",
                 "AboutMeText": `So let me tell you something about me. I'm 17, always had a passion for games and the military has always had my interest, wich is probably noticable in the picture on the right. My hobby's exist of a martial arts sport, reading, gaming and most of all developing games. As a kid I always wonderd how fun it would be to make games. There had been some douts but eventualy after I found the right study, I whent on to become an XR developer.
                  
                 Of course as an XR developer, Unity is well know engine to me. As is C#. I also work in C++ And learing to use it with Unreal. This portfolio is made with HTML, CSS and JavaScript so I gues you could say that I'm also good at that.`,
+                "More": "MORE",
+                "About": "ABOUT",
+                "Me": "ME",
+                "Here": "HERE",
+
                 /* About me text EN
                 
                 So let me tell you something about
@@ -778,10 +781,10 @@
             },
             nl: {
                 "Welcome": "Welkom op Matthew's Portfolio",
-                "Welcome-Extra": "XR ontwikkelaar en codeliefhebber",
+                "Welcome-Extra": "XR-ontwikkelaar en codeliefhebber",
                 "Time-Tag-4": "4 weken",
                 "Time-Tag-8": "8 weken",
-                "Time-Tag-Own": "Recreatie project",
+                "All-Filter": "Allen",
                 "AboutMe": "Over Mij",
                 "AboutMeText": `Laat me iets over mezelf vertellen. Ik ben 17, heb altijd een passie gehad voor games
 en het leger heeft me ook altijd geïnteresseerd, wat waarschijnlijk te zien is op de foto rechts.
@@ -792,7 +795,11 @@ ben ik verder gegaan om XR-ontwikkelaar te worden.
 
 Natuurlijk is Unity als XR-ontwikkelaar een bekende engine voor mij. Net als C#.
 Ik werk ook met C++ en ben aan het leren om het te gebruiken met Unreal.
-Deze portfolio is gemaakt met HTML, CSS en JavaScript, dus je zou kunnen zeggen dat ik daar ook goed in ben.`,
+Dit portfolio is gemaakt met HTML, CSS en JavaScript, dus je zou kunnen zeggen dat ik daar ook goed in ben.`,
+                "More": "MEER",
+                "About": "OVER",
+                "Me": "MIJ",
+                "Here": "HIER",
             }
         };
 
