@@ -354,7 +354,7 @@
             transition: max-height 0.5s ease, opacity 0.5s ease, padding 0.3s ease;
             max-width: 1300px;
             margin: 20px auto;
-            background: #f8f9fa;
+            background: #324354c2;
             padding: 0 20px;
             /* Start with minimal padding */
             border-radius: 10px;
@@ -369,6 +369,7 @@
 
         .details-section.open {
             max-height: 1000px;
+            background-color: rgb(109, 109, 111);
             /* large enough for content */
             opacity: 1;
             padding: 20px;
@@ -392,11 +393,19 @@
             text-align: left;
         }
 
+        .Description-Titel {
+            color: #6ac4d5;
+        }
+
+        .Description-Text {
+            color: #c8c8c8;
+        }
+
         .details-btn {
             display: block;
             margin: 20px auto 0;
             background: #007bff;
-            color: white;
+            color: rgba(227, 245, 235, 0.483);
             padding: 10px 20px;
             border-radius: 20px;
             border: none;
@@ -654,9 +663,10 @@
                                     allowfullscreen></iframe>
                             </div>
                             <div class="description">
-                                <h3 class="translatable-text" data-key="Description">oops something whent wrong, reload
+                                <h3 class="Description-Titel translatable-text" data-key="Description">oops something
+                                    whent wrong, reload
                                     the page</h3>
-                                <p class="translatable-text" data-key="DescriptionText1"></p>
+                                <p class="Description-Text translatable-text" data-key="DescriptionText1"></p>
                             </div>
                         </div>
                     </div>
@@ -706,9 +716,10 @@
                             </div>
 
                             <div class="description">
-                                <h3 class="translatable-text" data-key="Description">oops something whent wrong, reload
+                                <h3 class="Description-Titel translatable-text" data-key="Description">oops something
+                                    whent wrong, reload
                                     the page</h3>
-                                <p class="translatable-text" data-key="DescriptionText2"></p>
+                                <p class="Description-Text translatable-text" data-key="DescriptionText2"></p>
                             </div>
                         </div>
                     </div>
