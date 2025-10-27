@@ -854,6 +854,8 @@ Deze portfolio is gemaakt met HTML, CSS en JavaScript, dus je zou kunnen zeggen 
                     button.classList.remove('active');
                     activeFilters.delete(tag);
                 } else {
+                    activeFilters.clear();
+                    document.querySelectorAll('.filter-group .btn').forEach(btn => btn.classList.remove('active'));
                     button.classList.add('active');
                     activeFilters.add(tag);
                 }
