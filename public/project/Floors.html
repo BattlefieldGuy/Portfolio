@@ -421,12 +421,18 @@
             display: block;
             margin: 20px auto 0;
             background: #007bff;
-            color: rgba(227, 245, 235, 0.483);
+            color: rgb(212, 212, 212);
             padding: 10px 20px;
             border-radius: 20px;
             border: none;
             cursor: pointer;
             transition: background 0.3s;
+        }
+
+        .details-btn.active {
+            background: #007bff;
+            /* brighter active color */
+            color: rgba(245, 227, 227, 0.483);;
         }
 
         .details-btn:hover {
@@ -754,7 +760,17 @@ public class KeyTaskManager : MonoBehaviour
     <script>
         function toggleDetails(id) {
             const section = document.getElementById(id);
-            section.classList.toggle("open");
+            const button = section.previousElementSibling; // assumes button is right before details
+
+            const isOpen = section.classList.toggle("open");
+            button.classList.toggle("active", isOpen);
+
+            // Optional: change button text
+            if (isOpen) {
+                button.textContent = "Hide Details";
+            } else {
+                button.textContent = "Show Details";
+            }
         }
 
         const translations = {
