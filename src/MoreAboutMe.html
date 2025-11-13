@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Me - Matthew</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Montserrat:wght@600&family=Open+Sans&display=swap"
+        rel="stylesheet">
     <style>
         body {
             font-family: 'Montserrat', sans-serif;
@@ -13,6 +16,11 @@
             background: linear-gradient(135deg, #233440, #1a1c29);
             color: #919191;
             padding: 40px;
+        }
+
+        .navbar{
+            margin-bottom: 20px;
+            margin-top: 0px;
         }
 
         /*  About Me Sections   */
@@ -454,6 +462,29 @@
 
 <body>
 
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light rounded-pill shadow">
+        <div class="container">
+            <div class="container">
+                <div class="d-flex">
+                    <img src="imgs/Icons/English-flag.png" alt="English" onclick="setLanguage('en')"
+                        style="width: 40px; cursor: pointer;">
+                    <img src="imgs/Icons/Dutch-flag.png" alt="Dutch" onclick="setLanguage('nl')"
+                        style="width: 40px; cursor: pointer;">
+                </div>
+            </div>
+            <!-- <img src="imgs/Icons/English-flag.png" alt="English" class="flag-icon me-2"
+                        onclick="setLanguage('en')">
+                    <img src="imgs/Icons/Dutch-flag.png" alt="Dutch" class="flag-icon" onclick="setLanguage('nl')"> -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Back</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
     <!-- room for titel -->
 
     <div class="about-me">
@@ -609,8 +640,6 @@
                                         <div class="text-container">
                                             <h2>C#</h2>
                                             <p class="translatable-text" data-key="Skill-C#-Text">
-                                                Obviously tied to the fact that I work a lot with Unity. I Learned the
-                                                most with it and do the most with it.
                                             </p>
                                         </div>
                                     </div>
@@ -623,8 +652,6 @@
                                         <div class="text-container">
                                             <h2>C++</h2>
                                             <p class="translatable-text" data-key="Skill-C++-Text">
-                                                A bit les know but a familiar programming language for me. Used in a
-                                                special project with Raylib, it's not quite the same as C#.
                                             </p>
                                         </div>
                                     </div>
@@ -637,12 +664,6 @@
                                         <div class="text-container">
                                             <h2>WEB</h2>
                                             <p class="translatable-text" data-key="Skill-WEB-Text">
-                                                If you are reading this, then you'd know that I made this website. It
-                                                started with the help of AI but that's rarely needed anymore. All three
-                                                Languages used in this website are well known to me. That being HTML,
-                                                CSS and JS Mostly due to the fact that I made this portfolio. I did
-                                                however start programming in P5JS, in wich case helped me learn JS
-                                                faster.
                                             </p>
                                         </div>
                                     </div>
@@ -688,16 +709,8 @@
                                         <div class="text-container">
                                             <h2>Unity</h2>
                                             <p class="translatable-text" data-key="Skill-Unity-Text-1">
-                                                Of course Unity is a bit of a well know program for developers. My study
-                                                course at GLU always uses this as the standerd so I will say that my
-                                                experience in Unity is quit big. Considering I've already worked with it
-                                                for almost more then 2 years.
                                             </p>
                                             <p class="translatable-text" data-key="Skill-Unity-Text-2">
-                                                Much of my offtime programming is in Unity. It's easy to start up so I
-                                                don't have to worry about all the shenanigans. It's also a fan of VR and
-                                                that's a plus point of course. The XR-intergration toolkit is always on
-                                                hand when talking about a VR game in Unity.
                                             </p>
                                         </div>
                                     </div>
@@ -711,18 +724,8 @@
                                         <div class="text-container">
                                             <h2>Unreal</h2>
                                             <p class="translatable-text" data-key="Skill-Unreal-Text-1">
-                                                The program more know for it's power. It's less familiar to me then
-                                                unity, but I do find my way around blueprints verymuch. Learning C++ is
-                                                going to
-                                                be my main goal moving forward when developing with Unreal.
                                             </p>
                                             <p class="translatable-text" data-key="Skill-Unreal-Text-2">
-                                                Of course The project I used Unreal for was in VR, but it wasn't the
-                                                only gimic. It was a special project where we had to work together with
-                                                students from an film school. These students had the task to implement
-                                                motion animation made with a motion capture suit. It gave us a real
-                                                chalange to put a VR game together with those animations but it did work
-                                                out pretty good.
                                             </p>
                                         </div>
                                     </div>
@@ -736,15 +739,8 @@
                                         <div class="text-container">
                                             <h2>RayLib</h2>
                                             <p class="translatable-text" data-key="Skill-Raylib-Text-1">
-                                                RayLib is actualy a framework, specificly a framework for C++. It was a
-                                                real chalange to go this one working to. The start up procces was quit
-                                                anoying. It wasn't even my first chose for the project. That was SFML,
-                                                but with to much trouble starting a basic project I turned to a diffrent
-                                                framework.
                                             </p>
                                             <p class="translatable-text" data-key="Skill-Raylib-Text-2">
-                                                In the end it was a pretty good chose. Project was well made and I
-                                                learned good bit of the basics for C++.
                                             </p>
                                         </div>
                                     </div>
@@ -792,16 +788,8 @@
                                         <div class="text-container">
                                             <h2 class="translatable-text" data-key="Skill-Teamwork-Titel">Teamwork</h2>
                                             <p class="translatable-text" data-key="Skill-Teamwork-Text-1">
-                                                You could say teamwork is part of the job. And I would be glad, because
-                                                if not then it would be boring to work on a project. A solo project
-                                                Obviously doen't need team work. But I much rather have a team project
-                                                then a solo project.
                                             </p>
                                             <p class="translatable-text" data-key="Skill-Teamwork-Text-2">
-                                                We learned at school how to work together in a project. Talking about
-                                                code documentations, task managment and roles in the team. This we did
-                                                with websites. My personal favourite was Codecks, but I'm quit
-                                                adaptable. So any new ones I'm eager to learn.
                                             </p>
                                         </div>
                                     </div>
@@ -815,16 +803,8 @@
                                         <div class="text-container">
                                             <h2 class="translatable-text" data-key="Skill-Teaching-Titel">Teaching</h2>
                                             <p class="translatable-text" data-key="Skill-Teaching-Text-1">
-                                                When I was younger I've always liked helping people learn new things.
-                                                whether it was English, Math or something about a game I liked very
-                                                much.
                                             </p>
                                             <p class="translatable-text" data-key="Skill-Teaching-Text-2">
-                                                I've helped a lot of student and classmates at school. Sometimes the
-                                                teacher was bussy so he send student with questions to me. I'm also not
-                                                afraid to say that I don't know what the anwser is if I get a question.
-                                                I'm more intersed then to go through the steps with said person to find
-                                                out a solution together.
                                             </p>
                                         </div>
                                     </div>
@@ -838,16 +818,8 @@
                                         <div class="text-container">
                                             <h2>Scrum</h2>
                                             <p class="translatable-text" data-key="Skill-Scrum-Text-1">
-                                                School sort of trew a scrum method at us for a project. This project was
-                                                our first real teamproject with artist. So it was kind of swiming in
-                                                unknow hot waters. We didn't really know what to do, so we just started
-                                                with step 1 for the scrum method.
                                             </p>
                                             <p class="translatable-text" data-key="Skill-Scrum-Text-2">
-                                                We kept up with the stand ups every day. Kept good comunication and got
-                                                a great project out of it. I do love a bit of structure in teamprojects.
-                                                It give's an idea on what to do when you're stuck on something. And if
-                                                you set it up right, you can easily ask anyone on your team for help.
                                             </p>
                                         </div>
                                     </div>
@@ -874,39 +846,39 @@
         en: {
             // Hobies            
             "Martial-Arts-Titel": "Martial Arts",
-            "Martial-Arts-Text-1": "I personaly think it's good for everyone to have something they absolutly are fond about. For me it's my martial arts sport called: 'American Kenpo Karate'.",
-            "Martial-Arts-Text-2": "I train 3 times a week 4 hours in total. One of those day's I also teach the lower belts, wich in turn also gives me a new insight on how certain techiques are done. This help a lot with my development and gets me to keep up with all the material.",
+            "Martial-Arts-Text-1": "I personally think it's good for everyone to have something they absolutely are fond about. For me it's my martial arts sport called: 'American Kenpo Karate'.",
+            "Martial-Arts-Text-2": "I train 3 times a week 4 hours in total. One of those day's I also teach the lower belts, which in turn also gives me a new insight on how certain techniques are done. This help a lot with my development and gets me to keep up with all the material.",
             "Stars-Titel": "Stars",
-            "Stars-Text-1": "As one of the things we don't look up to engough the stars always get a big look from me. With just a beginners telescope and my phone, the photo's to the left are all made with just those two.",
-            "Stars-Text-2": "Something we know so littel about can always get my attention. Why do the stars exist? How do they exist? When did they apear? These question are just a few that roam my mind and that's why I admire it. You can't reach it, but you can see it.",
+            "Stars-Text-1": "As one of the things we don't look up to enough the stars always get a big look from me. With just a beginners telescope and my phone, the photo's to the left are all made with just those two.",
+            "Stars-Text-2": "Something we know so little about can always get my attention. Why do the stars exist? How do they exist? When did they appear? These question are just a few that roam my mind and that's why I admire it. You can't reach it, but you can see it.",
             "Range-Titel": "Range/Militairy",
-            "Range-Text-1": "The passion for the militairy does show here. From when I was young I was always playing with nerfguns. I understand that not everyone is very fond of weapons, but it is my interest. Safety first though, that's what my dad was already teaching me from a young age.",
+            "Range-Text-1": "The passion for the military does show here. From when I was young I was always playing with nerf guns. I understand that not everyone is very fond of weapons, but it is my interest. Safety first though, that's what my dad was already teaching me from a young age.",
             "Range-Text-2": "That is also needed at the range. If you don't follow rules it's as easy as getting kicked out. You shoot safe or you don't shoot. One of the reasons I started at this specific range.",
 
             // Skills
             // Language Skills
             "Skill-Language-Titel": "Programming Languages",
             "Skill-C#-Text": "Obviously tied to the fact that I work a lot with Unity. I Learned the most with it and do the most with it.",
-            "Skill-C++-Text": "A bit les know but a familiar programming language for me. Used in a special project with Raylib, it's not quite the same as C#.",
-            "Skill-WEB-Text": "If you are reading this, then you'd know that I made this website. It started with the help of AI but that's rarely needed anymore. All three Languages used in this website are well known to me. That being HTML, CSS and JS Mostly due to the fact that I made this portfolio. I did however start programming in P5JS, in wich case helped me learn JS faster.",
+            "Skill-C++-Text": "A bit less know but a familiar programming language for me. Used in a special project with RayLib, it's not quite the same as C#.",
+            "Skill-WEB-Text": "If you are reading this, then you'd know that I made this website. It started with the help of AI but that's rarely needed anymore. All three Languages used in this website are well known to me. That being HTML, CSS and JS Mostly due to the fact that I made this portfolio. I did however start programming in P5JS, in which case helped me learn JS faster.",
 
             //Engine Skills
-            "Skill-Unity-Text-1": "Of course Unity is a bit of a well know program for developers. My study course at GLU always uses this as the standerd so I will say that my experience in Unity is quit big. Considering I've already worked with it for almost more then 2 years.",
-            "Skill-Unity-Text-2": "Much of my offtime programming is in Unity. It's easy to start up so I don't have to worry about all the shenanigans. It's also a fan of VR and that's a plus point of course. The XR-intergration toolkit is always on hand when talking about a VR game in Unity.",
-            "Skill-Unreal-Text-1": "The program more know for it's power. It's less familiar to me then unity, but I do find my way around blueprints verymuch. Learning C++ is going to be my main goal moving forward when developing with Unreal.",
-            "Skill-Unreal-Text-2": "Of course The project I used Unreal for was in VR, but it wasn't the only gimic. It was a special project where we had to work together with students from an film school. These students had the task to implement motion animation made with a motion capture suit. It gave us a real chalange to put a VR game together with those animations but it did work pretty good.",
-            "Skill-Raylib-Text-1": "RayLib is actualy a framework, specificly a framework for C++. It was a real chalange to go this one working to. The start up procces was quit anoying. It wasn't even my first chose for the project. That was SFML, but with to much trouble starting a basic project I turned to a diffrent framework.",
+            "Skill-Unity-Text-1": "Of course Unity is a bit of a well know program for developers. My study course at GLU always uses this as the standard so I will say that my experience in Unity is quit big. Considering I've already worked with it for almost more than 2 years.",
+            "Skill-Unity-Text-2": "Much of my off time programming is in Unity. It's easy to start up so I don't have to worry about all the shenanigans. It's also a fan of VR and that's a plus point of course. The XR-integration toolkit is always on hand when talking about a VR game in Unity.",
+            "Skill-Unreal-Text-1": "The program more know for it's power. It's less familiar to me then unity, but I do find my way around blueprints very much. Learning C++ is going to be my main goal moving forward when developing with Unreal.",
+            "Skill-Unreal-Text-2": "Of course The project I used Unreal for was in VR, but it wasn't the only gimmick. It was a special project where we had to work together with students from an film school. These students had the task to implement motion animation made with a motion capture suit. It gave us a real challenge to put a VR game together with those animations but it did work pretty good.",
+            "Skill-Raylib-Text-1": "RayLib is actually a framework, specifically a framework for C++. It was a real challenge to go this one working to. The startup process was quit annoying. It wasn't even my first chose for the project. That was SFML, but with too much trouble starting a basic project I turned to a different framework.",
             "Skill-Raylib-Text-2": "In the end it was a pretty good chose. Project was well made and I learned good bit of the basics for C++.",
 
             // Soft Skills
             "Skill-Teamwork-Titel": "Teamwork",
-            "Skill-Teamwork-Text-1": "You could say teamwork is part of the job. And I would be glad, because if not then it would be boring to work on a project. A solo project Obviously doen't need team work. But I much rather have a team project then a solo project.",
-            "Skill-Teamwork-Text-2": "We learned at school how to work together in a project. Talking about code documentations, task managment and roles in the team. This we did with websites. My personal favourite was Codecks, but I'm quit adaptable. So any new ones I'm eager to learn.",
+            "Skill-Teamwork-Text-1": "You could say teamwork is part of the job. And I would be glad, because if not then it would be boring to work on a project. A solo project Obviously doesn’t need team work, But I much rather have a team project then a solo project.",
+            "Skill-Teamwork-Text-2": "We learned at school how to work together in a project. Talking about code documentations, task management and roles in the team. This we did with websites. My personal favourite was Codecks, but I'm quit adaptable. So any new ones I'm eager to learn.",
             "Skill-Teaching-Titel": "Teaching",
             "Skill-Teaching-Text-1": "When I was younger I've always liked helping people learn new things. whether it was English, Math or something about a game I liked very much.",
-            "Skill-Teaching-Text-2": "I've helped a lot of student and classmates at school. Sometimes the teacher was bussy so he send student with questions to me. I'm also not afraid to say that I don't know what the anwser is if I get a question. I'm more intersed then to go through the steps with said person to find out a solution together.",
-            "Skill-Scrum-Text-1": "School sort of trew a scrum method at us for a project. This project was our first real teamproject with artist. So it was kind of swiming in unknow hot waters. We didn't really know what to do, so we just started with step 1 for the scrum method.",
-            "Skill-Scrum-Text-2": "We kept up with the stand ups every day. Kept good comunication and got a great project out of it. I do love a bit of structure in teamprojects. It give's an idea on what to do when you're stuck on something. And if you set it up right, you can easily ask anyone on your team for help.",
+            "Skill-Teaching-Text-2": "I've helped a lot of student and classmates at school. Sometimes the teacher was busy so he send student with questions to me. I'm also not afraid to say that I don't know what the answer is if I get a question. I'm more interested then to go through the steps with said person to find out a solution together.",
+            "Skill-Scrum-Text-1": "School sort of threw a scrum method at us for a project. This project was our first real team project with artist. So it was kind of swimming in unknow hot waters. We didn't really know what to do, so we just started with step 1 for the scrum method.",
+            "Skill-Scrum-Text-2": "We kept up with the stand ups every day. Kept good communication and got a great project out of it. I do love a bit of structure in team projects. It gives an idea on what to do when you're stuck on something. And if you set it up right, you can easily ask anyone on your team for help.",
         },
         nl: {
             // Hobies
@@ -924,7 +896,7 @@
             // Language Skills
             "Skill-Language-Titel": "Programmeertalen",
             "Skill-C#-Text": "Natuurlijk gekoppeld aan het feit dat ik veel met Unity werk. Ik heb er het meest mee geleerd en doe er het meest mee.",
-            "Skill-C++-Text": "Een beetje minder bekend, maar een vertrouwde programmeertaal voor mij. Gebruikt in een speciaal project met Raylib, het is niet helemaal hetzelfde als C#.",
+            "Skill-C++-Text": "Een beetje minder bekend, maar een vertrouwde programmeertaal voor mij. Gebruikt in een speciaal project met RayLib, het is niet helemaal hetzelfde als C#.",
             "Skill-WEB-Text": "Als je dit leest, dan weet je dat ik deze website heb gemaakt. Het begon met de hulp van AI, maar dat is tegenwoordig zelden meer nodig. Alle drie de talen die in deze website worden gebruikt, zijn mij goed bekend. Dat zijn HTML, CSS en JS, vooral vanwege het feit dat ik dit portfolio heb gemaakt. Ik ben echter begonnen met programmeren in P5JS, wat me heeft geholpen om JS sneller te leren.",
 
             //Engine Skills
